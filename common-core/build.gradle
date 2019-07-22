@@ -1,40 +1,18 @@
 apply from: '../config.gradle'
 apply plugin: 'com.android.library'
+apply from: '../common-setting.gradle'
+
 
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-
-
-    defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
     dataBinding {
         enabled true
     }
 
 }
 
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["lifecycle-entensions"]

@@ -1,0 +1,8 @@
+apply plugin: 'com.android.library'
+apply from: '../common-setting.gradle'
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api 'androidx.appcompat:appcompat:1.0.2'
+}

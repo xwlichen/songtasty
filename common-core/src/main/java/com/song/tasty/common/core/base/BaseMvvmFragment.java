@@ -1,12 +1,15 @@
 package com.song.tasty.common.core.base;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -17,35 +20,28 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * @date : 2019-07-22 12:01
- * @author: lichen
- * @email : 1960003945@qq.com
+ * @author lichen
+ * @date ：2019-07-22 20:47
+ * @email : 196003945@qq.com
  * @description :
  */
-public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity implements BaseView {
+public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment implements BaseView {
+
     protected V binding;
     protected VM viewModel;
-
     private int viewModelId;
 
 
+    @Nullable
     @Override
-    protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
-        super.createView(layoutResId, savedInstanceState);
-
-        initViewDataBinding(savedInstanceState);
-        subscribeViewSource(viewModel);
-        initViewObservable();
-
-        //注册RxBus
-        viewModel.registerRxBus();
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false);
+        return binding.getRoot();
     }
 
-
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         if (viewModel != null) {
             viewModel.unregisterRxBus();
         }
@@ -55,8 +51,23 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
         }
     }
 
-    private void initViewDataBinding(@Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.setContentView(this, getLayoutResId());
+    @Override
+    protected void initViewCreate() {
+        initViewDataBinding();
+        subscribeViewSource(viewModel);
+        initViewObservable();
+        viewModel.registerRxBus();
+    }
+
+    public abstract int initVariableId();
+
+
+    public void initViewObservable() {
+
+    }
+
+
+    private void initViewDataBinding() {
         viewModelId = initVariableId();
         viewModel = null;
         Class modelClass;
@@ -69,7 +80,6 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
         }
         viewModel = (VM) createViewModel(this, modelClass);
 
-        //关联ViewModel
         binding.setVariable(viewModelId, viewModel);
         //让ViewModel拥有View的生命周期感应
         getLifecycle().addObserver(viewModel);
@@ -83,24 +93,13 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
 
 
     /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
-    public abstract int initVariableId();
-
-    public void initViewObservable() {
-
-    }
-
-    /**
      * 创建ViewModel
      *
      * @param cls
      * @param <T>
      * @return
      */
-    public <T extends ViewModel> T createViewModel(FragmentActivity activity, Class<T> cls) {
-        return ViewModelProviders.of(activity).get(cls);
+    public <T extends ViewModel> T createViewModel(Fragment fragment, Class<T> cls) {
+        return ViewModelProviders.of(fragment).get(cls);
     }
 }

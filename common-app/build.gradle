@@ -1,0 +1,13 @@
+apply plugin: 'com.android.library'
+
+apply from: '../common-setting.gradle'
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':common-core')
+    api project(':common-ui')
+
+
+
+}

@@ -55,7 +55,25 @@ ext {
             "rxbinding-leanback"         : "com.jakewharton.rxbinding3:rxbinding-leanback:${version["rxBindingVersion"]}",
             "rxbinding-recyclerview"     : "com.jakewharton.rxbinding3:rxbinding-recyclerview:${version["rxBindingVersion"]}",
             "rxbinding-slidingpanelayout": "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:${version["rxBindingVersion"]}",
-            "implementation"             : "com.jakewharton.rxbinding3:rxbinding-viewpager:${version["rxBindingVersion"]}¬",
+            "rxbinding-viewpager"        : "com.jakewharton.rxbinding3:rxbinding-viewpager:${version["rxBindingVersion"]}",
+
+
+            //smartrefresh
+            "smart-refreshlayout"        : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-14",
+            "smart-refreshheader"        : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-14",
+            "legacy"                     : "androidx.legacy:legacy-support-v4:1.0.0",
+
+
+
+
+
+
+
+
+            //test
+            "androidJUnitRunner"       : "android.support.test.runner.AndroidJUnitRunner",
+
+
     ]
 
 
