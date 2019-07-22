@@ -42,16 +42,22 @@ dependencies {
     api rootProject.ext.dependencies["constraintlayout"]
 
 
-    api rootProject.ext.dependencies["constraintlayout"]
+    //rxjava
+    api rootProject.ext.dependencies.rxjava
+    api rootProject.ext.dependencies.rxandroid
+    //rxbinding
+    api rootProject.ext.dependencies["rxbinding-corec"]
 
 
-
-
+    //网络
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 
+    //屏幕适配
     api rootProject.ext.dependencies["autosize"]
+
+
 }
 

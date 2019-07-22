@@ -24,28 +24,38 @@ ext {
             //三方
             "retrofitVersion"           : "2.6.0",
             "glideVersion"              : "4.9.0",
+            "rxBindingVersion"          : "3.0.0-alpha2",
 
 
     ]
 
 
     dependencies = [
-            "appcompat"           : "androidx.appcompat:appcompat:${version["appcompatVersion"]}",
-            "lifecycle-entensions": "androidx.lifecycle:lifecycle-extensions:${version["lifecycleEntensionsVersion"]}",
-            "multidex"            : "androidx.multidex:multidex:${version["multidexVersion"]}",
-            "constraintlayout"    : "androidx.constraintlayout:constraintlayout:${version["constraintlayoutVersion"]}",
+            "appcompat"                  : "androidx.appcompat:appcompat:${version["appcompatVersion"]}",
+            "lifecycle-entensions"       : "androidx.lifecycle:lifecycle-extensions:${version["lifecycleEntensionsVersion"]}",
+            "multidex"                   : "androidx.multidex:multidex:${version["multidexVersion"]}",
+            "constraintlayout"           : "androidx.constraintlayout:constraintlayout:${version["constraintlayoutVersion"]}",
 
 
             //网络
-            "retrofit"            : "com.squareup.retrofit2:retrofit:${version["retrofitVersion"]}",
-            "glide"               : "com.github.bumptech.glide:glide:${version["glideVersion"]}",
-            "glide-compiler"      : "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
+            "retrofit"                   : "com.squareup.retrofit2:retrofit:${version["retrofitVersion"]}",
+            "glide"                      : "com.github.bumptech.glide:glide:${version["glideVersion"]}",
+            "glide-compiler"             : "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
 
 
             //屏幕适配 https://github.com/JessYanCoding/AndroidAutoSize
-            "autosize"            : "me.jessyan:autosize:1.1.2",
-
-
+            "autosize"                   : "me.jessyan:autosize:1.1.2",
+            //rxjava
+            "rxjava"                     : "io.reactivex.rxjava2:rxjava:2.2.10",
+            "rxandroid"                  : "io.reactivex.rxjava2:rxandroid:2.1.1",
+            //rxbinding
+            "rxbinding-corec"            : "com.jakewharton.rxbinding3:rxbinding-core:${version["rxBindingVersion"]}",
+            "rxbinding-appcompat"        : "com.jakewharton.rxbinding3:rxbinding-appcompat:${version["rxBindingVersion"]}",
+            "rxbinding-drawerlayout"     : "com.jakewharton.rxbinding3:rxbinding-drawerlayout:${version["rxBindingVersion"]}",
+            "rxbinding-leanback"         : "com.jakewharton.rxbinding3:rxbinding-leanback:${version["rxBindingVersion"]}",
+            "rxbinding-recyclerview"     : "com.jakewharton.rxbinding3:rxbinding-recyclerview:${version["rxBindingVersion"]}",
+            "rxbinding-slidingpanelayout": "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:${version["rxBindingVersion"]}",
+            "implementation"             : "com.jakewharton.rxbinding3:rxbinding-viewpager:${version["rxBindingVersion"]}¬",
     ]
 
 

@@ -17,17 +17,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
         Intent intent = getIntent();
         if (intent != null) {
             parseIntent(intent);
         }
+        createView(getLayoutResId(), savedInstanceState);
         initView();
         initData();
 
     }
 
     protected abstract int getLayoutResId();
+
+    protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
+        setContentView(layoutResId);
+    }
 
 
     protected void parseIntent(@Nullable Intent intent) {
