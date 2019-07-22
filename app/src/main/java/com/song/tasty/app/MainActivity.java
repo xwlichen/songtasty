@@ -1,14 +1,26 @@
 package com.song.tasty.app;
 
-import android.os.Bundle;
+import com.song.tasty.app.databinding.ActivityMainBinding;
+import com.song.tasty.common.app.base.BaseAppActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
+=
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppActivity<ActivityMainBinding,> {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public int initVariableId() {
+        return 0;
+    }
+
+
+    @Override
+    protected void initView() {
+        super.initView();
     }
 }

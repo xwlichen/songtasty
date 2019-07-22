@@ -33,8 +33,15 @@ public interface BaseView extends IView {
     void hideLoading();
 
 
+    /**
+     * 显示空数据布局
+     */
     void showNoData();
 
+
+    /**
+     * 显示无网络布局
+     */
     void showNoNetWork();
 
 

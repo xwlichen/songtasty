@@ -4,5 +4,9 @@ apply from: '../common-setting.gradle'
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
-    api 'androidx.appcompat:appcompat:1.0.2'
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["smart-refreshlayout"]
+    api rootProject.ext.dependencies["smart-refreshheader"]
+    api rootProject.ext.dependencies["legacy"]
+
 }

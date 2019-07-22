@@ -5,6 +5,9 @@ apply from: '../common-setting.gradle'
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
+
+    api rootProject.ext.dependencies["toast"]
+
     api project(':common-core')
     api project(':common-ui')
 

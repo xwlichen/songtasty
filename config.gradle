@@ -62,16 +62,12 @@ ext {
             "smart-refreshlayout"        : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-14",
             "smart-refreshheader"        : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-14",
             "legacy"                     : "androidx.legacy:legacy-support-v4:1.0.0",
-
-
-
-
-
-
+            //toast https://github.com/getActivity/ToastUtils
+            "toast"                      : "com.hjq:toast:8.0",
 
 
             //test
-            "androidJUnitRunner"       : "android.support.test.runner.AndroidJUnitRunner",
+            "androidJUnitRunner"         : "android.support.test.runner.AndroidJUnitRunner",
 
 
     ]
