@@ -58,16 +58,18 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
     private void initViewDataBinding(@Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, getLayoutResId());
         viewModelId = initVariableId();
-        viewModel = null;
-        Class modelClass;
-        Type type = getClass().getGenericSuperclass();
-        if (type instanceof ParameterizedType) {
-            modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[1];
-        } else {
-            //如果没有指定泛型参数，则默认使用BaseViewModel
-            modelClass = BaseViewModel.class;
+        viewModel = initViewModel();
+        if (viewModel==null) {
+            Class modelClass;
+            Type type = getClass().getGenericSuperclass();
+            if (type instanceof ParameterizedType) {
+                modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[1];
+            } else {
+                //如果没有指定泛型参数，则默认使用BaseViewModel
+                modelClass = BaseViewModel.class;
+            }
+            viewModel = (VM) createViewModel(this, modelClass);
         }
-        viewModel = (VM) createViewModel(this, modelClass);
 
         //关联ViewModel
         binding.setVariable(viewModelId, viewModel);
@@ -88,6 +90,16 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
      * @return BR的id
      */
     public abstract int initVariableId();
+
+
+    /**
+     * 自定义初始化ViewModel(ViewModelProvider.NewInstanceFactory)
+     * 不重载的化则调用默认的初始化
+     * @return
+     */
+    public VM initViewModel(){
+        return null;
+    }
 
     public void initViewObservable() {
 

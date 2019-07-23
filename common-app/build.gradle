@@ -1,16 +1,28 @@
 apply plugin: 'com.android.library'
-
 apply from: '../common-setting.gradle'
+
+
+
+
+android {
+    dataBinding {
+        enabled true
+    }
+
+}
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
 
+
     api rootProject.ext.dependencies["toast"]
+    //k-v 腾讯存储
+    api rootProject.ext.dependencies["mmkv"]
+
 
     api project(':common-core')
     api project(':common-ui')
-
 
 
 }
