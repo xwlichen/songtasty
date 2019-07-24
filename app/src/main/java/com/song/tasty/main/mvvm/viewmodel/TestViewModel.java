@@ -2,13 +2,16 @@ package com.song.tasty.main.mvvm.viewmodel;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+
+import com.billy.cc.core.component.CC;
+import com.billy.cc.core.component.CCResult;
 import com.song.tasty.common.app.app.Injection;
 import com.song.tasty.common.app.model.DataRepository;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
-
-import androidx.annotation.NonNull;
+import com.song.tasty.common.core.utils.LogUtils;
 
 /**
  * @date : 2019-07-23 09:53
@@ -25,7 +28,17 @@ public class TestViewModel extends BaseViewModel<DataRepository> {
     public BindingCommand textClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            toastSource.setValue("test sdfds ");
+            CCResult result = null;
+            CC cc = null;
+//                Utils.navigation(MainActivity.this, RouterHub.ZHIHU_HOMEACTIVITY);
+//            cc = CC.obtainBuilder("module-main.test")
+            cc = CC.obtainBuilder("module-mine.test")
+                    .setActionName("showActivityA")
+                    .build();
+            result = cc.call();
+            toastSource.setValue(result.toString());
+            LogUtils.e("xw", result.toString());
+
         }
     });
 

@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.song.tasty.module.login">
+    package="com.song.tasty.module.mine">
+
 
     <application>
-        <activity android:name=".mvvm.ui.LoginActivity" />
+        <activity android:name=".TestActivity" />
     </application>
 </manifest>

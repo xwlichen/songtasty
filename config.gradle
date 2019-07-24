@@ -67,6 +67,9 @@ ext {
             "mmkv"                       : "com.tencent:mmkv:1.0.22",
 
 
+
+
+
             //test
             "androidJUnitRunner"         : "android.support.test.runner.AndroidJUnitRunner",
 
