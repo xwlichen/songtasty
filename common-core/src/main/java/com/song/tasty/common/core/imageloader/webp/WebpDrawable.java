@@ -12,6 +12,8 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 
+import androidx.annotation.VisibleForTesting;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.gifdecoder.GifDecoder;
 import com.bumptech.glide.load.Transformation;
@@ -19,8 +21,6 @@ import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.song.tasty.common.core.utils.Preconditions;
 
 import java.nio.ByteBuffer;
-
-import androidx.annotation.VisibleForTesting;
 
 /**
  * @date : 2019-07-25 16:30
@@ -176,7 +176,7 @@ public class WebpDrawable extends Drawable implements WebpFrameLoader.FrameCallb
             }
 
             Bitmap currentFrame = this.state.frameLoader.getCurrentFrame();
-            canvas.drawBitmap(currentFrame, null, this.getDestRect(), this.getPaint());
+            canvas.drawBitmap(currentFrame, (Rect) null, this.getDestRect(), this.getPaint());
         }
     }
 

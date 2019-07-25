@@ -25,6 +25,7 @@ ext {
             "retrofitVersion"           : "2.6.0",
             "glideVersion"              : "4.9.0",
             "rxBindingVersion"          : "3.0.0-alpha2",
+            "frescoVersion"             : "2.0.0",
 
 
     ]
@@ -41,9 +42,10 @@ ext {
             "retrofit"                   : "com.squareup.retrofit2:retrofit:${version["retrofitVersion"]}",
             "glide"                      : "com.github.bumptech.glide:glide:${version["glideVersion"]}",
             "glide-compiler"             : "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
-            //webp格式图片辅助
-            "animated-webp"              : "com.facebook.fresco:animated-webp:1.9.0",
-
+            //fresco webp格式图片辅助
+            "animated-webp"              : "com.facebook.fresco:animated-webp:${version["frescoVersion"]}",
+            "animated-base"              : "com.facebook.fresco:animated-base:${version["frescoVersion"]}",
+            "soloader"                   : "com.facebook.soloader:soloader:0.6.0",
 
 
             //屏幕适配 https://github.com/JessYanCoding/AndroidAutoSize

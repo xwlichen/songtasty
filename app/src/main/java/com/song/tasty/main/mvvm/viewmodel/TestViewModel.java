@@ -32,7 +32,7 @@ public class TestViewModel extends BaseViewModel<DataRepository> {
             CC cc = null;
 //                Utils.navigation(MainActivity.this, RouterHub.ZHIHU_HOMEACTIVITY);
 //            cc = CC.obtainBuilder("module-main.test")
-            cc = CC.obtainBuilder("module-mine.test")
+            cc = CC.obtainBuilder("module_login.login")
                     .setActionName("showActivityA")
                     .build();
             result = cc.call();

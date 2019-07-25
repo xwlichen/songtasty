@@ -34,10 +34,10 @@ import java.util.UUID;
  */
 public class WebpFrameLoader {
 
-    final RequestManager requestManager;
     private final GifDecoder gifDecoder;
     private final Handler handler;
     private final List<FrameCallback> callbacks;
+    final RequestManager requestManager;
     private final BitmapPool bitmapPool;
     private boolean isRunning;
     private boolean isLoadPending;
@@ -50,7 +50,7 @@ public class WebpFrameLoader {
     private Transformation<Bitmap> transformation;
 
     public WebpFrameLoader(Glide glide, GifDecoder gifDecoder, int width, int height, Transformation<Bitmap> transformation, Bitmap firstFrame) {
-        this(glide.getBitmapPool(), Glide.with(glide.getContext()), gifDecoder, null, getRequestBuilder(Glide.with(glide.getContext()), width, height), transformation, firstFrame);
+        this(glide.getBitmapPool(), Glide.with(glide.getContext()), gifDecoder, (Handler) null, getRequestBuilder(Glide.with(glide.getContext()), width, height), transformation, firstFrame);
     }
 
     WebpFrameLoader(BitmapPool bitmapPool, RequestManager requestManager, GifDecoder gifDecoder, Handler handler, RequestBuilder<Bitmap> requestBuilder, Transformation<Bitmap> transformation, Bitmap firstFrame) {
@@ -70,13 +70,9 @@ public class WebpFrameLoader {
         this.setFrameTransformation(transformation, firstFrame);
     }
 
-    private static RequestBuilder<Bitmap> getRequestBuilder(RequestManager requestManager, int width, int height) {
-        return requestManager.asBitmap().apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE).skipMemoryCache(true).override(width, height));
-    }
-
     void setFrameTransformation(Transformation<Bitmap> transformation, Bitmap firstFrame) {
-        this.transformation = Preconditions.checkNotNull(transformation);
-        this.firstFrame = Preconditions.checkNotNull(firstFrame);
+        this.transformation = (Transformation) Preconditions.checkNotNull(transformation);
+        this.firstFrame = (Bitmap) Preconditions.checkNotNull(firstFrame);
         this.requestBuilder = this.requestBuilder.apply((new RequestOptions()).transform(transformation));
     }
 
@@ -218,7 +214,7 @@ public class WebpFrameLoader {
                 this.current = delayTarget;
 
                 for (int i = this.callbacks.size() - 1; i >= 0; --i) {
-                    FrameCallback cb = this.callbacks.get(i);
+                    FrameCallback cb = (FrameCallback) this.callbacks.get(i);
                     cb.onFrameReady();
                 }
 
@@ -232,8 +228,8 @@ public class WebpFrameLoader {
         }
     }
 
-    public interface FrameCallback {
-        void onFrameReady();
+    private static RequestBuilder<Bitmap> getRequestBuilder(RequestManager requestManager, int width, int height) {
+        return requestManager.asBitmap().apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE).skipMemoryCache(true).override(width, height));
     }
 
     static class FrameSignature implements Key {
@@ -269,8 +265,8 @@ public class WebpFrameLoader {
     }
 
     static class DelayTarget extends SimpleTarget<Bitmap> {
-        final int index;
         private final Handler handler;
+        final int index;
         private final long targetTime;
         private Bitmap resource;
 
@@ -315,5 +311,9 @@ public class WebpFrameLoader {
                 return false;
             }
         }
+    }
+
+    public interface FrameCallback {
+        void onFrameReady();
     }
 }

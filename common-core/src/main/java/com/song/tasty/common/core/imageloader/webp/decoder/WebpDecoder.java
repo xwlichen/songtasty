@@ -1,13 +1,15 @@
 package com.song.tasty.common.core.imageloader.webp.decoder;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.gifdecoder.GifDecoder;
 import com.bumptech.glide.gifdecoder.GifHeader;
 import com.facebook.animated.webp.WebPFrame;
 import com.facebook.animated.webp.WebPImage;
+import com.facebook.imagepipeline.animated.base.AnimatedDrawableFrameInfo;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;
@@ -20,36 +22,36 @@ import java.nio.ByteBuffer;
  */
 public class WebpDecoder implements GifDecoder {
 
-    private WebPImage mWebPImage;
-    private BitmapProvider mProvider;
-    private int mFramePointer;
-    private int[] mFrameDurations;
+    private WebPImage webPImage;
+    private GifDecoder.BitmapProvider provider;
+    private int framePointer;
+    private int[] frameDurations;
     private int downsampledWidth;
     private int downsampledHeight;
-    private boolean[] mKeyFrame;
-    private int mSampleSize;
+    private boolean[] keyFrame;
+    private int sampleSize;
     // 缓存上一帧，用于非关键帧
-    private Bitmap mCacheBmp;
+    private Bitmap cacheBmp;
 
 
-    public WebpDecoder(BitmapProvider provider, WebPImage webPImage, int sampleSize) {
-        mProvider = provider;
-        mWebPImage = webPImage;
-        mFrameDurations = webPImage.getFrameDurations();
-        mKeyFrame = new boolean[mFrameDurations.length];
+    public WebpDecoder(GifDecoder.BitmapProvider provider, WebPImage webPImage, int sampleSize) {
+        this.provider = provider;
+        this.webPImage = webPImage;
+        this.frameDurations = webPImage.getFrameDurations();
+        this.keyFrame = new boolean[this.frameDurations.length];
         downsampledWidth = webPImage.getWidth() / sampleSize;
         downsampledHeight = webPImage.getHeight() / sampleSize;
-        mSampleSize = sampleSize;
+        this.sampleSize = sampleSize;
     }
 
     @Override
     public int getWidth() {
-        return mWebPImage.getWidth();
+        return this.webPImage.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return mWebPImage.getHeight();
+        return this.webPImage.getHeight();
     }
 
     @Override
@@ -57,100 +59,99 @@ public class WebpDecoder implements GifDecoder {
         return null;
     }
 
-    @SuppressLint("WrongConstant")
     @Override
     public int getStatus() {
-        return 0;
+        return GifDecoder.STATUS_OK;
     }
 
     @Override
     public void advance() {
-        mFramePointer = (mFramePointer + 1) % mWebPImage.getFrameCount();
+        this.framePointer = (this.framePointer + 1) % this.webPImage.getFrameCount();
     }
 
     @Override
     public int getDelay(int n) {
         int delay = -1;
-        if ((n >= 0) && (n < mFrameDurations.length)) {
-            delay = mFrameDurations[n];
+        if ((n >= 0) && (n < this.frameDurations.length)) {
+            delay = this.frameDurations[n];
         }
         return delay;
     }
 
     @Override
     public int getNextDelay() {
-        if (mFrameDurations.length == 0 || mFramePointer < 0) {
+        if (this.frameDurations.length == 0 || this.framePointer < 0) {
             return 0;
         }
 
-        return getDelay(mFramePointer);
+        return getDelay(this.framePointer);
     }
 
     @Override
     public int getFrameCount() {
-        return mWebPImage.getFrameCount();
+        return this.webPImage.getFrameCount();
     }
 
     @Override
     public int getCurrentFrameIndex() {
-        return mFramePointer;
+        return this.framePointer;
     }
 
     @Override
     public void resetFrameIndex() {
-        mFramePointer = -1;
+        this.framePointer = -1;
     }
 
     @Override
     public int getLoopCount() {
-        return mWebPImage.getLoopCount();
+        return this.webPImage.getLoopCount();
     }
 
     @Override
     public int getNetscapeLoopCount() {
-        return mWebPImage.getLoopCount();
+        return this.webPImage.getLoopCount();
     }
 
     @Override
     public int getTotalIterationCount() {
-        if (mWebPImage.getLoopCount() == 0) {
+        if (this.webPImage.getLoopCount() == 0) {
             return TOTAL_ITERATION_COUNT_FOREVER;
         }
-        return mWebPImage.getFrameCount() + 1;
+        return this.webPImage.getFrameCount() + 1;
     }
 
     @Override
     public int getByteSize() {
-        return mWebPImage.getSizeInBytes();
+        return this.webPImage.getSizeInBytes();
     }
 
     @Override
     public Bitmap getNextFrame() {
-        Bitmap result = mProvider.obtain(downsampledWidth, downsampledHeight, Bitmap.Config.ARGB_8888);
+        Bitmap result = this.provider.obtain(downsampledWidth, downsampledHeight, Bitmap.Config.ARGB_8888);
         int currentIndex = getCurrentFrameIndex();
-        WebPFrame currentFrame = mWebPImage.getFrame(currentIndex);
+        WebPFrame currentFrame = this.webPImage.getFrame(currentIndex);
 
         // render key frame
         if (isKeyFrame(currentIndex)) {
-            mKeyFrame[currentIndex] = true;
+            this.keyFrame[currentIndex] = true;
             currentFrame.renderFrame(downsampledWidth, downsampledHeight, result);
 
-            mCacheBmp = result;
+            this.cacheBmp = result;
         } else {
-            int frameW = currentFrame.getWidth() / mSampleSize;
-            int frameH = currentFrame.getHeight() / mSampleSize;
-            int offX = currentFrame.getXOffset() / mSampleSize;
-            int offY = currentFrame.getYOffset() / mSampleSize;
+            int frameW = currentFrame.getWidth() / this.sampleSize;
+            int frameH = currentFrame.getHeight() / this.sampleSize;
+            int offX = currentFrame.getXOffset() / this.sampleSize;
+            int offY = currentFrame.getYOffset() / this.sampleSize;
 
             Canvas canvas = new Canvas(result);
-            canvas.drawBitmap(mCacheBmp, 0, 0, null);
+            canvas.drawBitmap(this.cacheBmp, 0, 0, null);
 
-            Bitmap frameBmp = mProvider.obtain(frameW, frameH, Bitmap.Config.ARGB_8888);
+            Bitmap frameBmp = this.provider.obtain(frameW, frameH, Bitmap.Config.ARGB_8888);
             currentFrame.renderFrame(frameW, frameH, frameBmp);
             canvas.drawBitmap(frameBmp, offX, offY, null);
 
-            mProvider.release(frameBmp);
-            mCacheBmp = result;
+            this.provider.release(frameBmp);
+            this.cacheBmp = result;
         }
         currentFrame.dispose();
         return result;
@@ -161,8 +162,8 @@ public class WebpDecoder implements GifDecoder {
             return true;
         }
 
-        AnimatedDrawableFrameInfo curFrameInfo = mWebPImage.getFrameInfo(index);
-        AnimatedDrawableFrameInfo prevFrameInfo = mWebPImage.getFrameInfo(index - 1);
+        AnimatedDrawableFrameInfo curFrameInfo = this.webPImage.getFrameInfo(index);
+        AnimatedDrawableFrameInfo prevFrameInfo = this.webPImage.getFrameInfo(index - 1);
         if (curFrameInfo.blendOperation == AnimatedDrawableFrameInfo.BlendOperation.NO_BLEND
                 && isFullFrame(curFrameInfo)) {
             return true;
@@ -174,19 +175,19 @@ public class WebpDecoder implements GifDecoder {
 
     private boolean isFullFrame(AnimatedDrawableFrameInfo info) {
         return info.yOffset == 0 && info.xOffset == 0
-                && mWebPImage.getHeight() == info.width
-                && mWebPImage.getWidth() == info.height;
+                && this.webPImage.getHeight() == info.width
+                && this.webPImage.getWidth() == info.height;
     }
 
     @Override
     public int read(InputStream inputStream, int i) {
-        return 0;
+        return GifDecoder.STATUS_OK;
     }
 
     @Override
     public void clear() {
-        mWebPImage.dispose();
-        mWebPImage = null;
+        this.webPImage.dispose();
+        this.webPImage = null;
     }
 
     @Override
@@ -206,7 +207,7 @@ public class WebpDecoder implements GifDecoder {
 
     @Override
     public int read(byte[] bytes) {
-        return 0;
+        return GifDecoder.STATUS_OK;
     }
 
     @Override

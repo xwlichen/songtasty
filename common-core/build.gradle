@@ -32,6 +32,9 @@ dependencies {
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["animated-webp"]
+    api rootProject.ext.dependencies["animated-base"]
+    api rootProject.ext.dependencies["soloader"]
+
 
 
 

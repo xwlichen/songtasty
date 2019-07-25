@@ -1,7 +1,12 @@
 package com.song.tasty.module.login.mvvm.ui;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.module.login.R;
 import com.song.tasty.module.login.databinding.ActivityLoginBinding;
@@ -27,11 +32,14 @@ public class LoginActivity extends BaseAppActivity<ActivityLoginBinding, LoginVi
     @Override
     protected void initView() {
 
+
+        ImageView ivBg = findViewById(R.id.ivBg);
         RequestOptions options = new RequestOptions()
-                .skipMemoryCache(false)
-                .diskCacheStrategy(DiskCacheStrategy.DATA);
-//        Glide.with(this).load(url).apply(options).into(imageView);
-//                .as
+                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).diskCacheStrategy(DiskCacheStrategy.NONE);
+        Glide.with(this)
+                .load("file:///android_asset/login_background_video.webp")
+                .apply(options).transition(new DrawableTransitionOptions().crossFade(200))
+                .into(ivBg);
 
     }
 }
