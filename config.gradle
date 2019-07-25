@@ -41,6 +41,9 @@ ext {
             "retrofit"                   : "com.squareup.retrofit2:retrofit:${version["retrofitVersion"]}",
             "glide"                      : "com.github.bumptech.glide:glide:${version["glideVersion"]}",
             "glide-compiler"             : "com.github.bumptech.glide:compiler:${version["glideVersion"]}",
+            //webp格式图片辅助
+            "animated-webp"              : "com.facebook.fresco:animated-webp:1.9.0",
+
 
 
             //屏幕适配 https://github.com/JessYanCoding/AndroidAutoSize
@@ -65,9 +68,6 @@ ext {
             //toast https://github.com/getActivity/ToastUtils
             "toast"                      : "com.hjq:toast:8.0",
             "mmkv"                       : "com.tencent:mmkv:1.0.22",
-
-
-
 
 
             //test

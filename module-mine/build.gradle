@@ -3,7 +3,7 @@ apply from: '../common-setting.gradle'
 
 android {
 
-    resourcePrefix "mine-" //给 Module 内的资源名增加前缀, 避免资源名冲突
+//    resourcePrefix "mine-" //给 Module 内的资源名增加前缀, 避免资源名冲突
 
     dataBinding {
         enabled true
