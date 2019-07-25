@@ -1,10 +1,10 @@
-package com.song.tasty.main.mvvm.ui;
+package com.song.tasty.app.mvvm.ui;
 
+import com.song.tasty.app.BR;
+import com.song.tasty.app.R;
+import com.song.tasty.app.databinding.ActivityMainBinding;
+import com.song.tasty.app.mvvm.viewmodel.TestViewModel;
 import com.song.tasty.common.app.base.BaseAppActivity;
-import com.song.tasty.main.BR;
-import com.song.tasty.main.R;
-import com.song.tasty.main.databinding.ActivityMainBinding;
-import com.song.tasty.main.mvvm.viewmodel.TestViewModel;
 
 
 public class MainActivity extends BaseAppActivity<ActivityMainBinding, TestViewModel> {
@@ -23,6 +23,7 @@ public class MainActivity extends BaseAppActivity<ActivityMainBinding, TestViewM
 
     @Override
     protected void initView() {
-        super.initView();
+
+
     }
 }

@@ -1,4 +1,4 @@
-package com.song.tasty.main.mvvm.viewmodel;
+package com.song.tasty.app.mvvm.viewmodel;
 
 import android.app.Application;
 

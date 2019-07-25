@@ -1,29 +1,38 @@
-package com.song.tasty.common.app.base;
+package com.song.tasty.app.mvvm.ui;
 
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.ViewDataBinding;
 
-import com.hjq.toast.ToastUtils;
+import com.song.tasty.app.R;
+import com.song.tasty.app.databinding.ActivityTestBinding;
+import com.song.tasty.app.mvvm.viewmodel.TestViewModel;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
-import com.song.tasty.common.core.base.BaseViewModel;
-import com.song.tasty.common.core.utils.Preconditions;
-import com.song.tasty.common.core.utils.SmartUtils;
 
 /**
  * @author lichen
- * @date ：2019-07-22 22:10
+ * @date ：2019-07-24 22:12
  * @email : 196003945@qq.com
  * @description :
  */
-public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseMvvmActivity<V, VM> {
+public class TestActivity extends BaseMvvmActivity<ActivityTestBinding, TestViewModel> {
 
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_test;
+    }
+
+    @Override
+    public int initVariableId() {
+        return 0;
+    }
 
     @Override
     public void toast(@Nullable String msg) {
-        ToastUtils.show(msg);
+//        ActivityTestBinding mBinding;
+//        mBinding.
+
     }
 
     @Override
@@ -48,7 +57,6 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
-        Preconditions.checkNotNull(intent);
-        SmartUtils.startActivity(intent);
+
     }
 }

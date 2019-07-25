@@ -31,6 +31,7 @@ public class LoginActivity extends BaseAppActivity<ActivityLoginBinding, LoginVi
 
     @Override
     protected void initView() {
+//        binding.
 
 
         ImageView ivBg = findViewById(R.id.ivBg);

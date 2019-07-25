@@ -1,4 +1,4 @@
-package com.song.tasty.main;
+package com.song.tasty.app;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
