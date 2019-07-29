@@ -2,6 +2,8 @@
     package="com.song.tasty.module.login">
 
     <application>
-        <activity android:name=".mvvm.ui.LoginActivity" />
+        <activity
+            android:name=".mvvm.ui.LoginActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
 </manifest>

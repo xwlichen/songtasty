@@ -40,7 +40,7 @@ ext {
 
             //smart
             //ui组件
-            "smart-ui"                   : "com.samrt.component:smart-ui:1.0.0'",
+            "smart-ui"                   : "com.samrt.component:smart-ui:1.0.0",
 
 
             //网络

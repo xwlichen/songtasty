@@ -9,6 +9,8 @@ dependencies {
     api rootProject.ext.dependencies["smart-refreshheader"]
     api rootProject.ext.dependencies["legacy"]
 
+    api rootProject.ext.dependencies["smart-ui"]
+
 
 
 
