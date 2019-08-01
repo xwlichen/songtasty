@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <attr name="app_txt_size_large" format="dimension" />
+    <attr name="app_txt_size_big" format="dimension" />
+    <attr name="app_txt_size_middle" format="dimension" />
+    <attr name="app_txt_size_small" format="dimension" />
+
+
+    <attr name="app_txt_color1" format="color" />
+    <attr name="app_txt_color2" format="color" />
+    <attr name="app_txt_color3" format="color" />
+
+
+</resources>

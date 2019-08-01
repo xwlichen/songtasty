@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_txt_color1">#333333</color>
+    <color name="app_txt_color2">#666666</color>
+    <color name="app_txt_color3">#999999</color>
+
+
+    <color name="color_primary_normal">#EC512C</color>
+    <color name="color_primary_pressed">#a60d08</color>
+</resources>

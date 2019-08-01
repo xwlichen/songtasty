@@ -22,5 +22,13 @@
             android:layout_gravity="center"
             binding:onClickCommand="@{viewModel.textClick}" />
 
+        <ImageView
+            android:layout_width="@dimen/dp_030"
+            android:layout_height="@dimen/dp_030"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:background="@drawable/smui_btn_circle_pressed"
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher" />
+
     </LinearLayout>
 </layout>

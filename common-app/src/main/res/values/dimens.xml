@@ -5,10 +5,10 @@
     <dimen name="line_size">0.5dp</dimen>
 
 
-    <dimen name="txt_big">18sp</dimen>
-    <dimen name="txt_normal">16sp</dimen>
-    <dimen name="txt_middle">14sp</dimen>
-    <dimen name="txt_small">12sp</dimen>
+    <dimen name="txt_size_large">18sp</dimen>
+    <dimen name="txt_size_big">16sp</dimen>
+    <dimen name="txt_size_middle">14sp</dimen>
+    <dimen name="txt_size_small">12sp</dimen>
 
 
     <dimen name="dp_00">0dp</dimen>

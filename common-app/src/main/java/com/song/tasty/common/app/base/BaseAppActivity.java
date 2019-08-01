@@ -3,16 +3,16 @@ package com.song.tasty.common.app.base;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.ViewDataBinding;
-
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.utils.Preconditions;
 import com.song.tasty.common.core.utils.SmartUtils;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * @author lichen
@@ -26,7 +26,7 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
     @Override
     protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
         SMUIStatusBarHelper.translucent(this);
-//        SMUIStatusBarHelper.setStatusBarLightMode(this);
+        SMUIStatusBarHelper.setStatusBarLightMode(this);
         super.createView(layoutResId, savedInstanceState);
     }
 

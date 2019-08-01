@@ -9,7 +9,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.module.login.R;
-import com.song.tasty.module.login.databinding.ActivityLoginBinding;
+import com.song.tasty.module.login.databinding.LoginActivityLoginBinding;
 import com.song.tasty.module.login.mvvm.viewmodel.LoginViewModel;
 
 /**
@@ -18,7 +18,7 @@ import com.song.tasty.module.login.mvvm.viewmodel.LoginViewModel;
  * @email : 196003945@qq.com
  * @description :
  */
-public class LoginActivity extends BaseAppActivity<ActivityLoginBinding, LoginViewModel> {
+public class LoginActivity extends BaseAppActivity<LoginActivityLoginBinding, LoginViewModel> {
     @Override
     public int initVariableId() {
         return 0;
@@ -26,7 +26,7 @@ public class LoginActivity extends BaseAppActivity<ActivityLoginBinding, LoginVi
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_login;
+        return R.layout.login_activity_login;
     }
 
     @Override

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTextAppearance" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/roboto_thin</item>
+
+    </style>
+
+
+    <style name="AppTextAppearance.Large">
+        <item name="android:textSize">?attr/app_txt_size_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/app_txt_color1</item>
+    </style>
+
+
+    <style name="AppTextAppearance.Big">
+        <item name="android:textSize">?attr/app_txt_size_big</item>
+    </style>
+
+    <style name="AppTextAppearance.Big.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTextAppearance.Big.Color1">
+        <item name="android:textColor">?attr/app_txt_color1</item>
+    </style>
+
+    <style name="AppTextAppearance.Big.Color2">
+        <item name="android:textColor">?attr/app_txt_color2</item>
+    </style>
+
+    <style name="AppTextAppearance.Big.Color3">
+        <item name="android:textColor">?attr/app_txt_color3</item>
+    </style>
+
+
+    <style name="AppTextAppearance.middle">
+        <item name="android:textSize">?attr/app_txt_size_middle</item>
+    </style>
+
+    <style name="AppTextAppearance.middle.Color1">
+        <item name="android:textColor">?attr/app_txt_color1</item>
+    </style>
+
+    <style name="AppTextAppearance.middle.Color2">
+        <item name="android:textColor">?attr/app_txt_color2</item>
+    </style>
+
+    <style name="AppTextAppearance.middle.Color3">
+        <item name="android:textColor">?attr/app_txt_color3</item>
+    </style>
+
+
+    <style name="AppTextAppearance.small">
+        <item name="android:textSize">?attr/app_txt_size_small</item>
+    </style>
+
+    <style name="AppTextAppearance.small.Color1">
+        <item name="android:textColor">?attr/app_txt_color1</item>
+    </style>
+
+    <style name="AppTextAppearance.small.Color2">
+        <item name="android:textColor">?attr/app_txt_color2</item>
+    </style>
+
+    <style name="AppTextAppearance.small.Color3">
+        <item name="android:textColor">?attr/app_txt_color3</item>
+    </style>
+
+
+</resources>

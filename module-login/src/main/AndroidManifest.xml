@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.song.tasty.module.login">
 
-    <application>
+    <application android:theme="@style/AppTheme">
         <activity
             android:name=".mvvm.ui.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.smart.ui.widget.SMUIWindowInsetLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/smui_config_color_primary">
+
+        <ImageView
+            android:id="@+id/ivBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:fitsSystemWindows="true">
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="@dimen/dp_030"
+                android:layout_height="@dimen/dp_030"
+                android:background="@drawable/smui_btn_circle_pressed"
+                android:clickable="true"
+                android:src="@mipmap/ic_close1"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRegister"
+                style="@style/AppTextAppearance.Big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/login_register"
+                android:textColor="@color/smui_config_color_white"
+                app:layout_constraintBottom_toBottomOf="@id/ivClose"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivClose" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                style="@style/AppTextAppearance.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_030"
+                android:text="@string/login_title"
+                android:textColor="@color/smui_config_color_white"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivClose" />
+
+
+            <EditText
+                android:id="@+id/etAccount"
+                style="@style/AppTextAppearance.Big"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_060"
+                android:background="@color/smui_config_color_transparent"
+                android:hint="@string/login_account_hint"
+                android:textColor="@color/smui_config_color_white"
+                android:textColorHint="@color/smui_config_color_white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+            <EditText
+                android:id="@+id/etPwd"
+                style="@style/AppTextAppearance.Big"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_040"
+                android:background="@color/smui_config_color_transparent"
+                android:hint="@string/login_pwd_hint"
+                android:inputType="textPassword"
+                android:textColor="@color/smui_config_color_white"
+                android:textColorHint="@color/smui_config_color_white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/ivPwdSwitch"
+                app:layout_constraintTop_toBottomOf="@id/etAccount" />
+
+            <ImageView
+                android:id="@+id/ivPwdSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_pwd_visible"
+                app:layout_constraintBottom_toBottomOf="@id/etPwd"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/etPwd" />
+
+
+            <TextView
+                android:id="@+id/tvLogin"
+                style="@style/AppTextAppearance.Big"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_060"
+                android:background="@drawable/bg_primary_fillet_06"
+                android:clickable="true"
+                android:gravity="center"
+                android:paddingTop="@dimen/margin_normal"
+                android:paddingBottom="@dimen/margin_normal"
+                android:text="@string/login_login"
+                android:textColor="@color/smui_config_color_white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etPwd" />
+
+            <TextView
+                android:id="@+id/tvForgetPwd"
+                style="@style/AppTextAppearance.small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_forget_pwd"
+                android:textColor="@color/smui_config_color_white"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLogin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.smart.ui.widget.SMUIWindowInsetLayout>
+
+
+</layout>

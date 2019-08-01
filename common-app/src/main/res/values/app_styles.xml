@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="SMUI.Compat.NoActionBar">
+
+
+        <!--相关attrs 初始化-->
+
+        <item name="colorPrimary">@color/smui_btn_primary_bg</item>
+        <item name="colorPrimaryDark">@color/smui_btn_primary_bg</item>
+        <item name="colorAccent">@color/smui_btn_primary_bg</item>
+
+        <!--字体大小-->
+        <item name="app_txt_size_large">@dimen/txt_size_large</item>
+        <item name="app_txt_size_big">@dimen/txt_size_big</item>
+        <item name="app_txt_size_middle">@dimen/txt_size_middle</item>
+        <item name="app_txt_size_small">@dimen/txt_size_small</item>
+
+        <!--字体颜色-->
+        <item name="app_txt_color1">@color/app_txt_color1</item>
+        <item name="app_txt_color2">@color/app_txt_color2</item>
+        <item name="app_txt_color3">@color/app_txt_color3</item>
+
+        <!--相关attrs 初始化-->
+
+    </style>
+
+</resources>
