@@ -23,4 +23,38 @@ public interface LocalDataSource {
      * @return
      */
     String getUserId();
+
+
+    /**
+     * 保存账号信息
+     *
+     * @param account
+     * @return
+     */
+    boolean saveAccount(String account);
+
+
+    /**
+     * 获取账号信息
+     *
+     * @return
+     */
+    String getAccount();
+
+
+    /**
+     * 保存密码
+     *
+     * @param pwd
+     * @return
+     */
+    boolean savePwd(String pwd);
+
+
+    /**
+     * 获取密码
+     *
+     * @return
+     */
+    String getPwd();
 }

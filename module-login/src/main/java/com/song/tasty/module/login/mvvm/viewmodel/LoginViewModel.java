@@ -4,10 +4,6 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
-
 import com.song.tasty.common.app.app.Injection;
 import com.song.tasty.common.app.model.DataRepository;
 import com.song.tasty.common.core.base.BaseViewModel;
@@ -15,6 +11,10 @@ import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
 import com.song.tasty.common.core.binding.command.BindingConsumer;
 import com.song.tasty.common.core.livedata.SingleLiveData;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 /**
  * @date : 2019-07-23 09:53
@@ -42,6 +42,8 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
 
     public LoginViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
+        account.set(model.getAccount());
+        password.set(model.getPwd());
     }
 
 
@@ -79,6 +81,15 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
         @Override
         public void call() {
             pwdSwitchData.setValue(pwdSwitchData.getValue() == null || !pwdSwitchData.getValue());
+        }
+    });
+
+
+    public BindingCommand loginOnClickCommond = new BindingCommand(new BindingAction() {
+        @Override
+        public void call() {
+            model.saveAccount(account.get());
+            model.savePwd(password.get());
         }
     });
 

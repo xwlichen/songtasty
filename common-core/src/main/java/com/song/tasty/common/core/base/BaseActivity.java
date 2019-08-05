@@ -3,6 +3,8 @@ package com.song.tasty.common.core.base;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.song.tasty.common.core.AppManager;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManager.getAppManager().addActivity(this);
         Intent intent = getIntent();
         if (intent != null) {
             parseIntent(intent);
@@ -45,4 +49,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void initData() {
 
     }
+
+
 }

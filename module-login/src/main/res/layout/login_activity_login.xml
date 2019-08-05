@@ -141,7 +141,8 @@
                 android:textColor="@color/smui_config_color_white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPwd" />
+                app:layout_constraintTop_toBottomOf="@id/etPwd"
+                binding:onClickCommand="@{viewModel.loginOnClickCommond}" />
 
             <TextView
                 android:id="@+id/tvForgetPwd"

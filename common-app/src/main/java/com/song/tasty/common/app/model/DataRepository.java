@@ -46,4 +46,24 @@ public class DataRepository extends BaseModel implements LocalDataSource, Remote
     public String getUserId() {
         return localDataSource.getUserId();
     }
+
+    @Override
+    public boolean saveAccount(String account) {
+        return localDataSource.saveAccount(account);
+    }
+
+    @Override
+    public String getAccount() {
+        return localDataSource.getAccount();
+    }
+
+    @Override
+    public boolean savePwd(String pwd) {
+        return localDataSource.savePwd(pwd);
+    }
+
+    @Override
+    public String getPwd() {
+        return localDataSource.getPwd();
+    }
 }

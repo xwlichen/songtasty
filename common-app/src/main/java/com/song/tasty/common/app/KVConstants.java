@@ -10,5 +10,9 @@ public interface KVConstants {
 
     String KV_USERID="kv_userid";
 
+    String KV_ACCOUNT = "kv_account";
+    String KV_PWD = "kv_pwd";
+
+
 
 }

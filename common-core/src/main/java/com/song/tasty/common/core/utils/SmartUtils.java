@@ -13,6 +13,10 @@ import com.song.tasty.common.core.AppManager;
 public class SmartUtils {
 
 
+    public static void startActivity(Class activityClass) {
+        AppManager.getAppManager().startActivity(activityClass);
+    }
+
     /**
      * 跳转界面 , 通过 {@link AppManager#startActivity(Intent)}
      *

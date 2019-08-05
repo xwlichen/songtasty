@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
+import com.song.tasty.common.app.R;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.utils.Preconditions;
@@ -27,6 +28,7 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
     protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
         SMUIStatusBarHelper.translucent(this);
         SMUIStatusBarHelper.setStatusBarLightMode(this);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         super.createView(layoutResId, savedInstanceState);
     }
 
@@ -59,5 +61,12 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
     public void launchActivity(@NonNull Intent intent) {
         Preconditions.checkNotNull(intent);
         SmartUtils.startActivity(intent);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }

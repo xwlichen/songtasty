@@ -2,6 +2,12 @@ package com.song.tasty.common.core.base;
 
 import android.os.Bundle;
 
+import com.song.tasty.common.core.observer.ToastObserver;
+import com.song.tasty.common.core.observer.ViewStatusObserver;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -9,12 +15,6 @@ import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
-
-import com.song.tasty.common.core.observer.ToastObserver;
-import com.song.tasty.common.core.observer.ViewStatusObserver;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 /**
  * @date : 2019-07-22 12:01
@@ -32,7 +32,6 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
     @Override
     protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
         super.createView(layoutResId, savedInstanceState);
-
         initViewDataBinding(savedInstanceState);
         subscribeViewSource(viewModel);
         initViewObservable();

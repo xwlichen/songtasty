@@ -38,4 +38,28 @@ public class LocalDataSourceImp implements LocalDataSource {
         MMKV kv = MMKV.defaultMMKV();
         return kv.decodeString(KVConstants.KV_USERID);
     }
+
+    @Override
+    public boolean saveAccount(String account) {
+        MMKV kv = MMKV.defaultMMKV();
+        return kv.encode(KVConstants.KV_ACCOUNT, account);
+    }
+
+    @Override
+    public String getAccount() {
+        MMKV kv = MMKV.defaultMMKV();
+        return kv.decodeString(KVConstants.KV_ACCOUNT);
+    }
+
+    @Override
+    public boolean savePwd(String pwd) {
+        MMKV kv = MMKV.defaultMMKV();
+        return kv.encode(KVConstants.KV_PWD, pwd);
+    }
+
+    @Override
+    public String getPwd() {
+        MMKV kv = MMKV.defaultMMKV();
+        return kv.decodeString(KVConstants.KV_PWD);
+    }
 }
