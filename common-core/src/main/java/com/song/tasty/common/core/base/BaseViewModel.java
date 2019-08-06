@@ -4,9 +4,9 @@ import android.app.Application;
 
 import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
-import com.song.tasty.common.core.observer.ToastObserver;
-import com.song.tasty.common.core.observer.ViewStatusObserver;
 import com.song.tasty.common.core.utils.Preconditions;
+
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -26,16 +26,8 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
 
     protected M model;
 
-    /**
-     * 控制界面的显示4个状态{@link ViewStatus}
-     */
-    protected final SingleLiveData<ViewStatus> viewStatusSource = new SingleLiveData<>();
+    private UIChangeLiveData uiChange;
 
-
-    /**
-     * 控制toast显示和内容
-     */
-    protected final SingleLiveData<String> toastSource = new SingleLiveData<>();
 
     /**
      * {@link Disposable}容器在不需要的时候取消所有订阅防止内存泄漏
@@ -53,6 +45,12 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         compositeDisposable = new CompositeDisposable();
     }
 
+    public UIChangeLiveData getUiChange() {
+        if (uiChange == null) {
+            uiChange = new UIChangeLiveData();
+        }
+        return uiChange;
+    }
 
     /**
      * 把当前的订阅放入池中，方便销毁
@@ -134,18 +132,55 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
     }
 
 
-    public void setViewStatusSourceObserver(@NonNull LifecycleOwner owner, @NonNull ViewStatusObserver observer) {
-        Preconditions.checkNotNull(owner);
-        Preconditions.checkNotNull(observer);
-        viewStatusSource.observe(owner, observer);
+    public final class UIChangeLiveData extends SingleLiveData {
+
+        /**
+         * 控制界面的显示4个状态{@link ViewStatus}
+         */
+        private SingleLiveData<ViewStatus> viewStatusEvent;
+
+
+        /**
+         * 控制toast显示和内容
+         */
+        private SingleLiveData<String> toastEvent;
+
+        private SingleLiveData<Map<String, Object>> startActivityEvent;
+
+
+        private SingleLiveData<Void> finishEvent;
+
+
+        public SingleLiveData<ViewStatus> getViewStatusSource() {
+            return viewStatusEvent = createLiveData(viewStatusEvent);
+        }
+
+        public SingleLiveData<String> getToastSource() {
+            return toastEvent = createLiveData(toastEvent);
+        }
+
+        public SingleLiveData<Map<String, Object>> getStartActivityEvent() {
+            return startActivityEvent = createLiveData(startActivityEvent);
+        }
+
+        public SingleLiveData<Void> getFinishEvent() {
+            return finishEvent = createLiveData(finishEvent);
+        }
+
+        private SingleLiveData createLiveData(SingleLiveData liveData) {
+            if (liveData == null) {
+                liveData = new SingleLiveData();
+            }
+            return liveData;
+        }
+
+
     }
 
-
-    public void setToastSource(@NonNull LifecycleOwner owner,
-                               @NonNull ToastObserver toastObserver) {
-        Preconditions.checkNotNull(owner);
-        Preconditions.checkNotNull(toastObserver);
-        toastSource.observe(owner, toastObserver);
+    public static final class ParameterField {
+        public static String CLASS = "CLASS";
+        public static String CANONICAL_NAME = "CANONICAL_NAME";
+        public static String BUNDLE = "BUNDLE";
     }
 
 

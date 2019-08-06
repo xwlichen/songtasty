@@ -54,7 +54,7 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
     @Override
     protected void initViewCreate() {
         initViewDataBinding();
-        subscribeViewSource(viewModel);
+        subscribeViewEvent(viewModel);
         initViewObservable();
         viewModel.registerRxBus();
     }
@@ -91,9 +91,10 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
     }
 
 
-    protected <VM extends BaseViewModel> void subscribeViewSource(@NonNull VM viewModel) {
-        viewModel.setViewStatusSourceObserver(this, ViewStatusObserver.create(this));
-        viewModel.setToastSource(this, ToastObserver.create(this));
+    protected <VM extends BaseViewModel> void subscribeViewEvent(@NonNull VM viewModel) {
+        viewModel.getUiChange().getViewStatusSource().observe(this, ViewStatusObserver.create(this));
+        viewModel.getUiChange().getToastSource().observe(this, ToastObserver.create(this));
+
     }
 
 

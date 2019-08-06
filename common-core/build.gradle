@@ -26,22 +26,43 @@ dependencies {
     //rxbinding
     api rootProject.ext.dependencies["rxbinding-corec"]
 
+    //rxcache
+    api rootProject.ext.dependencies["rxcache"]
+    api rootProject.ext.dependencies["rxcache-jolyglot-gson"]
+
 
     //网络
-    api rootProject.ext.dependencies["retrofit"]
+    //network
+    api(rootProject.ext.dependencies["retrofit"]) {
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+    }
+    api(rootProject.ext.dependencies["retrofit-converter-gson"]) {
+        exclude module: 'gson'
+        exclude module: 'okhttp'
+        exclude module: 'okio'
+        exclude module: 'retrofit'
+    }
+    api(rootProject.ext.dependencies["retrofit-adapter-rxjava2"]) {
+        exclude module: 'rxjava'
+        exclude module: 'okhttp'
+        exclude module: 'retrofit'
+        exclude module: 'okio'
+    }
+    api rootProject.ext.dependencies["retrofit-url-manager"]
+    api rootProject.ext.dependencies["okhttp4"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["animated-webp"]
     api rootProject.ext.dependencies["animated-base"]
     api rootProject.ext.dependencies["soloader"]
+    api rootProject.ext.dependencies["gson"]
 
 
 
 
     //屏幕适配
     api rootProject.ext.dependencies["autosize"]
-
-
 
 
 }

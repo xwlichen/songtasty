@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
-import androidx.annotation.Nullable;
-
 import com.song.tasty.common.core.utils.LogUtils;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author lichen
@@ -55,6 +55,9 @@ public final class AppManager {
         return appManager;
     }
 
+    public Application getApplication() {
+        return application;
+    }
 
     /**
      * 让在栈顶的 {@link Activity} ,打开指定的 {@link Activity}

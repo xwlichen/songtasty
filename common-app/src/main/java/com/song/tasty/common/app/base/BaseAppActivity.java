@@ -8,10 +8,8 @@ import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
 import com.song.tasty.common.core.base.BaseViewModel;
-import com.song.tasty.common.core.utils.Preconditions;
 import com.song.tasty.common.core.utils.SmartUtils;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
@@ -58,8 +56,11 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
     }
 
     @Override
-    public void launchActivity(@NonNull Intent intent) {
-        Preconditions.checkNotNull(intent);
+    public void launchActivity(Class<?> clz, Bundle bundle) {
+        Intent intent = new Intent(this, clz);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
         SmartUtils.startActivity(intent);
     }
 

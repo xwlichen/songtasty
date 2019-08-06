@@ -43,7 +43,7 @@ public class TestViewModel extends BaseViewModel<DataRepository> {
 
 
             result = cc.call();
-            toastSource.setValue(result.toString());
+            getUiChange().getToastSource().setValue(result.toString());
             LogUtils.e("xw", result.toString());
 
         }

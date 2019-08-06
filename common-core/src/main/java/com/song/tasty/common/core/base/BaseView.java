@@ -1,8 +1,7 @@
 package com.song.tasty.common.core.base;
 
-import android.content.Intent;
+import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -47,12 +46,16 @@ public interface BaseView extends IView {
 
     /**
      * 跳转{@link android.app.Activity}
-     *
-     * @param intent
+     * @param clz
+     * @param bundle
      */
-    void launchActivity(@NonNull Intent intent);
+    void launchActivity(Class<?> clz, Bundle bundle);
 
 
+    /**
+     * 关闭页面
+     */
+    void finish();
 
 
 }

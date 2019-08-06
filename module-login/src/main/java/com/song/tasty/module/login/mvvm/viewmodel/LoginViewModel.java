@@ -50,7 +50,7 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
     public BindingCommand finishOnClickCommond = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            toastSource.setValue("关闭");
+            getUiChange().getFinishEvent().call();
         }
     });
 
