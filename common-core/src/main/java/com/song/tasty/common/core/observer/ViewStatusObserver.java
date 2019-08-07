@@ -34,7 +34,7 @@ public class ViewStatusObserver implements Observer<ViewStatus> {
             case COMPLETE:
                 view.hideLoading();
                 break;
-            case PROGRESS:
+            case LOADING:
                 view.showLoading();
             case NO_DATA:
                 view.hideLoading();

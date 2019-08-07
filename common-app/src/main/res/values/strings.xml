@@ -2,4 +2,11 @@
     <string name="app_name">common_app</string>
 
 
+    <string name="loading">加载中…</string>
+    <string name="error_connect">网络连接失败,请检查网络</string>
+    <string name="error_timeout">连接超时,请稍后再试</string>
+    <string name="error_bad_network">服务器异常</string>
+    <string name="error_parse">解析服务器响应数据失败</string>
+    <string name="error_unknown">未知错误</string>
+    <string name="error_response_return">服务器返回数据失败</string>
 </resources>

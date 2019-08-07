@@ -15,7 +15,7 @@ public enum ViewStatus {
     /**
      * 正在加载，处理
      */
-    PROGRESS,
+    LOADING,
 
     /**
      * 无网络

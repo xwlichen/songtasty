@@ -42,7 +42,7 @@ public interface CacheType {
     };
 
     /**
-     * {@link com.song.tasty.common.core.net.RetrofitManager} 中储存 Cache Service 的容器
+     * {@linkRetrofitManager} 中储存 Cache Service 的容器
      */
     CacheType CACHE_SERVICE_CACHE = new CacheType() {
         private static final int MAX_SIZE = 150;

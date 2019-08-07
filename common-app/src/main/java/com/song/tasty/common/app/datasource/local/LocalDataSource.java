@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.model.local;
+package com.song.tasty.common.app.datasource.local;
 
 /**
  * @date : 2019-07-23 11:21

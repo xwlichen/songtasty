@@ -1,7 +1,7 @@
-package com.song.tasty.common.app.model;
+package com.song.tasty.app.datasource;
 
-import com.song.tasty.common.app.model.local.LocalDataSource;
-import com.song.tasty.common.app.model.remote.RemoteDataSource;
+import com.song.tasty.app.datasource.remote.RemoteDataSource;
+import com.song.tasty.common.app.datasource.local.LocalDataSource;
 import com.song.tasty.common.core.base.BaseModel;
 
 import androidx.annotation.Nullable;

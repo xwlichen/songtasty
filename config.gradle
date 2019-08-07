@@ -34,6 +34,7 @@ ext {
     dependencies = [
             "appcompat"                  : "androidx.appcompat:appcompat:${version["appcompatVersion"]}",
             "lifecycle-entensions"       : "androidx.lifecycle:lifecycle-extensions:${version["lifecycleEntensionsVersion"]}",
+            "lifecycle-compiler"       : "android.arch.lifecycle:compiler:${version["lifecycleEntensionsVersion"]}",
             "multidex"                   : "androidx.multidex:multidex:${version["multidexVersion"]}",
             "constraintlayout"           : "androidx.constraintlayout:constraintlayout:${version["constraintlayoutVersion"]}",
 

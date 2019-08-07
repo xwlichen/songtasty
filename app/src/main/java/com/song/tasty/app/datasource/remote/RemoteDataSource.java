@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.model.remote;
+package com.song.tasty.app.datasource.remote;
 
 /**
  * @date : 2019-07-23 11:22

@@ -1,10 +1,9 @@
-package com.song.tasty.common.app.app;
+package com.song.tasty.module.login.datasource;
 
-import com.song.tasty.common.app.model.DataRepository;
-import com.song.tasty.common.app.model.local.LocalDataSource;
-import com.song.tasty.common.app.model.local.LocalDataSourceImp;
-import com.song.tasty.common.app.model.remote.RemoteDataSource;
-import com.song.tasty.common.app.model.remote.RemoteDataSourceImp;
+import com.song.tasty.common.app.datasource.local.LocalDataSource;
+import com.song.tasty.common.app.datasource.local.LocalDataSourceImp;
+import com.song.tasty.module.login.datasource.remote.RemoteDataSource;
+import com.song.tasty.module.login.datasource.remote.RemoteDataSourceImp;
 
 /**
  * @date : 2019-07-23 16:22
@@ -15,8 +14,6 @@ import com.song.tasty.common.app.model.remote.RemoteDataSourceImp;
 public class Injection {
 
     public static DataRepository provideDataRepository() {
-        //网络API服务
-//        DemoApiService apiService = RetrofitClient.getInstance().create(DemoApiService.class);
         //网络数据源
         RemoteDataSource remoteDataSource = RemoteDataSourceImp.getInstance();
         //本地数据源

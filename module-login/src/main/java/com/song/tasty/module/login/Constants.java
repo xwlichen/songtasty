@@ -6,5 +6,9 @@ package com.song.tasty.module.login;
  * @email : 196003945@qq.com
  * @description :
  */
-public class Constants {
+public interface Constants {
+
+    String LOGIN_HOST_ONLINE_URL = "http://newappx.songtasty.com/";
+    String LOGIN_DOMAIN_NAME = "login";
+
 }

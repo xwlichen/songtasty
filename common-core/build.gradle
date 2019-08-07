@@ -16,6 +16,9 @@ dependencies {
 
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["lifecycle-entensions"]
+    annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
+
+
     api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["constraintlayout"]
 
@@ -33,23 +36,6 @@ dependencies {
 
     //网络
     //network
-    api(rootProject.ext.dependencies["retrofit"]) {
-        exclude module: 'okhttp'
-        exclude module: 'okio'
-    }
-    api(rootProject.ext.dependencies["retrofit-converter-gson"]) {
-        exclude module: 'gson'
-        exclude module: 'okhttp'
-        exclude module: 'okio'
-        exclude module: 'retrofit'
-    }
-    api(rootProject.ext.dependencies["retrofit-adapter-rxjava2"]) {
-        exclude module: 'rxjava'
-        exclude module: 'okhttp'
-        exclude module: 'retrofit'
-        exclude module: 'okio'
-    }
-    api rootProject.ext.dependencies["retrofit-url-manager"]
     api rootProject.ext.dependencies["okhttp4"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]

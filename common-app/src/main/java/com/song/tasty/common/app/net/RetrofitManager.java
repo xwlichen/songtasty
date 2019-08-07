@@ -1,7 +1,9 @@
-package com.song.tasty.common.core.net;
+package com.song.tasty.common.app.net;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.song.tasty.common.app.net.interceptors.ReceivedCookiesInterceptor;
+import com.song.tasty.common.app.net.interceptors.RequestInterceptor;
 import com.song.tasty.common.core.AppManager;
 import com.song.tasty.common.core.Constants;
 import com.song.tasty.common.core.cache.Cache;
@@ -29,6 +31,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.song.tasty.common.app.Constants.HOST_ONLINE_URL;
+
 /**
  * @date : 2019-08-06 15:52
  * @author: lichen
@@ -36,7 +40,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @description :
  */
 public class RetrofitManager {
-
+    public static RetrofitManager instance = null;
     private final static int CONNECT_TIMEOUT = 30;
     private final static int READ_TIMEOUT = 30;
     private final static int WRITE_TIMEOUT = 30;
@@ -56,16 +60,29 @@ public class RetrofitManager {
     private Gson gson;
 
 
-    Retrofit getRetrofitBuilder(String baseUrl) {
+    public static RetrofitManager getInstance() {
+        if (instance == null) {
+            synchronized (RetrofitManager.class) {
+                if (instance == null) {
+                    instance = new RetrofitManager();
+                }
+            }
+        }
+        return instance;
+
+    }
+
+
+    Retrofit getRetrofit() {
         if (retrofiitBuilder == null) {
             synchronized (RetrofitManager.class) {
                 OkHttpClient okHttpClient = RetrofitUrlManager
                         .getInstance()
-                        .with(getOkHttpClientBuilder(true))
+                        .with(getOkHttpClientBuilder())
                         .build();
                 retrofiitBuilder = new Retrofit.Builder()
                         .client(okHttpClient)
-                        .baseUrl(baseUrl)
+                        .baseUrl(HOST_ONLINE_URL)
                         .addConverterFactory(GsonConverterFactory.create(provideGson()))
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
             }
@@ -74,14 +91,11 @@ public class RetrofitManager {
     }
 
 
-    OkHttpClient.Builder getOkHttpClientBuilder(boolean isResponseParamInterceptor) {
-//
-//        RequestParamInterceptor requestParamInterceptor = new RequestParamInterceptor();
-//
-//        ResponseParamInterceptor responseParamInterceptor = new ResponseParamInterceptor();
-//
-//
+    OkHttpClient.Builder getOkHttpClientBuilder() {
 
+        RequestInterceptor requestInterceptor = new RequestInterceptor(AppManager.getAppManager().getApplication());
+
+        ReceivedCookiesInterceptor receivedCookiesInterceptor = new ReceivedCookiesInterceptor();
 
         if (okHttpClientBuilder == null) {
             synchronized (RetrofitManager.class) {
@@ -96,11 +110,10 @@ public class RetrofitManager {
                         // https认证 如果要使用https且为自定义证书 可以去掉这两行注释，并自行配制证书。
                         //.sslSocketFactory(SslContextFactory.getSSLSocketFactoryForTwoWay())
                         //.hostnameVerifier(new SafeHostnameVerifier())
-                        .addInterceptor(requestParamInterceptor);
+                        .addInterceptor(requestInterceptor)
+                        .addInterceptor(receivedCookiesInterceptor);
 
-                if (isResponseParamInterceptor) {
-                    okHttpClientBuilder.addInterceptor(responseParamInterceptor);
-                }
+
             }
         }
         return okHttpClientBuilder;
@@ -173,7 +186,7 @@ public class RetrofitManager {
                 "Cannot return null from a Cache.Factory#build(int) method");
         T retrofitService = (T) retrofitServiceCache.get(serviceClass.getCanonicalName());
         if (retrofitService == null) {
-            retrofitService = retrofit.create(serviceClass);
+            retrofitService = getRetrofit().create(serviceClass);
             retrofitServiceCache.put(serviceClass.getCanonicalName(), retrofitService);
         }
         return retrofitService;

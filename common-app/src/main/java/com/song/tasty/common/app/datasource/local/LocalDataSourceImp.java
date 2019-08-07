@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.model.local;
+package com.song.tasty.common.app.datasource.local;
 
 import com.song.tasty.common.app.KVConstants;
 import com.tencent.mmkv.MMKV;
@@ -27,39 +27,33 @@ public class LocalDataSourceImp implements LocalDataSource {
 
     @Override
     public boolean saveUserId(String id) {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.encode(KVConstants.KV_USERID, id);
+        return MMKV.defaultMMKV().encode(KVConstants.KV_USERID, id);
 
     }
 
 
     @Override
     public String getUserId() {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.decodeString(KVConstants.KV_USERID);
+        return MMKV.defaultMMKV().decodeString(KVConstants.KV_USERID);
     }
 
     @Override
     public boolean saveAccount(String account) {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.encode(KVConstants.KV_ACCOUNT, account);
+        return MMKV.defaultMMKV().encode(KVConstants.KV_ACCOUNT, account);
     }
 
     @Override
     public String getAccount() {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.decodeString(KVConstants.KV_ACCOUNT);
+        return MMKV.defaultMMKV().decodeString(KVConstants.KV_ACCOUNT);
     }
 
     @Override
     public boolean savePwd(String pwd) {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.encode(KVConstants.KV_PWD, pwd);
+        return MMKV.defaultMMKV().encode(KVConstants.KV_PWD, pwd);
     }
 
     @Override
     public String getPwd() {
-        MMKV kv = MMKV.defaultMMKV();
-        return kv.decodeString(KVConstants.KV_PWD);
+        return MMKV.defaultMMKV().decodeString(KVConstants.KV_PWD);
     }
 }

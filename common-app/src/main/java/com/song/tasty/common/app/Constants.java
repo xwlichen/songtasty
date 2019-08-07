@@ -6,5 +6,7 @@ package com.song.tasty.common.app;
  * @email : 196003945@qq.com
  * @description :
  */
-public class Test {
+public interface Constants {
+
+    String HOST_ONLINE_URL = "http://newappx.songtasty.com/";
 }

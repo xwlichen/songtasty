@@ -4,13 +4,14 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.song.tasty.common.app.app.Injection;
-import com.song.tasty.common.app.model.DataRepository;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
 import com.song.tasty.common.core.binding.command.BindingConsumer;
+import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
+import com.song.tasty.module.login.datasource.DataRepository;
+import com.song.tasty.module.login.datasource.Injection;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
@@ -88,8 +89,22 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
     public BindingCommand loginOnClickCommond = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            model.saveAccount(account.get());
-            model.savePwd(password.get());
+
+            addSubcribe(model.login(account.get(), password.get())
+                    .doOnSubscribe(disposable1 ->
+                            getUiChange().getViewStatusSource().setValue(ViewStatus.LOADING))
+                    .subscribe(result -> {
+                        model.saveAccount(account.get());
+                        model.savePwd(password.get());
+
+                    }, throwable -> {
+                        Toast
+
+                    }, () -> {
+                        getUiChange().getViewStatusSource().setValue(ViewStatus.LOADING);
+
+                    }));
+
         }
     });
 

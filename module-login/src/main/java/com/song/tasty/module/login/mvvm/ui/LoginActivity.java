@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.lifecycle.Observer;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -21,6 +19,8 @@ import com.song.tasty.module.login.BR;
 import com.song.tasty.module.login.R;
 import com.song.tasty.module.login.databinding.LoginActivityLoginBinding;
 import com.song.tasty.module.login.mvvm.viewmodel.LoginViewModel;
+
+import androidx.lifecycle.Observer;
 
 /**
  * @author lichen

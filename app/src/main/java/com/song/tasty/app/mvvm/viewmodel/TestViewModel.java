@@ -4,8 +4,8 @@ import android.app.Application;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
-import com.song.tasty.common.app.app.Injection;
-import com.song.tasty.common.app.model.DataRepository;
+import com.song.tasty.app.datasource.DataRepository;
+import com.song.tasty.app.datasource.Injection;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
