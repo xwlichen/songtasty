@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppTextAppearance" parent="@android:style/TextAppearance.Small">
-        <item name="android:fontFamily">@font/roboto_thin</item>
+        <!--<item name="android:fontFamily">@font/roboto_thin</item>-->
 
     </style>
 

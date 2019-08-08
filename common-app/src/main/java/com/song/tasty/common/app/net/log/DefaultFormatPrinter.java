@@ -2,14 +2,15 @@ package com.song.tasty.common.app.net.log;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.net.interceptors.RequestInterceptor;
 import com.song.tasty.common.core.utils.CharacterHandler;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import okhttp3.MediaType;
 import okhttp3.Request;
 
@@ -20,7 +21,7 @@ import okhttp3.Request;
  * @description :
  */
 public class DefaultFormatPrinter implements FormatPrinter {
-    private static final String TAG = "ArmsHttpLog";
+    private static final String TAG = "HttpLog";
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
     private static final String DOUBLE_SEPARATOR = LINE_SEPARATOR + LINE_SEPARATOR;
 
@@ -58,11 +59,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String requestBody = LINE_SEPARATOR + BODY_TAG + LINE_SEPARATOR + bodyString;
         final String tag = getTag(true);
 
-        LogUtils.d(tag, REQUEST_UP_LINE);
+        LogUtils.e(tag, REQUEST_UP_LINE);
         logLines(tag, new String[]{URL_TAG + request.url()}, false);
         logLines(tag, getRequest(request), true);
         logLines(tag, requestBody.split(LINE_SEPARATOR), true);
-        LogUtils.d(tag, END_LINE);
+        LogUtils.e(tag, END_LINE);
     }
 
     /**
@@ -74,11 +75,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
     public void printFileRequest(@NonNull Request request) {
         final String tag = getTag(true);
 
-        LogUtils.d(tag, REQUEST_UP_LINE);
+        LogUtils.e(tag, REQUEST_UP_LINE);
         logLines(tag, new String[]{URL_TAG + request.url()}, false);
         logLines(tag, getRequest(request), true);
         logLines(tag, OMITTED_REQUEST, true);
-        LogUtils.d(tag, END_LINE);
+        LogUtils.e(tag, END_LINE);
     }
 
     /**
@@ -104,11 +105,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String tag = getTag(false);
         final String[] urlLine = {URL_TAG + responseUrl, N};
 
-        LogUtils.d(tag, RESPONSE_UP_LINE);
+        LogUtils.e(tag, RESPONSE_UP_LINE);
         logLines(tag, urlLine, true);
         logLines(tag, getResponse(headers, chainMs, code, isSuccessful, segments, message), true);
         logLines(tag, responseBody.split(LINE_SEPARATOR), true);
-        LogUtils.d(tag, END_LINE);
+        LogUtils.e(tag, END_LINE);
     }
 
     /**
@@ -128,11 +129,11 @@ public class DefaultFormatPrinter implements FormatPrinter {
         final String tag = getTag(false);
         final String[] urlLine = {URL_TAG + responseUrl, N};
 
-        LogUtils.d(tag, RESPONSE_UP_LINE);
+        LogUtils.e(tag, RESPONSE_UP_LINE);
         logLines(tag, urlLine, true);
         logLines(tag, getResponse(headers, chainMs, code, isSuccessful, segments, message), true);
         logLines(tag, OMITTED_RESPONSE, true);
-        LogUtils.d(tag, END_LINE);
+        LogUtils.e(tag, END_LINE);
     }
 
     /**
@@ -150,7 +151,7 @@ public class DefaultFormatPrinter implements FormatPrinter {
                 int start = i * MAX_LONG_SIZE;
                 int end = (i + 1) * MAX_LONG_SIZE;
                 end = end > line.length() ? line.length() : end;
-                LogUtils.d(resolveTag(tag), DEFAULT_LINE + line.substring(start, end));
+                LogUtils.e(resolveTag(tag), DEFAULT_LINE + line.substring(start, end));
             }
         }
     }
@@ -162,13 +163,13 @@ public class DefaultFormatPrinter implements FormatPrinter {
         }
     };
 
-    private static final String[] ARMS = new String[]{"-A-", "-R-", "-M-", "-S-"};
+    private static final String[] SMART = new String[]{"-S-", "-M-", "-A-", "-R-", "-T-"};
 
     private static String computeKey() {
         if (last.get() >= 4) {
             last.set(0);
         }
-        String s = ARMS[last.get()];
+        String s = SMART[last.get()];
         last.set(last.get() + 1);
         return s;
     }

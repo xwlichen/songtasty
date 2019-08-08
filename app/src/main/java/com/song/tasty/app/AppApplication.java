@@ -2,6 +2,8 @@ package com.song.tasty.app;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.billy.cc.core.component.CC;
 import com.bumptech.glide.Glide;
@@ -31,6 +33,8 @@ public class AppApplication extends Application {
         MMKV.initialize(getApplicationContext());
         //
         ToastUtils.init(this);
+        ToastUtils.setGravity(Gravity.BOTTOM, 0, 200);
+        ToastUtils.getToast().setDuration(Toast.LENGTH_SHORT);
 
 
         CC.enableVerboseLog(true);

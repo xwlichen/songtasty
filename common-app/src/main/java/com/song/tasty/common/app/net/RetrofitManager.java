@@ -1,5 +1,8 @@
 package com.song.tasty.common.app.net;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.song.tasty.common.app.net.interceptors.ReceivedCookiesInterceptor;
@@ -19,8 +22,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.rx_cache2.internal.RxCache;
@@ -60,7 +61,7 @@ public class RetrofitManager {
     private Gson gson;
 
 
-    public static RetrofitManager getInstance() {
+    public static RetrofitManager init() {
         if (instance == null) {
             synchronized (RetrofitManager.class) {
                 if (instance == null) {
@@ -72,8 +73,11 @@ public class RetrofitManager {
 
     }
 
+    public RetrofitManager() {
+        getRetrofit();
+    }
 
-    Retrofit getRetrofit() {
+    public Retrofit getRetrofit() {
         if (retrofiitBuilder == null) {
             synchronized (RetrofitManager.class) {
                 OkHttpClient okHttpClient = RetrofitUrlManager

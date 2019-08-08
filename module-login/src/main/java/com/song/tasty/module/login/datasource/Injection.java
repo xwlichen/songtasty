@@ -2,8 +2,14 @@ package com.song.tasty.module.login.datasource;
 
 import com.song.tasty.common.app.datasource.local.LocalDataSource;
 import com.song.tasty.common.app.datasource.local.LocalDataSourceImp;
+import com.song.tasty.common.app.net.RetrofitManager;
 import com.song.tasty.module.login.datasource.remote.RemoteDataSource;
 import com.song.tasty.module.login.datasource.remote.RemoteDataSourceImp;
+
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
+
+import static com.song.tasty.module.login.Constants.LOGIN_DOMAIN_NAME;
+import static com.song.tasty.module.login.Constants.LOGIN_HOST_ONLINE_URL;
 
 /**
  * @date : 2019-07-23 16:22
@@ -14,6 +20,8 @@ import com.song.tasty.module.login.datasource.remote.RemoteDataSourceImp;
 public class Injection {
 
     public static DataRepository provideDataRepository() {
+        RetrofitManager.init();
+        RetrofitUrlManager.getInstance().putDomain(LOGIN_DOMAIN_NAME, LOGIN_HOST_ONLINE_URL);
 
         //网络数据源
         RemoteDataSource remoteDataSource = RemoteDataSourceImp.getInstance();

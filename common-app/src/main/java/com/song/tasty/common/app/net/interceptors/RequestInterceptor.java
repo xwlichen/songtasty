@@ -2,6 +2,9 @@ package com.song.tasty.common.app.net.interceptors;
 
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
+
+import androidx.annotation.Nullable;
 
 import com.song.tasty.common.app.KVConstants;
 import com.song.tasty.common.app.net.log.DefaultFormatPrinter;
@@ -21,7 +24,6 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.annotation.Nullable;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -65,7 +67,9 @@ public class RequestInterceptor implements Interceptor {
 //        String clientToken = kv.decodeString(KVConstants.KV_USERID);
 //        builder.addHeader("client-token", clientToken);
         String cookie = MMKV.defaultMMKV().decodeString(KVConstants.KV_COOKIE);
-        builder.addHeader("cookie", cookie);
+        if (!TextUtils.isEmpty(cookie)) {
+            builder.addHeader("cookie", cookie);
+        }
 
 
         long t1 = System.nanoTime();

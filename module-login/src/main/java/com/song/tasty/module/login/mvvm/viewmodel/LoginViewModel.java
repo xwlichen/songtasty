@@ -4,7 +4,12 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.hjq.toast.ToastUtils;
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
+
+import com.song.tasty.common.app.net.ResponseErrorHandler;
+import com.song.tasty.common.app.utils.RxUtils;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
@@ -13,10 +18,6 @@ import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.module.login.datasource.DataRepository;
 import com.song.tasty.module.login.datasource.Injection;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
 
 /**
  * @date : 2019-07-23 09:53
@@ -52,7 +53,7 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
     public BindingCommand finishOnClickCommond = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            getUiChange().getFinishEvent().call();
+            uiChange.getFinishEvent().call();
         }
     });
 
@@ -92,17 +93,15 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
         public void call() {
 
             addSubcribe(model.login(account.get(), password.get())
+                    .compose(RxUtils.schedulersTransformer())
                     .doOnSubscribe(disposable1 ->
-                            getUiChange().getViewStatusSource().setValue(ViewStatus.LOADING))
+                            uiChange.getViewStatusSource().setValue(ViewStatus.LOADING))
                     .subscribe(result -> {
                         model.saveAccount(account.get());
                         model.savePwd(password.get());
 
-                    }, throwable -> {
-                        ToastUtils.show(throwable.getMessage());
-
-                    }, () -> {
-                        getUiChange().getViewStatusSource().setValue(ViewStatus.LOADING);
+                    }, new ResponseErrorHandler(), () -> {
+                        uiChange.getViewStatusSource().setValue(ViewStatus.LOADING);
 
                     }));
 

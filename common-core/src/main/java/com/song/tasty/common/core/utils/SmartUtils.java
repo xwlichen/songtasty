@@ -25,4 +25,6 @@ public class SmartUtils {
     public static void startActivity(Intent content) {
         AppManager.getAppManager().startActivity(content);
     }
+
+
 }

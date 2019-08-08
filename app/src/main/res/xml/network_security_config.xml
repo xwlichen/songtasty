@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config>
+        <domain includeSubdomains="true">newappx.songtasty.com</domain>
+        <!--<domain includeSubdomains="true">sapi-pre.changguwen.com</domain>-->
+        <!--<trust-anchors>-->
+        <!--<certificates src="system" overridePins="true" /> &lt;!&ndash;信任系统证书&ndash;&gt;-->
+        <!--<certificates src="user" overridePins="true" /> &lt;!&ndash;信任用户证书&ndash;&gt;-->
+        <!--<certificates src="@raw/yangying_charles_certificate" />-->
+        <!--<certificates src="@raw/liuqian_charles_certificate" />-->
+        <!--<certificates src="@raw/zyt_charles" />-->
+        <!--</trust-anchors>-->
+    </domain-config>
+</network-security-config>

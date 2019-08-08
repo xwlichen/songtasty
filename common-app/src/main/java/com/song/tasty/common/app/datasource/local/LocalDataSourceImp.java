@@ -56,4 +56,14 @@ public class LocalDataSourceImp implements LocalDataSource {
     public String getPwd() {
         return MMKV.defaultMMKV().decodeString(KVConstants.KV_PWD);
     }
+
+    @Override
+    public boolean setIsLogin(boolean flag) {
+        return MMKV.defaultMMKV().encode(KVConstants.KV_ISLOGIN, flag);
+    }
+
+    @Override
+    public boolean isLogin() {
+        return MMKV.defaultMMKV().decodeBool(KVConstants.KV_ISLOGIN);
+    }
 }

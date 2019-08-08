@@ -57,4 +57,21 @@ public interface LocalDataSource {
      * @return
      */
     String getPwd();
+
+
+    /**
+     * 设置是否登录
+     *
+     * @param flag
+     * @return
+     */
+    boolean setIsLogin(boolean flag);
+
+
+    /**
+     * 判断是否登录
+     *
+     * @return
+     */
+    boolean isLogin();
 }
