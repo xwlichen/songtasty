@@ -6,6 +6,10 @@ import com.song.tasty.common.app.net.RetrofitManager;
 import com.song.tasty.module.login.datasource.remote.api.service.LoginApiService;
 
 import io.reactivex.Observable;
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
+
+import static com.song.tasty.module.login.Constants.LOGIN_DOMAIN_NAME;
+import static com.song.tasty.module.login.Constants.LOGIN_HOST_ONLINE_URL;
 
 /**
  * @date : 2019-07-23 15:09
@@ -29,12 +33,16 @@ public class RemoteDataSourceImp implements RemoteDataSource {
 
     }
 
+    public RemoteDataSourceImp() {
+        //使用 RetrofitUrlManager 切换 BaseUrl
+        RetrofitUrlManager.getInstance().putDomain(LOGIN_DOMAIN_NAME, LOGIN_HOST_ONLINE_URL);
+    }
 
     @Override
     public Observable<LoginResult> login(String account, String password) {
-        return RetrofitManager.getInstance()
-                .obtainCacheService(LoginApiService.class)
-                .login(account, password);
+        LoginApiService service = RetrofitManager.getInstance()
+                .obtainCacheService(LoginApiService.class);
+        return service.login(account, password);
     }
 
 

@@ -14,6 +14,7 @@ import com.song.tasty.module.login.datasource.remote.RemoteDataSourceImp;
 public class Injection {
 
     public static DataRepository provideDataRepository() {
+
         //网络数据源
         RemoteDataSource remoteDataSource = RemoteDataSourceImp.getInstance();
         //本地数据源
