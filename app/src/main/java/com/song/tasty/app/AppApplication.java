@@ -7,7 +7,7 @@ import com.billy.cc.core.component.CC;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.hjq.toast.ToastUtils;
-import com.song.tasty.common.app.utils.AppUtils;
+import com.song.tasty.common.core.AppManager;
 import com.song.tasty.common.core.imageloader.webp.decoder.WebpBytebufferDecoder;
 import com.song.tasty.common.core.imageloader.webp.decoder.WebpResourceDecoder;
 import com.tencent.mmkv.MMKV;
@@ -26,7 +26,7 @@ public class AppApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppUtils.init(getApplicationContext());
+        AppManager.getAppManager().init(this);
         //腾讯kv本地存储
         MMKV.initialize(getApplicationContext());
         //

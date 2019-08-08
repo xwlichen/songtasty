@@ -4,6 +4,7 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.hjq.toast.ToastUtils;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
@@ -98,7 +99,7 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
                         model.savePwd(password.get());
 
                     }, throwable -> {
-                        Toast
+                        ToastUtils.show(throwable.getMessage());
 
                     }, () -> {
                         getUiChange().getViewStatusSource().setValue(ViewStatus.LOADING);
