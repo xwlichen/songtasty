@@ -4,10 +4,6 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.view.View;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
-
 import com.song.tasty.common.app.net.ResponseErrorHandler;
 import com.song.tasty.common.app.utils.RxUtils;
 import com.song.tasty.common.core.base.BaseViewModel;
@@ -18,6 +14,10 @@ import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.module.login.datasource.DataRepository;
 import com.song.tasty.module.login.datasource.Injection;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 /**
  * @date : 2019-07-23 09:53
@@ -45,30 +45,22 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
 
     public LoginViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
-        account.set(model.getAccount());
-        password.set(model.getPwd());
+        account.set(model.getLocalDataSource().getAccount());
+        password.set(model.getLocalDataSource().getPwd());
     }
 
 
-    public BindingCommand finishOnClickCommond = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            uiChange.getFinishEvent().call();
-        }
-    });
+    public BindingCommand finishOnClickCommond = new BindingCommand(() -> uiChange.getFinishEvent().call());
 
 
-    public BindingCommand accountTextChangedCommond = new BindingCommand(new BindingConsumer<String>() {
-        @Override
-        public void call(String s) {
-            if (TextUtils.isEmpty(s)) {
-                ivClearVisibility.set(View.GONE);
-            } else {
-                ivClearVisibility.set(View.VISIBLE);
-
-            }
+    public BindingCommand accountTextChangedCommond = new BindingCommand<>((BindingConsumer<String>) s -> {
+        if (TextUtils.isEmpty(s)) {
+            ivClearVisibility.set(View.GONE);
+        } else {
+            ivClearVisibility.set(View.VISIBLE);
 
         }
+
     });
 
 
@@ -80,33 +72,28 @@ public class LoginViewModel extends BaseViewModel<DataRepository> {
     });
 
 
-    public BindingCommand switchPwdOnClickCommond = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
-            pwdSwitchData.setValue(pwdSwitchData.getValue() == null || !pwdSwitchData.getValue());
-        }
-    });
+    public BindingCommand switchPwdOnClickCommond = new BindingCommand(() -> pwdSwitchData.setValue(pwdSwitchData.getValue() == null || !pwdSwitchData.getValue()));
 
 
-    public BindingCommand loginOnClickCommond = new BindingCommand(new BindingAction() {
-        @Override
-        public void call() {
+    public BindingCommand loginOnClickCommond = new BindingCommand(() -> addSubcribe(model
+            .getRemoteDataSource()
+            .login(account.get(), password.get())
+            .compose(RxUtils.schedulersTransformer())
+            .doOnSubscribe(disposable -> uiChange.getViewStatusSource().setValue(ViewStatus.LOADING))
+            .subscribe(result -> {
+                if (result.getError() == 0) {
+                    model.getLocalDataSource().setIsLogin(true);
+                    model.getLocalDataSource().saveAccount(account.get());
+                    model.getLocalDataSource().savePwd(password.get());
+                    uiChange.getFinishEvent().call();
+                } else {
+                    uiChange.getToastSource().setValue(result.getMsg());
+                }
 
-            addSubcribe(model.login(account.get(), password.get())
-                    .compose(RxUtils.schedulersTransformer())
-                    .doOnSubscribe(disposable1 ->
-                            uiChange.getViewStatusSource().setValue(ViewStatus.LOADING))
-                    .subscribe(result -> {
-                        model.saveAccount(account.get());
-                        model.savePwd(password.get());
 
-                    }, new ResponseErrorHandler(), () -> {
-                        uiChange.getViewStatusSource().setValue(ViewStatus.LOADING);
-
-                    }));
-
-        }
-    });
+            }, new ResponseErrorHandler(), () -> {
+                uiChange.getViewStatusSource().setValue(ViewStatus.COMPLETE);
+            })));
 
 
 }

@@ -18,10 +18,10 @@ public class RxUtils {
     /**
      * 线程调度器
      */
-    public static ObservableTransformer schedulersTransformer() {
-        return new ObservableTransformer() {
+    public static <T> ObservableTransformer<T, T> schedulersTransformer() {
+        return new ObservableTransformer<T, T>() {
             @Override
-            public ObservableSource apply(Observable upstream) {
+            public ObservableSource<T> apply(Observable<T> upstream) {
                 return upstream.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
             }

@@ -2,17 +2,16 @@ package com.song.tasty.common.core.base;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
-
 import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.common.core.utils.Preconditions;
 
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -27,7 +26,7 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
 
     protected M model;
 
-    public UIChangeLiveData uiChange;
+    protected UIChangeLiveData uiChange;
 
 
     /**
