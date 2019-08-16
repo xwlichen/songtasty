@@ -2,8 +2,6 @@ package com.song.tasty.app.mvvm.viewmodel;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
-
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.song.tasty.app.datasource.DataRepository;
@@ -13,14 +11,16 @@ import com.song.tasty.common.core.binding.command.BindingAction;
 import com.song.tasty.common.core.binding.command.BindingCommand;
 import com.song.tasty.common.core.utils.LogUtils;
 
+import androidx.annotation.NonNull;
+
 /**
  * @date : 2019-07-23 09:53
  * @author: lichen
  * @email : 1960003945@qq.com
  * @description :
  */
-public class TestViewModel extends BaseViewModel<DataRepository> {
-    public TestViewModel(@NonNull Application application) {
+public class MainViewModel extends BaseViewModel<DataRepository> {
+    public MainViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
     }
 

@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.song.tasty.app.mvvm.viewmodel.TestViewModel" />
+            type="com.song.tasty.app.mvvm.viewmodel.MainViewModel" />
     </data>
 
     <LinearLayout
