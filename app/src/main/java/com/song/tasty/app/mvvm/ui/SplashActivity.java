@@ -34,5 +34,6 @@ public class SplashActivity extends BaseActivity {
 
     private void toMain() {
         SmartUtils.startActivity(MainActivity.class);
+        finish();
     }
 }

@@ -34,14 +34,14 @@ ext {
     dependencies = [
             "appcompat"                  : "androidx.appcompat:appcompat:${version["appcompatVersion"]}",
             "lifecycle-entensions"       : "androidx.lifecycle:lifecycle-extensions:${version["lifecycleEntensionsVersion"]}",
-            "lifecycle-compiler"       : "android.arch.lifecycle:compiler:${version["lifecycleEntensionsVersion"]}",
+            "lifecycle-compiler"         : "android.arch.lifecycle:compiler:${version["lifecycleEntensionsVersion"]}",
             "multidex"                   : "androidx.multidex:multidex:${version["multidexVersion"]}",
             "constraintlayout"           : "androidx.constraintlayout:constraintlayout:${version["constraintlayoutVersion"]}",
 
 
             //smart
             //ui组件
-            "smart-ui"                   : "com.samrt.component:smart-ui:1.0.1",
+            "smart-ui"                   : "com.samrt.component:smart-ui:1.0.3",
 
 
             //网络

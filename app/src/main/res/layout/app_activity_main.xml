@@ -12,23 +12,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvHello"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:layout_gravity="center"
-            binding:onClickCommand="@{viewModel.textClick}" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/dp_030"
-            android:layout_height="@dimen/dp_030"
-            android:layout_marginLeft="@dimen/margin_normal"
-            android:background="@drawable/smui_btn_circle_pressed"
-            android:clickable="true"
-            android:src="@mipmap/ic_launcher" />
+            <TextView
+                android:id="@+id/tvHello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Hello World!"
+                binding:onClickCommand="@{viewModel.textClick}" />
 
+            <ImageView
+                android:layout_width="@dimen/dp_030"
+                android:layout_height="@dimen/dp_030"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:background="@drawable/smui_btn_circle_pressed"
+                android:clickable="true"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+
+
+        <include layout="@layout/app_layout_music_option" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_size"
+            android:background="@color/corlor_line" />
+
+        <com.smart.ui.widget.bottomnav.SMUILottieBottomNavView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_050"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/white"
+            binding:smui_nav_selected_height="@dimen/dp_030"
+            binding:smui_nav_selected_width="@dimen/dp_030"
+            binding:smui_nav_text_show_on_unselected="true"
+            binding:smui_nav_text_size="@dimen/txt_size_small"
+            binding:smui_nav_unselected_height="@dimen/dp_030"
+            binding:smui_nav_unselected_width="@dimen/dp_030" />
     </LinearLayout>
 </layout>

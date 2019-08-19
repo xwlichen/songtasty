@@ -7,4 +7,7 @@
 
     <color name="color_primary_normal">#EC512C</color>
     <color name="color_primary_pressed">#a60d08</color>
+
+
+    <color name="corlor_line">#EEEEEE</color>
 </resources>

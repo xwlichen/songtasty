@@ -5,13 +5,19 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["constraintlayout"]
     api rootProject.ext.dependencies["smart-refreshlayout"]
     api rootProject.ext.dependencies["smart-refreshheader"]
     api rootProject.ext.dependencies["legacy"]
 
+
+
     api rootProject.ext.dependencies["smart-ui"]
 
-
+//    api(rootProject.ext.dependencies["smart-ui"]) {
+//        exclude group: 'androidx.appcompat:appcompat:1.0.0'
+//        exclude group: 'androidx.annotation:annotation:1.0.0'
+//    }
 
 
 }

@@ -1,9 +1,12 @@
 package com.song.tasty.app;
 
-import android.app.Application;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 import com.billy.cc.core.component.CC;
 import com.bumptech.glide.Glide;
@@ -23,7 +26,7 @@ import java.nio.ByteBuffer;
  * @email : 1960003945@qq.com
  * @description :
  */
-public class AppApplication extends Application {
+public class AppApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
@@ -49,5 +52,11 @@ public class AppApplication extends Application {
         Glide.get(this).getRegistry()
                 .prepend(InputStream.class, Drawable.class, decoder)
                 .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }
