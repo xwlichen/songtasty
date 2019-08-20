@@ -9,7 +9,7 @@
             type="com.song.tasty.app.mvvm.viewmodel.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -17,9 +17,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            binding:layout_constraintLeft_toLeftOf="parent"
+            binding:layout_constraintRight_toRightOf="parent"
+            binding:layout_constraintTop_toTopOf="parent"
+            binding:layout_constraintBottom_toTopOf="@id/line"
+            android:background="@color/color_primary_normal">
 
             <TextView
                 android:id="@+id/tvHello"
@@ -39,24 +44,36 @@
         </LinearLayout>
 
 
-        <include layout="@layout/app_layout_music_option" />
+        <com.song.tasty.common.app.widget.MusicBottomNavView
+            android:id="@+id/musicNav"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_050"
+            binding:layout_constraintBottom_toTopOf="@id/line"
+            binding:layout_constraintLeft_toLeftOf="parent"
+            binding:layout_constraintRight_toRightOf="parent" />
 
-        <View
+        <TextView
+            android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_size"
-            android:background="@color/corlor_line" />
+            android:background="@color/corlor_line"
+            binding:layout_constraintBottom_toTopOf="@id/bottomNav"
+            binding:layout_constraintLeft_toLeftOf="parent"
+            binding:layout_constraintRight_toRightOf="parent" />
 
         <com.smart.ui.widget.bottomnav.SMUILottieBottomNavView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_050"
-            android:layout_alignParentBottom="true"
             android:background="@android:color/white"
+            binding:layout_constraintBottom_toBottomOf="parent"
+            binding:layout_constraintLeft_toLeftOf="parent"
+            binding:layout_constraintRight_toRightOf="parent"
             binding:smui_nav_selected_height="@dimen/dp_030"
             binding:smui_nav_selected_width="@dimen/dp_030"
             binding:smui_nav_text_show_on_unselected="true"
             binding:smui_nav_text_size="@dimen/txt_size_small"
             binding:smui_nav_unselected_height="@dimen/dp_030"
             binding:smui_nav_unselected_width="@dimen/dp_030" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

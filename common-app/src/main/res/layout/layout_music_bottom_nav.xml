@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <View
+        android:id="@+id/bgView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_040"
+        android:background="@color/smui_config_color_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMusic"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_050"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnMusic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnMusic"
+        android:layout_width="@dimen/dp_030"
+        android:layout_height="@dimen/dp_030"
+        android:src="@mipmap/ic_logo"
+        app:layout_constraintBottom_toBottomOf="@id/bgView"
+        app:layout_constraintLeft_toRightOf="@id/rvMusic"
+        app:layout_constraintRight_toLeftOf="@id/ivMusicList"
+        app:layout_constraintTop_toTopOf="@id/bgView" />
+
+    <ImageView
+        android:id="@+id/ivMusicList"
+        android:layout_width="@dimen/dp_030"
+        android:layout_height="@dimen/dp_030"
+        android:layout_marginLeft="@dimen/dp_010"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:clickable="true"
+        android:src="@mipmap/ic_music_list"
+        app:layout_constraintBottom_toBottomOf="@id/bgView"
+        app:layout_constraintLeft_toRightOf="@id/btnMusic"
+        app:layout_constraintRight_toRightOf="@id/bgView"
+        app:layout_constraintTop_toTopOf="@id/bgView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

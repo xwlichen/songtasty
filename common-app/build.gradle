@@ -41,6 +41,8 @@ dependencies {
     api rootProject.ext.dependencies["retrofit-url-manager"]
 
 
+    api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["multitype"]
 
 
     api project(':common-core')

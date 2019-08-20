@@ -22,15 +22,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="AppTextAppearance.Big.Color1">
+    <style name="AppTextAppearance.Big.color1">
         <item name="android:textColor">?attr/app_txt_color1</item>
     </style>
 
-    <style name="AppTextAppearance.Big.Color2">
+    <style name="AppTextAppearance.Big.color2">
         <item name="android:textColor">?attr/app_txt_color2</item>
     </style>
 
-    <style name="AppTextAppearance.Big.Color3">
+    <style name="AppTextAppearance.Big.color3">
         <item name="android:textColor">?attr/app_txt_color3</item>
     </style>
 
@@ -39,15 +39,15 @@
         <item name="android:textSize">?attr/app_txt_size_middle</item>
     </style>
 
-    <style name="AppTextAppearance.middle.Color1">
+    <style name="AppTextAppearance.middle.color1">
         <item name="android:textColor">?attr/app_txt_color1</item>
     </style>
 
-    <style name="AppTextAppearance.middle.Color2">
+    <style name="AppTextAppearance.middle.color2">
         <item name="android:textColor">?attr/app_txt_color2</item>
     </style>
 
-    <style name="AppTextAppearance.middle.Color3">
+    <style name="AppTextAppearance.middle.color3">
         <item name="android:textColor">?attr/app_txt_color3</item>
     </style>
 
@@ -56,15 +56,15 @@
         <item name="android:textSize">?attr/app_txt_size_small</item>
     </style>
 
-    <style name="AppTextAppearance.small.Color1">
+    <style name="AppTextAppearance.small.color1">
         <item name="android:textColor">?attr/app_txt_color1</item>
     </style>
 
-    <style name="AppTextAppearance.small.Color2">
+    <style name="AppTextAppearance.small.color2">
         <item name="android:textColor">?attr/app_txt_color2</item>
     </style>
 
-    <style name="AppTextAppearance.small.Color3">
+    <style name="AppTextAppearance.small.color3">
         <item name="android:textColor">?attr/app_txt_color3</item>
     </style>
 
