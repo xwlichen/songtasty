@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.entity;
+package com.song.tasty.module.login.entity;
 
 /**
  * @date : 2019-08-07 14:19

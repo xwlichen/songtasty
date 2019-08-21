@@ -57,7 +57,7 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
     }
 
     private void initViewDataBinding(@Nullable Bundle savedInstanceState) {
-        binding = (V) DataBindingUtil.setContentView(this, getLayoutResId());
+        binding = DataBindingUtil.setContentView(this, getLayoutResId());
         viewModelId = initVariableId();
         viewModel = initViewModel();
         if (viewModel == null) {

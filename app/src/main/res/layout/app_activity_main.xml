@@ -34,13 +34,15 @@
                 android:text="Hello World!"
                 binding:onClickCommand="@{viewModel.textClick}" />
 
-            <ImageView
-                android:layout_width="@dimen/dp_030"
-                android:layout_height="@dimen/dp_030"
+            <com.smart.ui.widget.image.SMUIImageView
+                android:id="@+id/ivCover"
+                android:layout_width="@dimen/dp_040"
+                android:layout_height="@dimen/dp_040"
                 android:layout_marginLeft="@dimen/margin_normal"
-                android:background="@drawable/smui_btn_circle_pressed"
-                android:clickable="true"
-                android:src="@mipmap/ic_launcher" />
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"
+                binding:smui_isCircle="true"
+                binding:smui_maskColor="@color/smui_config_color_30_pure_black" />
         </LinearLayout>
 
 

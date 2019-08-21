@@ -1,6 +1,6 @@
-package com.song.tasty.module.login.datasource.remote;
+package com.song.tasty.module.home.datasource.remote;
 
-import com.song.tasty.module.login.entity.LoginResult;
+import com.song.tasty.common.app.entity.LoginResult;
 
 import io.reactivex.Observable;
 

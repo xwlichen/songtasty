@@ -1,1 +1,1 @@
-include ':app', ':common-core', ':common-ui', ':common-app', ':module-login', ':module-mine'
+include ':app', ':common-core', ':common-ui', ':common-app', ':module-login', ':module-mine', ':module-home'

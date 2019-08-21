@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.entity;
+package com.song.tasty.module.home.entity;
 
 import java.util.List;
 

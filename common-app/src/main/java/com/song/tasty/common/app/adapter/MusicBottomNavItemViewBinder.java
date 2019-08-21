@@ -35,7 +35,6 @@ public class MusicBottomNavItemViewBinder extends ItemViewBinder<MusicBean, Musi
 
         holder.tvTitle.setText(item.getName() + " - " + item.getSonger());
         GlideUtils.loadImage(holder.itemView.getContext(), item.getCoverSmall(), holder.ivCover);
-        holder.ivCover.startPlay();
 
 
     }

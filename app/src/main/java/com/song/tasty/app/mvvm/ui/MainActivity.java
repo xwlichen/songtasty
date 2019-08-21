@@ -1,6 +1,9 @@
 package com.song.tasty.app.mvvm.ui;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.view.animation.LinearInterpolator;
 
 import com.smart.ui.widget.bottomnav.lottie.NavItem;
 import com.smart.ui.widget.bottomnav.lottie.NavItemBuilder;
@@ -66,6 +69,22 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
 
 //        bottomNav.setCallback(this);
         binding.bottomNav.setNavItemList(list);
+
+
+        ObjectAnimator rotationAnimator = null;
+//        GlideUtils.loadImage(this,"https://x128.bailemi.com/attachment/20190820/ApgDZcy9S2IbCkxGK7lm.jpg", binding.ivCover);
+
+        if (rotationAnimator == null) {
+            rotationAnimator = ObjectAnimator.ofFloat(binding.ivCover, "rotation", 0, 360f);
+        }
+
+
+        rotationAnimator.setDuration(5000);
+        rotationAnimator.setRepeatMode(ValueAnimator.RESTART);
+        rotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        rotationAnimator.setInterpolator(new LinearInterpolator());
+
+        rotationAnimator.start();
 
 
     }
