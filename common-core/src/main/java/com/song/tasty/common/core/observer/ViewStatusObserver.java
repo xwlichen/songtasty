@@ -13,18 +13,18 @@ import androidx.lifecycle.Observer;
  * @email : 1960003945@qq.com
  * @description :
  */
-public class ViewStatusObserver implements Observer<ViewStatus> {
+public class ViewStatusObserver<V extends ViewStatus> implements Observer<V> {
 
 
     private final BaseView view;
 
-    private ViewStatusObserver(BaseView view) {
+    public ViewStatusObserver(BaseView view) {
         this.view = view;
     }
 
-    public static ViewStatusObserver create(@NonNull BaseView view) {
+    public static <V extends ViewStatus> ViewStatusObserver<V> create(@NonNull BaseView view) {
         Preconditions.checkNotNull(view);
-        return new ViewStatusObserver(view);
+        return new ViewStatusObserver<V>(view);
     }
 
     @Override

@@ -34,6 +34,7 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
      */
     private CompositeDisposable compositeDisposable;
 
+
     public BaseViewModel(@NonNull Application application) {
         this(application, null);
 
@@ -132,7 +133,7 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
     }
 
 
-    public final class UIChangeLiveData extends SingleLiveData {
+    public static final class UIChangeLiveData extends SingleLiveData {
 
         /**
          * 控制界面的显示4个状态{@link ViewStatus}
@@ -151,7 +152,7 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         private SingleLiveData<Void> finishEvent;
 
 
-        public SingleLiveData<ViewStatus> getViewStatusSource() {
+        public <T extends ViewStatus> SingleLiveData<ViewStatus> getViewStatusSource() {
             return viewStatusEvent = createLiveData(viewStatusEvent);
         }
 
@@ -167,9 +168,9 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
             return finishEvent = createLiveData(finishEvent);
         }
 
-        private SingleLiveData createLiveData(SingleLiveData liveData) {
+        private <T> SingleLiveData<T> createLiveData(SingleLiveData<T> liveData) {
             if (liveData == null) {
-                liveData = new SingleLiveData();
+                liveData = new SingleLiveData<T>();
             }
             return liveData;
         }

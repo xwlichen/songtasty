@@ -11,10 +11,10 @@ import androidx.lifecycle.Observer;
  * @email : 1960003945@qq.com
  * @description :
  */
-public class ToastObserver implements Observer<String> {
+public class ToastObserver<T extends String> implements Observer<T> {
 
-    public static ToastObserver create(@NonNull BaseView view) {
-        return new ToastObserver(view);
+    public static <T extends String> ToastObserver<T> create(@NonNull BaseView view) {
+        return new ToastObserver<T>(view);
     }
 
     private final BaseView view;

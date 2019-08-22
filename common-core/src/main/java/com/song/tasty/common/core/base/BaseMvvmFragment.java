@@ -10,12 +10,14 @@ import com.song.tasty.common.core.observer.ViewStatusObserver;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -94,6 +96,24 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
     protected <VM extends BaseViewModel> void subscribeViewEvent(@NonNull VM viewModel) {
         viewModel.getUiChange().getViewStatusSource().observe(this, ViewStatusObserver.create(this));
         viewModel.getUiChange().getToastSource().observe(this, ToastObserver.create(this));
+
+        viewModel.getUiChange().getStartActivityEvent().observe(this, new Observer<Map<String, Object>>() {
+            @Override
+            public void onChanged(Map<String, Object> params) {
+                Class<?> clz = (Class<?>) params.get(BaseViewModel.ParameterField.CLASS);
+                Bundle bundle = (Bundle) params.get(BaseViewModel.ParameterField.BUNDLE);
+                launchActivity(clz, bundle);
+
+            }
+        });
+
+        viewModel.getUiChange().getFinishEvent().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void v) {
+                finish();
+
+            }
+        });
 
     }
 
