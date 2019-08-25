@@ -2,9 +2,13 @@ package com.song.tasty.module.mine;
 
 /**
  * @author lichen
- * @date ：2019-07-24 22:43
+ * @date ：2019-07-24 20:32
  * @email : 196003945@qq.com
  * @description :
  */
-public class Constants {
+public interface Constants {
+
+    String MINE_HOST_ONLINE_URL = "http://newappx.songtasty.com/";
+    String MINE_DOMAIN_NAME = "mine";
+
 }

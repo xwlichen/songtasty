@@ -20,7 +20,11 @@ dependencies {
 
 
     addComponent 'module-login'
+    addComponent 'module-home'
+    addComponent 'module-video'
+
     addComponent 'module-mine'
+
     api project(':common-app')
 
 

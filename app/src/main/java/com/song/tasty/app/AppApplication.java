@@ -44,7 +44,6 @@ public class AppApplication extends MultiDexApplication {
         CC.enableDebug(true);
         CC.enableRemoteCC(true);
 
-
         // webp support
         ResourceDecoder decoder = new WebpResourceDecoder(this);
         ResourceDecoder byteDecoder = new WebpBytebufferDecoder(this);

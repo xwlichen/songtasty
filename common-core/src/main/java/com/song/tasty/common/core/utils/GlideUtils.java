@@ -7,16 +7,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
-
-import androidx.annotation.DrawableRes;
-import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
 
 /**
  * @date : 2019-08-20 13:46
@@ -28,6 +29,7 @@ public class GlideUtils {
 
     public static final int PLACEHOLDER = Color.TRANSPARENT;
     public static final int ERROR = Color.TRANSPARENT;
+    public static final int FADE_TIME = 200;
 
 
     public static void loadImage(Context context, String url, ImageView imageView) {
@@ -56,6 +58,7 @@ public class GlideUtils {
                 .with(context)
                 .load(url)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }
@@ -85,6 +88,7 @@ public class GlideUtils {
                 .with(context)
                 .load(file)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }
@@ -114,6 +118,7 @@ public class GlideUtils {
                 .with(context)
                 .load(bitmap)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }
@@ -143,6 +148,7 @@ public class GlideUtils {
                 .with(context)
                 .load(drawable)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }
@@ -172,6 +178,7 @@ public class GlideUtils {
                 .with(context)
                 .load(uri)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }
@@ -201,6 +208,7 @@ public class GlideUtils {
                 .with(context)
                 .load(resourceId)
                 .apply(options)
+                .transition(new DrawableTransitionOptions().crossFade(FADE_TIME))
                 .into(imageView);
 
     }

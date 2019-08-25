@@ -16,7 +16,7 @@ public class HomeAction implements IComponent {
     @Override
 
     public String getName() {
-        return "module_home.home";
+        return "module.home";
     }
 
     @Override

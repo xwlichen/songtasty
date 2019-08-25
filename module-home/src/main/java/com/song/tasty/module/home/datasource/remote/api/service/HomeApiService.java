@@ -1,7 +1,7 @@
 package com.song.tasty.module.home.datasource.remote.api.service;
 
 
-import com.song.tasty.common.app.entity.LoginResult;
+import com.song.tasty.module.home.entity.HomeResult;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -29,6 +29,6 @@ public interface HomeApiService {
     @Headers({DOMAIN_NAME_HEADER + HOME_DOMAIN_NAME})
     @FormUrlEncoded
     @POST("api/ulog/login")
-    Observable<LoginResult> login(@Field("username") String account,
-                                  @Field("userpass") String password);
+    Observable<HomeResult> login(@Field("username") String account,
+                                 @Field("userpass") String password);
 }

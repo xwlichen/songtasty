@@ -15,35 +15,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
             android:orientation="vertical"
+            binding:layout_constraintBottom_toTopOf="@id/line"
             binding:layout_constraintLeft_toLeftOf="parent"
             binding:layout_constraintRight_toRightOf="parent"
-            binding:layout_constraintTop_toTopOf="parent"
-            binding:layout_constraintBottom_toTopOf="@id/line"
-            android:background="@color/color_primary_normal">
-
-            <TextView
-                android:id="@+id/tvHello"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Hello World!"
-                binding:onClickCommand="@{viewModel.textClick}" />
-
-            <com.smart.ui.widget.image.SMUIImageView
-                android:id="@+id/ivCover"
-                android:layout_width="@dimen/dp_040"
-                android:layout_height="@dimen/dp_040"
-                android:layout_marginLeft="@dimen/margin_normal"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher"
-                binding:smui_isCircle="true"
-                binding:smui_maskColor="@color/smui_config_color_30_pure_black" />
-        </LinearLayout>
+            binding:layout_constraintTop_toTopOf="parent" />
 
 
         <com.song.tasty.common.app.widget.MusicBottomNavView

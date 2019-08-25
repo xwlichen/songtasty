@@ -1,9 +1,9 @@
 package com.song.tasty.module.home.datasource.remote;
 
 
-import com.song.tasty.common.app.entity.LoginResult;
 import com.song.tasty.common.app.net.RetrofitManager;
 import com.song.tasty.module.home.datasource.remote.api.service.HomeApiService;
+import com.song.tasty.module.home.entity.HomeResult;
 
 import io.reactivex.Observable;
 
@@ -35,7 +35,7 @@ public class RemoteDataSourceImp implements RemoteDataSource {
     }
 
     @Override
-    public Observable<LoginResult> login(String account, String password) {
+    public Observable<HomeResult> login(String account, String password) {
         return RetrofitManager
                 .init()
                 .obtainRetrofitService(HomeApiService.class)
