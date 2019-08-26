@@ -16,16 +16,26 @@ import com.song.tasty.app.BR;
 import com.song.tasty.app.R;
 import com.song.tasty.app.databinding.AppActivityMainBinding;
 import com.song.tasty.app.mvvm.viewmodel.MainViewModel;
+import com.song.tasty.common.app.AppRouters;
 import com.song.tasty.common.app.base.BaseAppActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
+import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT;
+import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
 
 
 public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainViewModel> {
 
 
-    private Fragment fragment;
+    private HashMap<String, Fragment> fragments = new HashMap<>();
 
     @Override
     protected int getLayoutResId() {
@@ -42,8 +52,8 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
     protected void initView() {
         initNav();
 
-        CC.obtainBuilder("module.home")
-                .setActionName("getHomeFragment")
+        CC.obtainBuilder(AppRouters.HOME_COMP_MAIN)
+                .setActionName(HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT)
                 .build()
                 .callAsyncCallbackOnMainThread(fragmentCallback);
 
@@ -85,6 +95,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
         binding.bottomNav.setCallback(new ILottieBottomNavViewCallback() {
             @Override
             public void onNavSelected(int oldIndex, int newIndex, NavItem menuItem) {
+                changeFragment(newIndex);
 
             }
 
@@ -111,46 +122,87 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
         @Override
         public void onResult(CC cc, CCResult result) {
             if (result.isSuccess()) {
-                Fragment fragment = result.getDataItemWithNoKey();
-                if (fragment != null) {
-                    showFragment(fragment);
+                String tag = cc.getActionName();
+                Fragment fragment = fragments.get(tag);
+                if (fragment == null) {
+                    Fragment newFragment = result.getDataItemWithNoKey();
+                    fragments.put(tag, newFragment);
+                    showFragment(tag, newFragment, true);
+                } else {
+                    showFragment(tag, fragment, false);
                 }
+
             } else {
                 ToastUtils.show("显示fragment失败");
             }
         }
     };
 
-    private void showFragment(Fragment fragment) {
+    private void showFragment(String tag, Fragment fragment, boolean isNew) {
         if (fragment != null) {
-            this.fragment = fragment;
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
             trans.setCustomAnimations(com.song.tasty.common.app.R.anim.slide_in_right, com.song.tasty.common.app.R.anim.slide_out_left);
-            trans.replace(R.id.fragmentContainer, fragment);
-            trans.commit();
+
+            Iterator<Map.Entry<String, Fragment>> iterator = fragments.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, Fragment> entry = iterator.next();
+                if (entry.getValue() != fragment) {
+                    trans.hide(entry.getValue());
+                }
+            }
+
+            if (isNew) {
+                trans.add(R.id.fragmentContainer, fragment, tag).show(fragment);
+            } else {
+                trans.show(fragment);
+            }
+
+//            trans.replace(R.id.fragmentContainer, fragment);
+            trans.commitAllowingStateLoss();
         }
     }
 
     private void changeFragment(int posotion) {
+        Fragment currentFragment;
+        String tag;
 
         switch (posotion) {
             case 0:
-                CC.obtainBuilder("module.home")
-                        .setActionName("getHomeFragment")
-                        .build()
-                        .callAsyncCallbackOnMainThread(fragmentCallback);
+                currentFragment = fragments.get(HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT);
+                tag = HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
+                if (currentFragment == null) {
+                    CC.obtainBuilder(AppRouters.HOME_COMP_MAIN)
+                            .setActionName(tag)
+                            .build()
+                            .callAsyncCallbackOnMainThread(fragmentCallback);
+                } else {
+                    showFragment(tag, currentFragment, false);
+                }
                 break;
             case 1:
-                CC.obtainBuilder("module.video")
-                        .setActionName("getVideoFragment")
-                        .build()
-                        .callAsyncCallbackOnMainThread(fragmentCallback);
+
+                currentFragment = fragments.get(VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT);
+                tag = VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
+                if (currentFragment == null) {
+                    CC.obtainBuilder(VIDEO_COMP_MAIN)
+                            .setActionName(tag)
+                            .build()
+                            .callAsyncCallbackOnMainThread(fragmentCallback);
+                } else {
+                    showFragment(tag, currentFragment, false);
+                }
                 break;
             case 2:
-                CC.obtainBuilder("module.mine")
-                        .setActionName("getMineFragment")
-                        .build()
-                        .callAsyncCallbackOnMainThread(fragmentCallback);
+                currentFragment = fragments.get(MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT);
+                tag = MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT;
+                if (currentFragment == null) {
+                    CC.obtainBuilder(MINE_COMP_MAIN)
+                            .setActionName(tag)
+                            .build()
+                            .callAsyncCallbackOnMainThread(fragmentCallback);
+                } else {
+                    showFragment(tag, currentFragment, false);
+                }
                 break;
             default:
                 break;

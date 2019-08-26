@@ -1,7 +1,18 @@
 package com.song.tasty.module.home.mvvm.ui;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.base.BaseAppFragment;
 import com.song.tasty.module.home.R;
+import com.song.tasty.module.home.databinding.HomeFragmentBinding;
+import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel;
 
 /**
  * @author lichen
@@ -9,7 +20,7 @@ import com.song.tasty.module.home.R;
  * @email : 196003945@qq.com
  * @description :
  */
-public class HomeFragment extends BaseAppFragment {
+public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewModel> {
 
     @Override
     public int initVariableId() {
@@ -34,5 +45,12 @@ public class HomeFragment extends BaseAppFragment {
 
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        LogUtils.e("xw", "HomeFragment onCreateView");
+        setName("HomeFragment");
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
 }

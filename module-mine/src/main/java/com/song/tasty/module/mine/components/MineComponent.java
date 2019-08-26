@@ -1,9 +1,13 @@
-package com.song.tasty.module.home.action;
+package com.song.tasty.module.mine.components;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.module.home.mvvm.ui.HomeFragment;
+import com.song.tasty.module.mine.mvvm.ui.MineFragment;
+
+import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT;
+
 
 /**
  * @author lichen
@@ -11,19 +15,19 @@ import com.song.tasty.module.home.mvvm.ui.HomeFragment;
  * @email : 196003945@qq.com
  * @description :
  */
-public class HomeAction implements IComponent {
+public class MineComponent implements IComponent {
 
     @Override
 
     public String getName() {
-        return "module.home";
+        return MINE_COMP_MAIN;
     }
 
     @Override
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case "getHomeFragment":
+            case MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT:
                 getHomeFragment(cc);
                 break;
             default:
@@ -42,6 +46,6 @@ public class HomeAction implements IComponent {
      * @param cc
      */
     private void getHomeFragment(CC cc) {
-        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(new HomeFragment()));
+        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(new MineFragment()));
     }
 }

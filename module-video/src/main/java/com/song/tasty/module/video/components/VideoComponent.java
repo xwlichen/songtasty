@@ -1,9 +1,12 @@
-package com.song.tasty.module.mine.action;
+package com.song.tasty.module.video.components;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.module.mine.mvvm.ui.MIneFragment;
+import com.song.tasty.module.video.mvvm.ui.VideoFragment;
+
+import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
 
 /**
  * @author lichen
@@ -11,19 +14,19 @@ import com.song.tasty.module.mine.mvvm.ui.MIneFragment;
  * @email : 196003945@qq.com
  * @description :
  */
-public class MIneAction implements IComponent {
+public class VideoComponent implements IComponent {
 
     @Override
 
     public String getName() {
-        return "module.mine";
+        return VIDEO_COMP_MAIN;
     }
 
     @Override
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case "getMineFragment":
+            case VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT:
                 getHomeFragment(cc);
                 break;
             default:
@@ -42,6 +45,6 @@ public class MIneAction implements IComponent {
      * @param cc
      */
     private void getHomeFragment(CC cc) {
-        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(new MIneFragment()));
+        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(VideoFragment.getInstance()));
     }
 }

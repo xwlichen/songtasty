@@ -19,7 +19,7 @@ import com.song.tasty.module.mine.datasource.Injection;
  * @email : 1960003945@qq.com
  * @description :
  */
-public class MIneViewModel extends BaseViewModel<DataRepository> {
+public class MineViewModel extends BaseViewModel<DataRepository> {
 
     public ObservableField<String> account = new ObservableField<>("");
     public ObservableField<String> password = new ObservableField<>("");
@@ -37,7 +37,7 @@ public class MIneViewModel extends BaseViewModel<DataRepository> {
     public SingleLiveData<Boolean> pwdSwitchData = new SingleLiveData<Boolean>();
 
 
-    public MIneViewModel(@NonNull Application application) {
+    public MineViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
         account.set(model.getLocalDataSource().getAccount());
         password.set(model.getLocalDataSource().getPwd());

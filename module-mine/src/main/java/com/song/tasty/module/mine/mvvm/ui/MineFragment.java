@@ -1,4 +1,4 @@
-package com.song.tasty.module.video.mvvm.ui;
+package com.song.tasty.module.mine.mvvm.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.base.BaseAppFragment;
-import com.song.tasty.module.video.R;
-import com.song.tasty.module.video.databinding.VideoFragmentBinding;
-import com.song.tasty.module.video.mvvm.viewmodel.VideoViewModel;
+import com.song.tasty.module.mine.R;
 
 /**
  * @author lichen
@@ -20,25 +18,24 @@ import com.song.tasty.module.video.mvvm.viewmodel.VideoViewModel;
  * @email : 196003945@qq.com
  * @description :
  */
-public class VideoFragment extends BaseAppFragment<VideoFragmentBinding, VideoViewModel> {
+public class MineFragment extends BaseAppFragment {
 
     @Override
     public int initVariableId() {
         return 0;
     }
 
-
     @Override
     protected int getLayoutResId() {
-        return R.layout.video_fragment;
+        return R.layout.mine_fragment;
     }
 
 
-    public static VideoFragment getInstance() {
+    public static MineFragment getInstance() {
 //        Bundle bundle = new Bundle();
 //        bundle.putString("subject_id", subject_id);
 //        bundle.putString("class_id", class_id);
-        VideoFragment fragment = new VideoFragment();
+        MineFragment fragment = new MineFragment();
 //        fragment.setArguments(bundle);
         //        subject_id = getArguments().getString("subject_id");
 
@@ -46,12 +43,13 @@ public class VideoFragment extends BaseAppFragment<VideoFragmentBinding, VideoVi
 
     }
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.e("xw", "VideoFragment onCreateView");
-        setName("VideoFragment");
+        LogUtils.e("xw", "MineFragment onCreateView");
+        setName("MineFragment");
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 }

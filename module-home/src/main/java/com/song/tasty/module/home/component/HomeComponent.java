@@ -1,9 +1,12 @@
-package com.song.tasty.module.video.action;
+package com.song.tasty.module.home.component;
 
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.module.video.mvvm.ui.VideoFragment;
+import com.song.tasty.module.home.mvvm.ui.HomeFragment;
+
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
 
 /**
  * @author lichen
@@ -11,19 +14,19 @@ import com.song.tasty.module.video.mvvm.ui.VideoFragment;
  * @email : 196003945@qq.com
  * @description :
  */
-public class VideoAction implements IComponent {
+public class HomeComponent implements IComponent {
 
     @Override
 
     public String getName() {
-        return "module.video";
+        return HOME_COMP_MAIN;
     }
 
     @Override
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case "getVideoFragment":
+            case HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT:
                 getHomeFragment(cc);
                 break;
             default:
@@ -42,6 +45,6 @@ public class VideoAction implements IComponent {
      * @param cc
      */
     private void getHomeFragment(CC cc) {
-        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(VideoFragment.getInstance()));
+        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(new HomeFragment()));
     }
 }

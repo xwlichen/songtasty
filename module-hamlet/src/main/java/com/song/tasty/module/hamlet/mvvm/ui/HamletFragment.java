@@ -2,6 +2,8 @@ package com.song.tasty.module.hamlet.mvvm.ui;
 
 import com.song.tasty.common.app.base.BaseAppFragment;
 import com.song.tasty.module.hamlet.R;
+import com.song.tasty.module.hamlet.databinding.HamletFragmentBinding;
+import com.song.tasty.module.hamlet.mvvm.viewmodel.HamletViewModel;
 
 /**
  * @author lichen
@@ -9,7 +11,7 @@ import com.song.tasty.module.hamlet.R;
  * @email : 196003945@qq.com
  * @description :
  */
-public class HamletFragment extends BaseAppFragment {
+public class HamletFragment extends BaseAppFragment<HamletFragmentBinding, HamletViewModel> {
 
     @Override
     public int initVariableId() {
