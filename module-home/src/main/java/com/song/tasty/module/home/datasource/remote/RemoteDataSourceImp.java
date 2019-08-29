@@ -35,25 +35,12 @@ public class RemoteDataSourceImp implements RemoteDataSource {
     }
 
     @Override
-    public Observable<HomeResult> login(String account, String password) {
+    public Observable<HomeResult> index() {
         return RetrofitManager
                 .init()
                 .obtainRetrofitService(HomeApiService.class)
-                .login(account, password);
+                .index();
     }
 
 
-//    Observable.just(mRepositoryManager
-//            .obtainRetrofitService(UserService.class)
-//            .getUsers(lastIdQueried, USERS_PER_PAGE))
-//            .flatMap(new Function<Observable<List<User>>, ObservableSource<List<User>>>() {
-//        @Override
-//        public ObservableSource<List<User>> apply(@NonNull Observable<List<User>> listObservable) throws Exception {
-//            return mRepositoryManager.obtainCacheService(CommonCache.class)
-//                    .getUsers(listObservable
-//                            , new DynamicKey(lastIdQueried)
-//                            , new EvictDynamicKey(update))
-//                    .map(listReply -> listReply.getData());
-//        }
-//    })
 }

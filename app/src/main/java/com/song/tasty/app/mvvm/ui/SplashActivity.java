@@ -17,7 +17,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
 //        DataRepository dataRepository = Injection.provideDataRepository();
 //        if (dataRepository.isLogin()) {
         toMain();

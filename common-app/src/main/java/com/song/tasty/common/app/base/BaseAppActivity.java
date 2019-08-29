@@ -3,15 +3,16 @@ package com.song.tasty.common.app.base;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
+
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
+import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.utils.SmartUtils;
-
-import androidx.annotation.Nullable;
-import androidx.databinding.ViewDataBinding;
 
 /**
  * @author lichen
@@ -21,9 +22,10 @@ import androidx.databinding.ViewDataBinding;
  */
 public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseMvvmActivity<V, VM> {
 
+    protected SMUITipDialog smuiTipDialog;
 
     @Override
-    protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
+    public void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
         SMUIStatusBarHelper.translucent(this);
         SMUIStatusBarHelper.setStatusBarLightMode(this);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

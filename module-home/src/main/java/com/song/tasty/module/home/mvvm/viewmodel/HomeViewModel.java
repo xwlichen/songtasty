@@ -1,17 +1,17 @@
 package com.song.tasty.module.home.mvvm.viewmodel;
 
 import android.app.Application;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
 
+import com.song.tasty.common.app.net.ResponseErrorHandler;
+import com.song.tasty.common.app.utils.RxUtils;
 import com.song.tasty.common.core.base.BaseViewModel;
-import com.song.tasty.common.core.binding.command.BindingCommand;
+import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.module.home.datasource.DataRepository;
 import com.song.tasty.module.home.datasource.Injection;
+import com.song.tasty.module.home.entity.HomeResult;
 
 /**
  * @date : 2019-07-23 09:53
@@ -21,33 +21,34 @@ import com.song.tasty.module.home.datasource.Injection;
  */
 public class HomeViewModel extends BaseViewModel<DataRepository> {
 
-    public ObservableField<String> account = new ObservableField<>("");
-    public ObservableField<String> password = new ObservableField<>("");
-
-
     /**
-     * 账号的清除按钮是否显示
+     * 首页接口返回成功数据
      */
-    public ObservableInt ivClearVisibility = new ObservableInt(View.GONE);
+    public SingleLiveData<HomeResult> successResult = new SingleLiveData<HomeResult>();
 
-
-    /**
-     * 密码显示开关
-     */
-    public SingleLiveData<Boolean> pwdSwitchData = new SingleLiveData<Boolean>();
+//    public SingleLiveData<>
 
 
     public HomeViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
-        account.set(model.getLocalDataSource().getAccount());
-        password.set(model.getLocalDataSource().getPwd());
     }
 
 
-    public BindingCommand finishOnClickCommond = new BindingCommand(() -> uiChange.getFinishEvent().call());
+    public void getData() {
 
+        addSubcribe(model
+                .getRemoteDataSource()
+                .index()
+                .compose(RxUtils.schedulersTransformer())
+                .doOnSubscribe(disposable -> uiChange.getViewStatusSource().setValue(ViewStatus.LOADING))
+                .subscribe(result -> {
+                    successResult.setValue(result);
 
+                }, new ResponseErrorHandler(), () -> {
+                    uiChange.getViewStatusSource().setValue(ViewStatus.COMPLETE);
+                }));
 
+    }
 
 
 }

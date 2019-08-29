@@ -46,15 +46,7 @@ public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends Base
     private BaseAppFragment childTargetFragment;
     private int enterAnimationStatus = ANIMATION_ENTER_STATUS_NOT_START;
 
-    public String name;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

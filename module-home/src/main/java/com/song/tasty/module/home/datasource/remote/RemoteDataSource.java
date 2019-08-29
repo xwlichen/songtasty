@@ -15,11 +15,8 @@ public interface RemoteDataSource {
 
 
     /**
-     * 登录
-     *
-     * @param account
-     * @param password
+     * 首页接口
      * @return
      */
-    Observable<HomeResult> login(String account, String password);
+    Observable<HomeResult> index();
 }

@@ -29,8 +29,8 @@ import java.util.Map;
  */
 public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment implements BaseView {
 
-    protected V binding;
-    protected VM viewModel;
+    public V binding;
+    public VM viewModel;
     private int viewModelId;
 
 

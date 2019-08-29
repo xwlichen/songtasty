@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.base.BaseAppFragment;
 import com.song.tasty.module.mine.R;
 
@@ -46,8 +45,6 @@ public class MineFragment extends BaseAppFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.e("xw", "MineFragment onCreateView");
-        setName("MineFragment");
 
         return super.onCreateView(inflater, container, savedInstanceState);
     }

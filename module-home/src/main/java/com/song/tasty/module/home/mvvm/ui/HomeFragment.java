@@ -7,12 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
-import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.base.BaseAppFragment;
+import com.song.tasty.module.home.BR;
 import com.song.tasty.module.home.R;
+import com.song.tasty.module.home.adapter.HomeTitleViewBinder;
 import com.song.tasty.module.home.databinding.HomeFragmentBinding;
+import com.song.tasty.module.home.entity.HomeResult;
 import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel;
+
+import me.drakeet.multitype.Items;
+import me.drakeet.multitype.MultiTypeAdapter;
 
 /**
  * @author lichen
@@ -22,9 +28,13 @@ import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel;
  */
 public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewModel> {
 
+
+    private MultiTypeAdapter adapter;
+    private Items items;
+
     @Override
     public int initVariableId() {
-        return 0;
+        return BR.viewModel;
     }
 
     @Override
@@ -34,13 +44,7 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
 
 
     public static HomeFragment getInstance() {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("subject_id", subject_id);
-//        bundle.putString("class_id", class_id);
         HomeFragment fragment = new HomeFragment();
-//        fragment.setArguments(bundle);
-        //        subject_id = getArguments().getString("subject_id");
-
         return fragment;
 
     }
@@ -48,9 +52,32 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.e("xw", "HomeFragment onCreateView");
-        setName("HomeFragment");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
+
+
+    @Override
+    public void initView() {
+
+        adapter = new MultiTypeAdapter();
+        HomeTitleViewBinder homeTitleViewBinder;
+        adapter.register();
+        items = items;
+
+
+        viewModel.successResult.observe(this, new Observer<HomeResult>() {
+            @Override
+            public void onChanged(HomeResult homeResult) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void initData() {
+        viewModel.getData();
+    }
+
 
 }

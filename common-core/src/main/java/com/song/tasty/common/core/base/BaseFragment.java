@@ -34,14 +34,14 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    protected void initTitle() {
+    public void initTitle() {
     }
 
 
-    protected void initView() {
+    public void initView() {
     }
 
-    protected void initData() {
+    public void initData() {
     }
 
 

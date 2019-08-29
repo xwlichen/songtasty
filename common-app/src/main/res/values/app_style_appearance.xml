@@ -34,6 +34,10 @@
         <item name="android:textColor">?attr/app_txt_color3</item>
     </style>
 
+    <style name="AppTextAppearance.Big.Bold.color1">
+        <item name="android:textColor">?attr/app_txt_color1</item>
+    </style>
+
 
     <style name="AppTextAppearance.middle">
         <item name="android:textSize">?attr/app_txt_size_middle</item>

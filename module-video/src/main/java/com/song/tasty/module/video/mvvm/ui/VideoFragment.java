@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.smart.ui.LogUtils;
 import com.song.tasty.common.app.base.BaseAppFragment;
 import com.song.tasty.module.video.R;
 import com.song.tasty.module.video.databinding.VideoFragmentBinding;
@@ -50,8 +49,6 @@ public class VideoFragment extends BaseAppFragment<VideoFragmentBinding, VideoVi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        LogUtils.e("xw", "VideoFragment onCreateView");
-        setName("VideoFragment");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

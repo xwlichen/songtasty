@@ -7,7 +7,14 @@
 
     <color name="color_primary_normal">#EC512C</color>
     <color name="color_primary_pressed">#a60d08</color>
-
-
     <color name="corlor_line">#EEEEEE</color>
+
+
+    <color name="color_white">#ffffff</color>
+    <color name="corlor_black">#000000</color>
+
+    <color name="corlor_333333">#333333</color>
+    <color name="color_EC512C">#EC512C</color>
+
+
 </resources>

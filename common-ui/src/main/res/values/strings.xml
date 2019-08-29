@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">common_ui</string>
+
+
+    <string name="refresh_failure">更新失败</string>
+    <string name="refresh_tip">已为你更新个性化内容</string>
+    <string name="refresh_ing">更新中</string>
+
+    <string name="refresh_loading">正在加载</string>
+    <string name="refresh_loading_failure">加载失败</string>
+    <string name="refresh_nomore">没有更多</string>
+
+
 </resources>

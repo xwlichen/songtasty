@@ -45,6 +45,6 @@ public class HomeComponent implements IComponent {
      * @param cc
      */
     private void getHomeFragment(CC cc) {
-        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(new HomeFragment()));
+        CC.sendCCResult(cc.getCallId(), CCResult.successWithNoKey(HomeFragment.getInstance()));
     }
 }

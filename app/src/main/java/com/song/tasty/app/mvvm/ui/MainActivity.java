@@ -49,7 +49,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
 
 
     @Override
-    protected void initView() {
+    public void initView() {
         initNav();
 
         CC.obtainBuilder(AppRouters.HOME_COMP_MAIN)

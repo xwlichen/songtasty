@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/margin_normal"
+    android:paddingTop="@dimen/dp_020"
+    android:paddingRight="@dimen/margin_normal"
+    android:paddingBottom="@dimen/margin_normal">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/AppTextAppearance.Large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvMore"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="歌单" />
+
+
+    <TextView
+        android:id="@+id/tvMore"
+        style="@style/AppTextAppearance.middle.color1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_more"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toRightOf="@id/tvTitle"
+        app:layout_constraintRight_toLeftOf="@id/ivArrow"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvTitle" />
+
+    <ImageView
+        android:id="@+id/ivArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_arrow_right1"
+        app:layout_constraintBottom_toBottomOf="@id/tvMore"
+        app:layout_constraintLeft_toRightOf="@id/tvMore"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvMore"
+        android:scaleType="fitXY" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

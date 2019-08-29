@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.lifecycle.Observer;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -13,14 +15,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.smart.ui.utils.SMUIDisplayHelper;
 import com.smart.ui.utils.SMUIStatusBarHelper;
+import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.common.core.utils.KeyBoardUtils;
 import com.song.tasty.module.login.BR;
 import com.song.tasty.module.login.R;
 import com.song.tasty.module.login.databinding.LoginActivityLoginBinding;
 import com.song.tasty.module.login.mvvm.viewmodel.LoginViewModel;
-
-import androidx.lifecycle.Observer;
 
 /**
  * @author lichen
@@ -43,7 +44,7 @@ public class LoginActivity extends BaseAppActivity<LoginActivityLoginBinding, Lo
     }
 
     @Override
-    protected void initView() {
+    public void initView() {
 
         KeyBoardUtils.getInstance().setOnKeyboardStatusChangeListener(this, onKeyBoardStatusChangeListener);
 
@@ -72,6 +73,25 @@ public class LoginActivity extends BaseAppActivity<LoginActivityLoginBinding, Lo
 
     }
 
+
+    @Override
+    public void showLoading() {
+        if (smuiTipDialog == null) {
+            smuiTipDialog = new SMUITipDialog(this);
+        }
+        if (smuiTipDialog.isShowing()) {
+            hideLoading();
+        }
+        smuiTipDialog.show();
+    }
+
+
+    @Override
+    public void hideLoading() {
+        if (smuiTipDialog != null) {
+            smuiTipDialog.show();
+        }
+    }
 
     private KeyBoardUtils.OnKeyboardStatusChangeListener onKeyBoardStatusChangeListener = new KeyBoardUtils.OnKeyboardStatusChangeListener() {
 

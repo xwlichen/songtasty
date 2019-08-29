@@ -3,10 +3,10 @@ package com.song.tasty.common.core.base;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.song.tasty.common.core.AppManager;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.song.tasty.common.core.AppManager;
 
 /**
  * @author lichen
@@ -33,20 +33,20 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getLayoutResId();
 
-    protected void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
+    public void createView(int layoutResId, @Nullable Bundle savedInstanceState) {
         setContentView(layoutResId);
     }
 
 
-    protected void parseIntent(@Nullable Intent intent) {
+    public void parseIntent(@Nullable Intent intent) {
 
     }
 
-    protected void initView() {
+    public void initView() {
 
     }
 
-    protected void initData() {
+    public void initData() {
 
     }
 
