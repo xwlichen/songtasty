@@ -227,41 +227,7 @@ public class HomeResult {
         }
     }
 
-    public static class GedanxBean {
-        /**
-         * topicid : 2504
-         * topicname : 一入电音深似海.D
-         * topicimg : https://newst.bailemi.com/20190415/WBmnBZbp3sfYwmGrQD4a5NT7DaRiMEKA.jpg
-         */
 
-        private String topicid;
-        private String topicname;
-        private String topicimg;
-
-        public String getTopicid() {
-            return topicid;
-        }
-
-        public void setTopicid(String topicid) {
-            this.topicid = topicid;
-        }
-
-        public String getTopicname() {
-            return topicname;
-        }
-
-        public void setTopicname(String topicname) {
-            this.topicname = topicname;
-        }
-
-        public String getTopicimg() {
-            return topicimg;
-        }
-
-        public void setTopicimg(String topicimg) {
-            this.topicimg = topicimg;
-        }
-    }
 
     public static class DancelistBean {
         /**

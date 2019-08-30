@@ -5,18 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.Observer;
-
 import com.song.tasty.common.app.base.BaseAppFragment;
 import com.song.tasty.module.home.BR;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.adapter.HomeTitleViewBinder;
 import com.song.tasty.module.home.databinding.HomeFragmentBinding;
 import com.song.tasty.module.home.entity.HomeResult;
+import com.song.tasty.module.home.entity.HomeTitleBean;
 import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 
@@ -61,7 +61,7 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
 
         adapter = new MultiTypeAdapter();
         HomeTitleViewBinder homeTitleViewBinder;
-        adapter.register();
+        adapter.register(HomeTitleBean.class, new HomeTitleViewBinder());
         items = items;
 
 
