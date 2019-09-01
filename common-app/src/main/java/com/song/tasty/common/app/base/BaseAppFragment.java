@@ -47,7 +47,6 @@ public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends Base
     private int enterAnimationStatus = ANIMATION_ENTER_STATUS_NOT_START;
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 //        SMUIStatusBarHelper.translucent(getActivity());
@@ -60,6 +59,13 @@ public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends Base
     public void onDestroyView() {
         super.onDestroyView();
         enterAnimationStatus = ANIMATION_ENTER_STATUS_NOT_START;
+    }
+
+    public abstract void initObserve();
+
+    @Override
+    public void initData() {
+        initObserve();
     }
 
     @Override

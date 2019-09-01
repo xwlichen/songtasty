@@ -10,6 +10,10 @@ public class HomeTitleBean {
 
     private String title;
 
+    public HomeTitleBean(String title) {
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }

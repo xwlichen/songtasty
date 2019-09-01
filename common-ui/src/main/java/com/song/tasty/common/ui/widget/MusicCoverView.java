@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.widget;
+package com.song.tasty.common.ui.widget;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;

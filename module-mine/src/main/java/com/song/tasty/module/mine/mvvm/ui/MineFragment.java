@@ -31,12 +31,7 @@ public class MineFragment extends BaseAppFragment {
 
 
     public static MineFragment getInstance() {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("subject_id", subject_id);
-//        bundle.putString("class_id", class_id);
         MineFragment fragment = new MineFragment();
-//        fragment.setArguments(bundle);
-        //        subject_id = getArguments().getString("subject_id");
 
         return fragment;
 
@@ -49,4 +44,8 @@ public class MineFragment extends BaseAppFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    @Override
+    public void initObserve() {
+
+    }
 }

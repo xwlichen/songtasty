@@ -5,13 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.song.tasty.common.app.R;
-import com.song.tasty.common.app.entity.MusicBean;
-import com.song.tasty.common.app.widget.MusicCoverView;
-import com.song.tasty.common.core.utils.GlideUtils;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.song.tasty.common.app.R;
+import com.song.tasty.common.app.entity.MusicBean;
+import com.song.tasty.common.core.utils.GlideUtils;
+import com.song.tasty.common.ui.widget.MusicCoverView;
+
 import me.drakeet.multitype.ItemViewBinder;
 
 /**

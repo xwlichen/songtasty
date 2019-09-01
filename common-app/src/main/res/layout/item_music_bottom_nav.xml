@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.song.tasty.common.app.widget.MusicCoverView
+    <com.song.tasty.common.ui.widget.MusicCoverView
         android:id="@+id/ivCover"
         android:layout_width="@dimen/dp_040"
         android:layout_height="@dimen/dp_050"

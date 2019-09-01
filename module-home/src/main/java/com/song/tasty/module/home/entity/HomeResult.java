@@ -31,9 +31,9 @@ public class HomeResult {
     private String newurl;
     private String loginx;
     private String noticex;
-    private List<IndexadBean> indexad;
+    private List<BannerBean> indexad;
     private List<IndexuserBean> indexuser;
-    private List<GedanxBean> gedanx;
+    private List<SongSheetBean> gedanx;
     private List<DancelistBean> dancelist;
     private List<MusiclistBean> musiclist;
     private List<GuestlistBean> guestlist;
@@ -79,11 +79,11 @@ public class HomeResult {
         this.noticex = noticex;
     }
 
-    public List<IndexadBean> getIndexad() {
+    public List<BannerBean> getIndexad() {
         return indexad;
     }
 
-    public void setIndexad(List<IndexadBean> indexad) {
+    public void setIndexad(List<BannerBean> indexad) {
         this.indexad = indexad;
     }
 
@@ -95,11 +95,11 @@ public class HomeResult {
         this.indexuser = indexuser;
     }
 
-    public List<GedanxBean> getGedanx() {
+    public List<SongSheetBean> getGedanx() {
         return gedanx;
     }
 
-    public void setGedanx(List<GedanxBean> gedanx) {
+    public void setGedanx(List<SongSheetBean> gedanx) {
         this.gedanx = gedanx;
     }
 
@@ -135,61 +135,6 @@ public class HomeResult {
         this.newslist = newslist;
     }
 
-    public static class IndexadBean {
-        /**
-         * newid : 539
-         * id : 4
-         * gdmusicid : 2440
-         * adtitle : 高品质大碟
-         * banx : http://newst.bailemi.com/20190516/nGdjGbnp7zT2mnHc46fbkZhHTsQrtYk7.png
-         */
-
-        private String newid;
-        private String id;
-        private String gdmusicid;
-        private String adtitle;
-        private String banx;
-
-        public String getNewid() {
-            return newid;
-        }
-
-        public void setNewid(String newid) {
-            this.newid = newid;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getGdmusicid() {
-            return gdmusicid;
-        }
-
-        public void setGdmusicid(String gdmusicid) {
-            this.gdmusicid = gdmusicid;
-        }
-
-        public String getAdtitle() {
-            return adtitle;
-        }
-
-        public void setAdtitle(String adtitle) {
-            this.adtitle = adtitle;
-        }
-
-        public String getBanx() {
-            return banx;
-        }
-
-        public void setBanx(String banx) {
-            this.banx = banx;
-        }
-    }
 
     public static class IndexuserBean {
         /**

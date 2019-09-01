@@ -25,16 +25,15 @@ public class HamletFragment extends BaseAppFragment<HamletFragmentBinding, Hamle
 
 
     public static HamletFragment getInstance() {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("subject_id", subject_id);
-//        bundle.putString("class_id", class_id);
         HamletFragment fragment = new HamletFragment();
-//        fragment.setArguments(bundle);
-        //        subject_id = getArguments().getString("subject_id");
 
         return fragment;
 
     }
 
 
+    @Override
+    public void initObserve() {
+
+    }
 }

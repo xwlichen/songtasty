@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/margin_normal"
     android:paddingTop="@dimen/dp_020"
     android:paddingRight="@dimen/margin_normal"
-    android:paddingBottom="@dimen/margin_normal">
+    android:paddingBottom="@dimen/dp_08">
 
     <TextView
         android:id="@+id/tvTitle"

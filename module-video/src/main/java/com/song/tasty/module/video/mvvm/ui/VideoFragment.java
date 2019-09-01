@@ -34,12 +34,7 @@ public class VideoFragment extends BaseAppFragment<VideoFragmentBinding, VideoVi
 
 
     public static VideoFragment getInstance() {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("subject_id", subject_id);
-//        bundle.putString("class_id", class_id);
         VideoFragment fragment = new VideoFragment();
-//        fragment.setArguments(bundle);
-        //        subject_id = getArguments().getString("subject_id");
 
         return fragment;
 
@@ -50,5 +45,10 @@ public class VideoFragment extends BaseAppFragment<VideoFragmentBinding, VideoVi
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void initObserve() {
+
     }
 }
