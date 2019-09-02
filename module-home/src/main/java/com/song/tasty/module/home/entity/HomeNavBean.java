@@ -8,9 +8,15 @@ package com.song.tasty.module.home.entity;
  */
 public class HomeNavBean {
     private String text;
+    private int imgRes;
+    private String imgUrl;
 
-    public HomeNavBean(String text) {
+    public HomeNavBean() {
+    }
+
+    public HomeNavBean(String text, int imgRes) {
         this.text = text;
+        this.imgRes = imgRes;
     }
 
     public String getText() {
@@ -19,5 +25,21 @@ public class HomeNavBean {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getImgRes() {
+        return imgRes;
+    }
+
+    public void setImgRes(int imgRes) {
+        this.imgRes = imgRes;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

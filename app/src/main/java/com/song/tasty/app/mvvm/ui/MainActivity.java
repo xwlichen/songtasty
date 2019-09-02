@@ -141,7 +141,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
     private void showFragment(String tag, Fragment fragment, boolean isNew) {
         if (fragment != null) {
             FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-            trans.setCustomAnimations(com.song.tasty.common.app.R.anim.slide_in_right, com.song.tasty.common.app.R.anim.slide_out_left);
+//            trans.setCustomAnimations(com.song.tasty.common.app.R.anim.slide_in_right, com.song.tasty.common.app.R.anim.slide_out_left);
 
             Iterator<Map.Entry<String, Fragment>> iterator = fragments.entrySet().iterator();
             while (iterator.hasNext()) {

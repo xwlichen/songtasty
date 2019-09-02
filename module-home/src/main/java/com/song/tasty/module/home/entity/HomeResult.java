@@ -33,10 +33,10 @@ public class HomeResult {
     private String noticex;
     private List<BannerBean> indexad;
     private List<IndexuserBean> indexuser;
-    private List<SongSheetBean> gedanx;
-    private List<DancelistBean> dancelist;
-    private List<MusiclistBean> musiclist;
-    private List<GuestlistBean> guestlist;
+    private List<SongSheetBean> gedanx;    //推荐歌单
+    private List<SongBean> dancelist; //新歌推荐
+    private List<SongBean> musiclist; //每日榜单
+    private List<SongBean> guestlist; //推荐喜欢
     private List<NewslistBean> newslist;
 
     public String getSongnum() {
@@ -103,27 +103,27 @@ public class HomeResult {
         this.gedanx = gedanx;
     }
 
-    public List<DancelistBean> getDancelist() {
+    public List<SongBean> getDancelist() {
         return dancelist;
     }
 
-    public void setDancelist(List<DancelistBean> dancelist) {
+    public void setDancelist(List<SongBean> dancelist) {
         this.dancelist = dancelist;
     }
 
-    public List<MusiclistBean> getMusiclist() {
+    public List<SongBean> getMusiclist() {
         return musiclist;
     }
 
-    public void setMusiclist(List<MusiclistBean> musiclist) {
+    public void setMusiclist(List<SongBean> musiclist) {
         this.musiclist = musiclist;
     }
 
-    public List<GuestlistBean> getGuestlist() {
+    public List<SongBean> getGuestlist() {
         return guestlist;
     }
 
-    public void setGuestlist(List<GuestlistBean> guestlist) {
+    public void setGuestlist(List<SongBean> guestlist) {
         this.guestlist = guestlist;
     }
 
@@ -172,295 +172,6 @@ public class HomeResult {
         }
     }
 
-
-
-    public static class DancelistBean {
-        /**
-         * songid : 38581
-         * mpic : https://x128.bailemi.com/attachment/20190807/ntPhMIjzJuFWrkS0g6QE.jpg
-         * playurl : https://x128.bailemi.com/attachment/20190807/vLeP3Iz7x8njMdfa0qEJ.mp3
-         * downurl : https://x128.bailemi.com/attachment/20190807/vLeP3Iz7x8njMdfa0qEJ.mp3
-         * name : 悠扬大气女声 陶醉其中.越听越着迷 Sacred Touch (Dave Andres Remix)[320kbps/mp3]
-         * uid : 7986
-         * up_user : 千夜
-         * up_user_logo : https://newst.bailemi.com/20190112/86tNgJWuoZs309ifH1pB.jpg
-         * up_good : 139
-         */
-
-        private String songid;
-        private String mpic;
-        private String playurl;
-        private String downurl;
-        private String name;
-        private String uid;
-        private String up_user;
-        private String up_user_logo;
-        private String up_good;
-
-        public String getSongid() {
-            return songid;
-        }
-
-        public void setSongid(String songid) {
-            this.songid = songid;
-        }
-
-        public String getMpic() {
-            return mpic;
-        }
-
-        public void setMpic(String mpic) {
-            this.mpic = mpic;
-        }
-
-        public String getPlayurl() {
-            return playurl;
-        }
-
-        public void setPlayurl(String playurl) {
-            this.playurl = playurl;
-        }
-
-        public String getDownurl() {
-            return downurl;
-        }
-
-        public void setDownurl(String downurl) {
-            this.downurl = downurl;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String getUp_user() {
-            return up_user;
-        }
-
-        public void setUp_user(String up_user) {
-            this.up_user = up_user;
-        }
-
-        public String getUp_user_logo() {
-            return up_user_logo;
-        }
-
-        public void setUp_user_logo(String up_user_logo) {
-            this.up_user_logo = up_user_logo;
-        }
-
-        public String getUp_good() {
-            return up_good;
-        }
-
-        public void setUp_good(String up_good) {
-            this.up_good = up_good;
-        }
-    }
-
-    public static class MusiclistBean {
-        /**
-         * songid : 38579
-         * mpic : http://newappx.songtasty.com/attachment/nopic.gif
-         * name : .我的世界里没冲动没浪漫，只有简简单单的喜欢和不喜欢。
-         * playurl : https://x128.bailemi.com/attachment/20190807/1YSEtmNfnCcD5g4dVQsv.mp3
-         * downurl : https://x128.bailemi.com/attachment/20190807/1YSEtmNfnCcD5g4dVQsv.mp3
-         * uid : 22747
-         * up_user : 小丑鱼
-         * up_user_logo : https://x128.bailemi.com/attachment/20190806/5Bo0YxTg2pVZwPrusWJO.jpg
-         * up_good : 4
-         */
-
-        private String songid;
-        private String mpic;
-        private String name;
-        private String playurl;
-        private String downurl;
-        private String uid;
-        private String up_user;
-        private String up_user_logo;
-        private String up_good;
-
-        public String getSongid() {
-            return songid;
-        }
-
-        public void setSongid(String songid) {
-            this.songid = songid;
-        }
-
-        public String getMpic() {
-            return mpic;
-        }
-
-        public void setMpic(String mpic) {
-            this.mpic = mpic;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getPlayurl() {
-            return playurl;
-        }
-
-        public void setPlayurl(String playurl) {
-            this.playurl = playurl;
-        }
-
-        public String getDownurl() {
-            return downurl;
-        }
-
-        public void setDownurl(String downurl) {
-            this.downurl = downurl;
-        }
-
-        public String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String getUp_user() {
-            return up_user;
-        }
-
-        public void setUp_user(String up_user) {
-            this.up_user = up_user;
-        }
-
-        public String getUp_user_logo() {
-            return up_user_logo;
-        }
-
-        public void setUp_user_logo(String up_user_logo) {
-            this.up_user_logo = up_user_logo;
-        }
-
-        public String getUp_good() {
-            return up_good;
-        }
-
-        public void setUp_good(String up_good) {
-            this.up_good = up_good;
-        }
-    }
-
-    public static class GuestlistBean {
-        /**
-         * songid : 4929
-         * mpic : http://newappx.songtasty.com/attachment/nopic.gif
-         * name : Kika-Guess It’s Alright
-         * playurl : http://st.bailemi.com/20180224/D7TBYHG7E7s5bp6irrFAz7pFAkeCPkGh.mp3
-         * downurl : http://st.bailemi.com/20180224/D7TBYHG7E7s5bp6irrFAz7pFAkeCPkGh.mp3
-         * uid : 46
-         * up_user : jqw1992
-         * up_user_logo : http://st.bailemi.com/20170829/T4CtzG3BQE6piUVkZojL.png
-         * up_good : 4
-         */
-
-        private String songid;
-        private String mpic;
-        private String name;
-        private String playurl;
-        private String downurl;
-        private String uid;
-        private String up_user;
-        private String up_user_logo;
-        private String up_good;
-
-        public String getSongid() {
-            return songid;
-        }
-
-        public void setSongid(String songid) {
-            this.songid = songid;
-        }
-
-        public String getMpic() {
-            return mpic;
-        }
-
-        public void setMpic(String mpic) {
-            this.mpic = mpic;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getPlayurl() {
-            return playurl;
-        }
-
-        public void setPlayurl(String playurl) {
-            this.playurl = playurl;
-        }
-
-        public String getDownurl() {
-            return downurl;
-        }
-
-        public void setDownurl(String downurl) {
-            this.downurl = downurl;
-        }
-
-        public String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String getUp_user() {
-            return up_user;
-        }
-
-        public void setUp_user(String up_user) {
-            this.up_user = up_user;
-        }
-
-        public String getUp_user_logo() {
-            return up_user_logo;
-        }
-
-        public void setUp_user_logo(String up_user_logo) {
-            this.up_user_logo = up_user_logo;
-        }
-
-        public String getUp_good() {
-            return up_good;
-        }
-
-        public void setUp_good(String up_good) {
-            this.up_good = up_good;
-        }
-    }
 
     public static class NewslistBean {
         /**

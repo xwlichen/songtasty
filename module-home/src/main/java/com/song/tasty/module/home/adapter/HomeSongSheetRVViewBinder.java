@@ -4,6 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.smart.ui.utils.SMUIDisplayHelper;
 import com.song.tasty.common.app.widget.decoration.RecyclerLinearDecoration;
 import com.song.tasty.module.home.R;
@@ -12,9 +16,6 @@ import com.song.tasty.module.home.entity.SongSheetListBean;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import me.drakeet.multitype.ItemViewBinder;
 
 import static com.song.tasty.common.app.widget.decoration.RecyclerLinearDecoration.SPACE_RIGHT_OR_BOTTOM;
@@ -23,7 +24,7 @@ import static com.song.tasty.common.app.widget.decoration.RecyclerLinearDecorati
  * @date : 2019-08-30 17:30
  * @author: lichen
  * @email : 1960003945@qq.com
- * @description :
+ * @description : 首页-推荐歌单rv
  */
 public class HomeSongSheetRVViewBinder extends ItemViewBinder<SongSheetListBean, HomeSongSheetRVViewBinder.ViewHolder> {
 

@@ -11,18 +11,19 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_white"
         android:gravity="center"
         android:orientation="vertical">
 
         <com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_white" />
+                android:layout_height="match_parent" />
         </com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout>
 
 
