@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.hjq.toast.ToastUtils;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.HomeNavBean;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
@@ -28,14 +27,14 @@ public class HomeNavViewBinder extends ItemViewBinder<HomeNavBean, HomeNavViewBi
     @NonNull
     @Override
     protected ViewHodler onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.home_item_home_title, parent, false);
+        View root = inflater.inflate(R.layout.home_item_rv, parent, false);
         return new ViewHodler(root);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHodler holder, @NonNull HomeNavBean item) {
-        holder.tvTitle.setText(item.getTitle());
-        holder.title = item.getTitle();
+        holder.tvTitle.setText(item.getText());
+        holder.title = item.getText();
 
 
     }
