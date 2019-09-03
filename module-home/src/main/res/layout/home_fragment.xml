@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,24 +9,57 @@
             type="com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!--<com.smart.ui.widget.SMUIWindowInsetLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_white"
+        android:fitsSystemWindows="true"
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout
-            android:id="@+id/refresh"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/color_transparent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvContainer"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout>
+                android:layout_height="wrap_content"
+                android:background="@color/color_transparent"
+                app:contentScrim="@color/color_white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+                <include
+                    android:id="@+id/titlebar"
+                    layout="@layout/layout_nav_titlebar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_035"
+                    android:layout_marginTop="@dimen/dp_015"
+                    android:layout_marginBottom="@dimen/dp_015" />
 
-    </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout>
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!--</com.smart.ui.widget.SMUIWindowInsetLayout>-->
 </layout>

@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.LogUtils;
+import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.core.base.BaseMvvmFragment;
 import com.song.tasty.common.core.base.BaseViewModel;
@@ -49,8 +50,8 @@ public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends Base
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-//        SMUIStatusBarHelper.translucent(getActivity());
-//        SMUIStatusBarHelper.setStatusBarLightMode(getActivity());
+        SMUIStatusBarHelper.translucent(getActivity());
+        SMUIStatusBarHelper.setStatusBarLightMode(getActivity());
         super.onCreate(savedInstanceState);
     }
 

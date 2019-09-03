@@ -9,4 +9,7 @@
     <string name="error_parse">解析服务器响应数据失败</string>
     <string name="error_unknown">未知错误</string>
     <string name="error_response_return">服务器返回数据失败</string>
+
+    <string name="search">搜索</string>
+
 </resources>

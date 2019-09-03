@@ -10,8 +10,11 @@
     <color name="color_primary_pressed">#a60d08</color>
     <color name="corlor_line">#EEEEEE</color>
 
+    <color name="color_transparent">#00000000</color>
 
     <color name="color_white">#ffffff</color>
+    <color name="color_white_50">#80ffffff</color>
+
     <color name="corlor_black">#000000</color>
 
     <color name="corlor_333333">#333333</color>

@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -77,6 +79,10 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
     @Override
     public void initView() {
 
+        ConstraintLayout rootTitleBar = getActivity().findViewById(R.id.titlebar).findViewById(R.id.rootTitleBar);
+        TextView tvTitle = rootTitleBar.findViewById(R.id.tvTitle);
+        tvTitle.setText(getResources().getString(R.string.home_home));
+
         adapter = new MultiTypeAdapter();
         adapter.register(BannerListBean.class, new HomeBannerViewBinder());
         adapter.register(HomeNavListBean.class, new HomeNavRVViewBinder());
@@ -137,25 +143,25 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
 
 
         //歌单
-        items.add(new HomeTitleBean("官方歌单"));
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_offocal_song_sheet)));
         List<SongSheetBean> songSheetList = result.getGedanx();
         songSheetList.remove(songSheetList.size() - 1);
         items.add(new SongSheetListBean(songSheetList));
 
         //新歌推荐
-        items.add(new HomeTitleBean("新歌推荐"));
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_recomend_new_song)));
         List<SongBean> danceist = result.getDancelist();
         danceist.remove(danceist.size() - 1);
         items.addAll(danceist);
 
         //每日榜单
-        items.add(new HomeTitleBean("每日榜单"));
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_day_list)));
         List<SongBean> musicList = result.getMusiclist();
         musicList.remove(musicList.size() - 1);
         items.addAll(musicList);
 
         //猜你喜欢
-        items.add(new HomeTitleBean("猜你喜欢"));
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_you_like)));
         List<SongBean> guestList = result.getGuestlist();
 //        guestList.remove(guestList.size() - 1);
         items.addAll(guestList);
@@ -172,20 +178,20 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
             list.add(bean);
         }
 
-        list.get(0).setText("歌单");
+        list.get(0).setText(getResources().getString(R.string.home_song_sheet));
         list.get(0).setImgRes(R.mipmap.ic_home_nav_songsheet);
 
-        list.get(1).setText("歌手");
+        list.get(1).setText(getResources().getString(R.string.home_singer));
         list.get(1).setImgRes(R.mipmap.ic_home_nav_singer);
 
-        list.get(2).setText("随便听");
+        list.get(2).setText(getResources().getString(R.string.home_random));
         list.get(2).setImgRes(R.mipmap.ic_home_nav_random);
 
-        list.get(3).setText("总榜");
+        list.get(3).setText(getResources().getString(R.string.home_total_list));
         list.get(3).setImgRes(R.mipmap.ic_home_nav_list);
 
 
-        list.get(4).setText("分类");
+        list.get(4).setText(getResources().getString(R.string.home_sort));
         list.get(4).setImgRes(R.mipmap.ic_home_nav_sort);
 
 

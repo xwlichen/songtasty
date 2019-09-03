@@ -6,9 +6,9 @@
 
         <!--相关attrs 初始化-->
 
-        <item name="colorPrimary">@color/smui_btn_primary_bg</item>
-        <item name="colorPrimaryDark">@color/smui_btn_primary_bg</item>
-        <item name="colorAccent">@color/smui_btn_primary_bg</item>
+        <item name="colorPrimary">@color/color_primary_normal</item>
+        <item name="colorPrimaryDark">@color/color_primary_normal</item>
+        <item name="colorAccent">@color/color_primary_normal</item>
 
         <!--字体大小-->
         <item name="app_txt_size_large">@dimen/txt_size_large</item>
