@@ -1,6 +1,13 @@
 apply plugin: 'com.android.library'
 apply from: '../common-setting.gradle'
 
+
+android {
+    dataBinding {
+        enabled true
+    }
+
+}
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 

@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -79,8 +78,9 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
     @Override
     public void initView() {
 
-        ConstraintLayout rootTitleBar = getActivity().findViewById(R.id.titlebar).findViewById(R.id.rootTitleBar);
-        TextView tvTitle = rootTitleBar.findViewById(R.id.tvTitle);
+
+        TextView tvTitle = binding.getRoot().findViewById(R.id.titlebar).findViewById(R.id.tvTitle);
+//        TextView tvTitle = rootTitleBar.findViewById(R.id.tvTitle);
         tvTitle.setText(getResources().getString(R.string.home_home));
 
         adapter = new MultiTypeAdapter();

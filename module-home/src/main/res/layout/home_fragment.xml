@@ -18,17 +18,17 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/app_bg">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_transparent">
+            android:background="@color/app_bg">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_transparent"
                 app:contentScrim="@color/color_white"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 

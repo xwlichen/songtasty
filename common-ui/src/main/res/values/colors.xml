@@ -4,6 +4,7 @@
     <color name="app_txt_color2">#666666</color>
     <color name="app_txt_color3">#999999</color>
     <color name="app_img_mask_color">#4D000000</color>
+    <color name="app_bg">#F4F4F4</color>
 
 
     <color name="color_primary_normal">#EC512C</color>
@@ -19,6 +20,8 @@
 
     <color name="corlor_333333">#333333</color>
     <color name="color_EC512C">#EC512C</color>
+    <color name="color_E0E0E0">#E0E0E0</color>
+    <color name="color_F0F0F0">#F0F0F0</color>
 
 
 </resources>
