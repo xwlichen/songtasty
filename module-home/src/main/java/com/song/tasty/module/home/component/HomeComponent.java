@@ -5,14 +5,14 @@ import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.song.tasty.module.home.mvvm.ui.HomeFragment;
 
+import static com.song.tasty.common.app.AppRouters.GET_FRAGMENT;
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
-import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
 
 /**
  * @author lichen
  * @date ：2018/9/18 下午2:29
  * @email : 196003945@qq.com
- * @description :
+ * @description : HomeComponent 对{@link HomeFragment}的开放Api
  */
 public class HomeComponent implements IComponent {
 
@@ -26,7 +26,7 @@ public class HomeComponent implements IComponent {
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT:
+            case GET_FRAGMENT:
                 getHomeFragment(cc);
                 break;
             default:
@@ -40,7 +40,7 @@ public class HomeComponent implements IComponent {
 
 
     /**
-     * 获取homefragment
+     * 获取 {@link HomeFragment} 对象
      *
      * @param cc
      */

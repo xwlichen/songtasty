@@ -20,4 +20,13 @@ public class SongSheetDetailActivity extends BaseAppActivity {
     protected int getLayoutResId() {
         return R.layout.home_activity_song_sheet_activity;
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (mHeaderBehavior != null && mHeaderBehavior.isClosed()) {
+//            mHeaderBehavior.openHeader();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 }

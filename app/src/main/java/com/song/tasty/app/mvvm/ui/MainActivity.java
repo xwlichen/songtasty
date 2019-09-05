@@ -16,7 +16,6 @@ import com.song.tasty.app.BR;
 import com.song.tasty.app.R;
 import com.song.tasty.app.databinding.AppActivityMainBinding;
 import com.song.tasty.app.mvvm.viewmodel.MainViewModel;
-import com.song.tasty.common.app.AppRouters;
 import com.song.tasty.common.app.base.BaseAppActivity;
 
 import java.util.ArrayList;
@@ -25,11 +24,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
+import static com.song.tasty.common.app.AppRouters.GET_FRAGMENT;
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
 import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN;
-import static com.song.tasty.common.app.AppRouters.MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT;
 import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN;
-import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
 
 
 public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainViewModel> {
@@ -52,8 +50,8 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
     public void initView() {
         initNav();
 
-        CC.obtainBuilder(AppRouters.HOME_COMP_MAIN)
-                .setActionName(HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT)
+        CC.obtainBuilder(HOME_COMP_MAIN)
+                .setActionName(GET_FRAGMENT)
                 .build()
                 .callAsyncCallbackOnMainThread(fragmentCallback);
 
@@ -122,7 +120,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
         @Override
         public void onResult(CC cc, CCResult result) {
             if (result.isSuccess()) {
-                String tag = cc.getActionName();
+                String tag = cc.getComponentName() + cc.getActionName();
                 Fragment fragment = fragments.get(tag);
                 if (fragment == null) {
                     Fragment newFragment = result.getDataItemWithNoKey();
@@ -168,10 +166,10 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
 
         switch (posotion) {
             case 0:
-                currentFragment = fragments.get(HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT);
-                tag = HOME_COMP_MAIN_ACTION_GET_HOMEFRAGMENT;
+                currentFragment = fragments.get(HOME_COMP_MAIN + GET_FRAGMENT);
+                tag = GET_FRAGMENT;
                 if (currentFragment == null) {
-                    CC.obtainBuilder(AppRouters.HOME_COMP_MAIN)
+                    CC.obtainBuilder(HOME_COMP_MAIN)
                             .setActionName(tag)
                             .build()
                             .callAsyncCallbackOnMainThread(fragmentCallback);
@@ -181,8 +179,8 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 break;
             case 1:
 
-                currentFragment = fragments.get(VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT);
-                tag = VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
+                currentFragment = fragments.get(VIDEO_COMP_MAIN + GET_FRAGMENT);
+                tag = GET_FRAGMENT;
                 if (currentFragment == null) {
                     CC.obtainBuilder(VIDEO_COMP_MAIN)
                             .setActionName(tag)
@@ -193,11 +191,11 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 }
                 break;
             case 2:
-                currentFragment = fragments.get(MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT);
-                tag = MINE_COMP_MAIN_ACTION_GET_MINEFRAGMENT;
+                currentFragment = fragments.get(MINE_COMP_MAIN + GET_FRAGMENT);
+                tag = GET_FRAGMENT;
                 if (currentFragment == null) {
                     CC.obtainBuilder(MINE_COMP_MAIN)
-                            .setActionName(tag)
+                            .setActionName(GET_FRAGMENT)
                             .build()
                             .callAsyncCallbackOnMainThread(fragmentCallback);
                 } else {

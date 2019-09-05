@@ -11,4 +11,10 @@
     <string name="refresh_nomore">没有更多</string>
 
 
+    <string name="behavior_content">com.song.tasty.common.ui.widget.behavior.ContentBehavior</string>
+    <string name="behavior_header">com.song.tasty.common.ui.widget.behavior.HeaderBehavior</string>
+    <string name="behavior_title">com.song.tasty.common.ui.widget.behavior.TitleBehavior</string>
+    <string name="behavior_tab">com.song.tasty.common.ui.widget.behavior.TabBehavior</string>
+
+
 </resources>

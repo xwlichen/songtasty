@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.tasty.common.app.base.BaseRecyclerAdapter;
+import com.song.tasty.common.app.listeners.OnAntiDoubleClickListener;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.HomeNavBean;
 
@@ -50,11 +51,23 @@ public class HomeNavAdapter extends BaseRecyclerAdapter<HomeNavBean, HomeNavAdap
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivNav;
         TextView tvNav;
+        HomeNavBean bean;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivNav = itemView.findViewById(R.id.ivNav);
             tvNav = itemView.findViewById(R.id.tvNav);
+
+            ivNav.setOnClickListener(new OnAntiDoubleClickListener() {
+                @Override
+                public void onAntiDoubleClick(View v) {
+
+                }
+            });
         }
+
+
     }
+
+
 }

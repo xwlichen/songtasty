@@ -5,8 +5,8 @@ import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.song.tasty.module.video.mvvm.ui.VideoFragment;
 
+import static com.song.tasty.common.app.AppRouters.GET_FRAGMENT;
 import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN;
-import static com.song.tasty.common.app.AppRouters.VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT;
 
 /**
  * @author lichen
@@ -26,7 +26,7 @@ public class VideoComponent implements IComponent {
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case VIDEO_COMP_MAIN_ACTION_GET_VIDEOFRAGMENT:
+            case GET_FRAGMENT:
                 getHomeFragment(cc);
                 break;
             default:
