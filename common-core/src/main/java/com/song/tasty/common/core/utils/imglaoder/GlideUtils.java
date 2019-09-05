@@ -1,4 +1,4 @@
-package com.song.tasty.common.core.utils;
+package com.song.tasty.common.core.utils.imglaoder;
 
 import android.content.Context;
 import android.graphics.Bitmap;

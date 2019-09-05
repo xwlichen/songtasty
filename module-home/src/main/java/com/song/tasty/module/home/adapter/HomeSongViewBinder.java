@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.smart.ui.widget.image.SMUIImageView;
-import com.song.tasty.common.core.utils.GlideUtils;
+import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.SongBean;
 

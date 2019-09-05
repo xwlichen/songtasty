@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.song.tasty.common.core.utils.GlideUtils;
+import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.common.ui.widget.banner.holder.BannerHolderCreator;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.BannerBean;
