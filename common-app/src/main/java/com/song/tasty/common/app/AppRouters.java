@@ -17,6 +17,19 @@ public interface AppRouters {
     String START_ACTIVITY = "startActivity";
 
 
+    //---------------------------------------------登录模块相关开放api------------------------------------------------------
+    /**
+     * LoginComponent 对LoginActivity的开放Api
+     * (@link com.song.tasty.module.login.component.LoginComponent for LoginActivity )
+     */
+    String LOGIN_COMP_MAIN = "module.login.component.main";
+
+    //---------------------------------------------登录模块相关开放api------------------------------------------------------
+
+
+
+
+
     //---------------------------------------------首页模块相关开放api------------------------------------------------------
 
     /**

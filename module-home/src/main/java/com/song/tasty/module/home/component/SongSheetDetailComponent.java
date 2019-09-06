@@ -6,7 +6,7 @@ import com.billy.cc.core.component.IComponent;
 import com.song.tasty.common.core.AppManager;
 import com.song.tasty.module.home.mvvm.ui.SongSheetDetailActivity;
 
-import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_SONGSHEETDETAIL;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
@@ -20,7 +20,7 @@ public class SongSheetDetailComponent implements IComponent {
     @Override
 
     public String getName() {
-        return HOME_COMP_MAIN;
+        return HOME_COMP_SONGSHEETDETAIL;
     }
 
     @Override

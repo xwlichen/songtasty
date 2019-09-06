@@ -30,7 +30,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     private static final int DURATION_LONG = 600;
 
     private int mCurState = STATE_OPENED;
-    private OnHeaderStateListener mHeaderStateListener;
+    private OnHeaderStateListener headerStateListener;
 
     private OverScroller mOverScroller;
 
@@ -237,14 +237,14 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         if (mCurState != newState) {
             mCurState = newState;
 
-            if (mHeaderStateListener == null) {
+            if (this.headerStateListener == null) {
                 return;
             }
 
             if (mCurState == STATE_OPENED) {
-                mHeaderStateListener.onHeaderOpened();
+                this.headerStateListener.onHeaderOpened();
             } else {
-                mHeaderStateListener.onHeaderClosed();
+                this.headerStateListener.onHeaderClosed();
             }
         }
     }
@@ -298,7 +298,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     }
 
     public void setHeaderStateListener(OnHeaderStateListener headerStateListener) {
-        mHeaderStateListener = headerStateListener;
+        this.headerStateListener = headerStateListener;
     }
 
     public interface OnHeaderStateListener {

@@ -1,4 +1,4 @@
-package com.song.tasty.module.login.action;
+package com.song.tasty.module.login.component;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,24 +9,27 @@ import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
 import com.song.tasty.module.login.mvvm.ui.LoginActivity;
 
+import static com.song.tasty.common.app.AppRouters.LOGIN_COMP_MAIN;
+import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
+
 /**
  * @author lichen
  * @date ：2018/9/18 下午2:29
  * @email : 196003945@qq.com
  * @description :
  */
-public class LoginAction implements IComponent {
+public class LoginComponent implements IComponent {
     @Override
     public String getName() {
-        return "module_login.login";
+        return LOGIN_COMP_MAIN;
     }
 
     @Override
     public boolean onCall(CC cc) {
         String actionName = cc.getActionName();
         switch (actionName) {
-            case "showActivityA":
-                openActivity(cc);
+            case START_ACTIVITY:
+                startActivity(cc);
                 break;
             default:
                 //这个逻辑分支上没有调用CC.sendCCResult(...),是一种错误的示例
@@ -38,7 +41,7 @@ public class LoginAction implements IComponent {
     }
 
 
-    private void openActivity(CC cc) {
+    private void startActivity(CC cc) {
         Context context = cc.getContext();
         Intent intent = new Intent(context, LoginActivity.class);
         if (!(context instanceof Activity)) {

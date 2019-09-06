@@ -10,10 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.billy.cc.core.component.CC;
+import com.song.tasty.common.app.AppRouters;
 import com.song.tasty.common.app.base.BaseRecyclerAdapter;
 import com.song.tasty.common.app.listeners.OnAntiDoubleClickListener;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.HomeNavBean;
+
+import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
  * @date : 2019-08-30 17:30
@@ -61,6 +65,10 @@ public class HomeNavAdapter extends BaseRecyclerAdapter<HomeNavBean, HomeNavAdap
             ivNav.setOnClickListener(new OnAntiDoubleClickListener() {
                 @Override
                 public void onAntiDoubleClick(View v) {
+                    CC cc = CC.obtainBuilder(AppRouters.HOME_COMP_SONGSHEETDETAIL)
+                            .setActionName(START_ACTIVITY)
+                            .build();
+                    cc.call();
 
                 }
             });
