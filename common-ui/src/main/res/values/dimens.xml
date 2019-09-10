@@ -193,6 +193,7 @@
     <dimen name="dp_173">173dp</dimen>
     <dimen name="dp_174">174dp</dimen>
     <dimen name="dp_175">175dp</dimen>
+    <dimen name="dp_175_negative">-175dp</dimen>
     <dimen name="dp_176">176dp</dimen>
     <dimen name="dp_177">177dp</dimen>
     <dimen name="dp_178">178dp</dimen>

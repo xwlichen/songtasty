@@ -34,8 +34,8 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
-        float tabScrollY = dependency.getTranslationY() / getHeaderOffset() * (dependency.getHeight() - getTitleHeight());
-        float y = dependency.getHeight() - tabScrollY;
+        float tabScrollY = (1.0f - dependency.getTranslationY() / getHeaderOffset()) * (dependency.getHeight() - 2 * getTitleHeight());
+        float y = dependency.getHeight() - tabScrollY - getTitleHeight();
         child.setY(y);
         return true;
     }

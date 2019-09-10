@@ -31,7 +31,7 @@
         app:layout_constraintLeft_toRightOf="@id/ivCover"
         app:layout_constraintRight_toLeftOf="@id/ivOption"
         app:layout_constraintTop_toTopOf="@id/ivCover"
-        tool:text="野狼disco" />
+        android:text="野狼disco" />
 
     <TextView
         android:id="@+id/tvSinger"
