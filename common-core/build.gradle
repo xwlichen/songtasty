@@ -15,6 +15,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["palette"]
     api rootProject.ext.dependencies["lifecycle-entensions"]
     annotationProcessor rootProject.ext.dependencies["lifecycle-compiler"]
 

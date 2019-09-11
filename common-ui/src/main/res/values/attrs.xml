@@ -14,4 +14,12 @@
         </attr>
         <attr name="middle_page_cover" format="boolean" />
     </declare-styleable>
+
+
+    <declare-styleable name="GradientView">
+        <attr name="gradientModel" format="enum">
+            <!--线性渐变-->
+            <enum name="LINEAR" value="0" />
+        </attr>
+    </declare-styleable>
 </resources>

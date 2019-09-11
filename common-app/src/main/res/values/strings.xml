@@ -12,4 +12,9 @@
 
     <string name="search">搜索</string>
 
+    <string name="like">喜欢</string>
+    <string name="comment">评论</string>
+    <string name="share">分享</string>
+
+
 </resources>

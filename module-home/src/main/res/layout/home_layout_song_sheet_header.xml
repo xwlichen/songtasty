@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_txt_color2"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp_016"
+    android:paddingRight="@dimen/dp_016"
+    android:paddingBottom="@dimen/dp_020">
+
+    <com.song.tasty.common.ui.widget.GradientView
+        android:id="@+id/bgGradient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivCover"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:background="@color/color_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:smui_radius="@dimen/dp_06" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/AppTextAppearance.Big.Bold"
+        android:layout_width="@dimen/dp_00"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_016"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_white"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="五官美学" />
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivHead"
+        android:layout_width="@dimen/dp_025"
+        android:layout_height="@dimen/dp_025"
+        android:layout_marginLeft="@dimen/dp_016"
+        android:layout_marginTop="@dimen/dp_05"
+        android:src="@color/color_white"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:smui_isCircle="true" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        style="@style/AppTextAppearance.middle"
+        android:layout_width="@dimen/dp_00"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_06"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="@id/ivHead"
+        app:layout_constraintLeft_toRightOf="@id/ivHead"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivHead"
+        tool:text="小屋" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="@dimen/dp_020"
+        android:layout_height="@dimen/dp_020"
+        android:layout_marginTop="@dimen/dp_020"
+        android:src="@mipmap/ic_like"
+        app:layout_constraintLeft_toLeftOf="@id/ivCover"
+        app:layout_constraintTop_toBottomOf="@id/ivCover" />
+
+    <TextView
+        android:id="@+id/tvLike"
+        style="@style/AppTextAppearance.small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_03"
+        android:text="@string/like"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="@id/ivLike"
+        app:layout_constraintLeft_toRightOf="@id/ivLike"
+        app:layout_constraintTop_toTopOf="@id/ivLike" />
+
+
+    <!--<androidx.constraintlayout.widget.Barrier-->
+    <!--android:id="@+id/barrier"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:barrierDirection="right"-->
+    <!--app:constraint_referenced_ids="ivComment,tvComment" />-->
+
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="@dimen/dp_020"
+        android:layout_height="@dimen/dp_020"
+        android:layout_marginTop="@dimen/dp_020"
+        android:layout_marginRight="@dimen/dp_03"
+        android:src="@mipmap/ic_msg"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/tvLike"
+        app:layout_constraintRight_toLeftOf="@id/tvComment"
+        app:layout_constraintTop_toBottomOf="@id/ivCover" />
+
+    <TextView
+        android:id="@+id/tvComment"
+        style="@style/AppTextAppearance.small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comment"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="@id/ivComment"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toRightOf="@id/ivComment"
+        app:layout_constraintRight_toLeftOf="@id/ivShare"
+        app:layout_constraintTop_toTopOf="@id/ivComment" />
+
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="@dimen/dp_020"
+        android:layout_height="@dimen/dp_020"
+        android:layout_marginTop="@dimen/dp_020"
+        android:layout_marginRight="@dimen/dp_03"
+        android:src="@mipmap/ic_like"
+        app:layout_constraintRight_toLeftOf="@id/tvShare"
+        app:layout_constraintTop_toBottomOf="@id/ivCover" />
+
+    <TextView
+        android:id="@+id/tvShare"
+        style="@style/AppTextAppearance.small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="@id/ivShare"
+        app:layout_constraintRight_toRightOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="@id/ivShare" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
