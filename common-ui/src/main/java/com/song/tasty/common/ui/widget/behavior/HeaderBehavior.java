@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.OverScroller;
 
 import androidx.annotation.NonNull;
@@ -54,9 +53,9 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     //tab上移结束后是否悬浮在固定位置
     private boolean tabSuspension = false;
 
-    private ImageView mImageView;
+    private View scaleView;
     private int mAppbarHeight;//记录AppbarLayout原始高度
-    private int mImageViewHeight;//记录ImageView原始高度
+    private int scaleViewHeight;//记录ImageView原始高度
 
     private static final float MAX_ZOOM_HEIGHT = 500;//放大最大高度
     private float mTotalDy;//手指在Y轴滑动的总距离
@@ -88,9 +87,9 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     private void initView(View view) {
         ((ViewGroup) view).setClipChildren(false);
         mAppbarHeight = view.getHeight();
-        mImageView = (ImageView) view.findViewById(R.id.ivheader);
-        if (mImageView != null) {
-            mImageViewHeight = mImageView.getHeight();
+        scaleView = view.findViewById(R.id.scaleBehaviorView);
+        if (scaleView != null) {
+            scaleViewHeight = scaleView.getHeight();
         }
     }
 
@@ -165,10 +164,10 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
             lastPosition = pos;
         }
 
-        if (mImageView != null && child.getBottom() >= mAppbarHeight && dy < 0 && type == ViewCompat.TYPE_TOUCH) {
+        if (scaleView != null && child.getBottom() >= mAppbarHeight && dy < 0 && type == ViewCompat.TYPE_TOUCH) {
             zoomHeaderImageView(child, dy);
         } else {
-            if (mImageView != null && child.getBottom() > mAppbarHeight && dy > 0 && type == ViewCompat.TYPE_TOUCH) {
+            if (scaleView != null && child.getBottom() > mAppbarHeight && dy > 0 && type == ViewCompat.TYPE_TOUCH) {
                 consumed[1] = dy;
                 zoomHeaderImageView(child, dy);
             } else {
@@ -182,10 +181,10 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
-        if (mImageView != null && child.getBottom() >= mAppbarHeight && dyConsumed < 0 && type == ViewCompat.TYPE_TOUCH) {
+        if (scaleView != null && child.getBottom() >= mAppbarHeight && dyConsumed < 0 && type == ViewCompat.TYPE_TOUCH) {
             zoomHeaderImageView(child, dyConsumed);
         } else {
-            if (mImageView != null && child.getBottom() > mAppbarHeight && dyConsumed > 0 && type == ViewCompat.TYPE_TOUCH) {
+            if (scaleView != null && child.getBottom() > mAppbarHeight && dyConsumed > 0 && type == ViewCompat.TYPE_TOUCH) {
 //                consumed[1] = dy;
                 zoomHeaderImageView(child, dyConsumed);
             } else {
@@ -445,9 +444,9 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         mTotalDy += -dy;
         mTotalDy = Math.min(mTotalDy, MAX_ZOOM_HEIGHT);
         mScaleValue = Math.max(1f, 1f + mTotalDy / MAX_ZOOM_HEIGHT);
-        ViewCompat.setScaleX(mImageView, mScaleValue);
-        ViewCompat.setScaleY(mImageView, mScaleValue);
-        mLastBottom = mAppbarHeight + (int) (mImageViewHeight / 2 * (mScaleValue - 1));
+        ViewCompat.setScaleX(scaleView, mScaleValue);
+        ViewCompat.setScaleY(scaleView, mScaleValue);
+        mLastBottom = mAppbarHeight + (int) (scaleViewHeight / 2 * (mScaleValue - 1));
         child.setBottom(mLastBottom);
     }
 
@@ -468,15 +467,15 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                     @Override
                     public void onAnimationUpdate(ValueAnimator animation) {
                         float value = (float) animation.getAnimatedValue();
-                        ViewCompat.setScaleX(mImageView, value);
-                        ViewCompat.setScaleY(mImageView, value);
+                        ViewCompat.setScaleX(scaleView, value);
+                        ViewCompat.setScaleY(scaleView, value);
                         view.setBottom((int) (mLastBottom - (mLastBottom - mAppbarHeight) * animation.getAnimatedFraction()));
                     }
                 });
                 valueAnimator.start();
             } else {
-                ViewCompat.setScaleX(mImageView, 1f);
-                ViewCompat.setScaleY(mImageView, 1f);
+                ViewCompat.setScaleX(scaleView, 1f);
+                ViewCompat.setScaleY(scaleView, 1f);
                 view.setBottom(mAppbarHeight);
             }
         }

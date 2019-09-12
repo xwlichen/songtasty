@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="header" type="id"></item>
-    <item name="ivheader" type="id"></item>
+    <item name="scaleBehaviorView" type="id"></item>
 
 </resources>

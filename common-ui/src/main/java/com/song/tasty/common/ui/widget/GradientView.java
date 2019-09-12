@@ -97,6 +97,9 @@ public class GradientView extends View {
         if (width <= 0) {
             return;
         }
+        if (colorList == null || colorList.length <= 0) {
+            return;
+        }
         switch (model) {
             case MODEL_LINEAR:
                 if (linearGradient == null) {
