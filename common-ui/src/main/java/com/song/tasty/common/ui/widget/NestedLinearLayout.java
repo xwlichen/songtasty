@@ -35,6 +35,7 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
     public NestedLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setNestedScrollingEnabled(true);
+        requestDisallowInterceptTouchEvent(true);
     }
 
     @Override
@@ -50,6 +51,11 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
                 int dy = lastY - y;
                 lastY = y;
                 dispatchNestedPreScroll(0, dy, consumed, offset);
+                requestDisallowInterceptTouchEvent(true);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                requestDisallowInterceptTouchEvent(true);
                 break;
             default:
                 break;

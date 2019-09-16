@@ -43,7 +43,7 @@ public class DisInterceptNestedScrollView extends NestedScrollView {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                requestDisallowInterceptTouchEvent(false);
+                requestDisallowInterceptTouchEvent(true);
                 break;
             default:
                 break;

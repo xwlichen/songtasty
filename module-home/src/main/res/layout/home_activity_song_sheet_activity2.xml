@@ -10,24 +10,21 @@
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_light"
+            android:background="@android:color/transparent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:layout_behavior="@string/behavior_header">
 
             <com.song.tasty.common.ui.widget.NestedLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false">
 
-                <TextView
-                    android:id="@+id/header_content"
-                    style="@style/TextAppearance.AppCompat.Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="220dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
-                    android:text="Hello World"
-                    android:textColor="@android:color/white" />
-
+                <com.song.tasty.common.ui.widget.GradientView
+                    android:id="@+id/scaleBehaviorView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:tag="overScroll" />
             </com.song.tasty.common.ui.widget.NestedLinearLayout>
         </FrameLayout>
 
@@ -44,9 +41,9 @@
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_045"
-            app:layout_behavior="@string/behavior_tab"
             android:background="@color/app_bg"
-            android:text="tab" />
+            android:text="tab"
+            app:layout_behavior="@string/behavior_tab" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvContainer"

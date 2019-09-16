@@ -6,72 +6,51 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+        <FrameLayout
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:clipChildren="false"
             android:clipToPadding="false"
-            app:layout_behavior="@string/appbar_overscroll_behavior">
+            app:layout_behavior="@string/behavior_header">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <com.song.tasty.common.ui.widget.NestedLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+                android:layout_height="wrap_content"
+                android:clipChildren="false">
 
-                <com.song.tasty.common.ui.widget.DisInterceptNestedScrollView
+                <com.song.tasty.common.ui.widget.GradientView
+                    android:id="@+id/scaleBehaviorView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.8">
+                    android:layout_height="300dp"
+                    android:tag="overScroll" />
+            </com.song.tasty.common.ui.widget.NestedLinearLayout>
+        </FrameLayout>
 
-                    <com.song.tasty.common.ui.widget.GradientView
-                        android:id="@+id/scaleBehaviorView"
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
-                        android:tag="overScroll" />
-                </com.song.tasty.common.ui.widget.DisInterceptNestedScrollView>
-
-                <!--<include-->
-                <!--android:id="@+id/scaleBehaviorView"-->
-                <!--layout="@layout/home_layout_song_sheet_header"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentBottom="true" />-->
-                <com.smart.ui.widget.SMUITopBar
-                    android:id="@+id/titleBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_045"
-                    android:tag="toolbar" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-            <TextView
-                android:id="@+id/tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_045"
-                android:background="@color/app_bg"
-                android:text="tab" />
-        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_045"
+            android:background="@color/app_txt_color3"
+            app:layout_behavior="@string/behavior_title">
 
 
-        <!--<com.smart.ui.widget.SMUITopBar-->
-        <!--android:id="@+id/titleBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:layout_behavior="@string/behavior_title" />-->
+        </LinearLayout>
 
+        <TextView
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_045"
+            android:background="@color/app_bg"
+            android:text="tab"
+            app:layout_behavior="@string/behavior_tab" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffffff"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_behavior="@string/behavior_content">
 
         </androidx.recyclerview.widget.RecyclerView>
 

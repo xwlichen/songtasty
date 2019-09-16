@@ -1,21 +1,25 @@
 package com.song.tasty.module.home.mvvm.ui;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 
-import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.tasty.common.app.base.BaseAppActivity;
-import com.song.tasty.common.app.base.BaseRecyclerAdapter;
 import com.song.tasty.module.home.R;
+import com.song.tasty.module.home.adapter.HomeSongViewBinder;
 import com.song.tasty.module.home.databinding.HomeActivitySongSheetActivityBinding;
+import com.song.tasty.module.home.entity.SongBean;
 import com.song.tasty.module.home.mvvm.viewmodel.SongSheetDetailViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import me.drakeet.multitype.Items;
+import me.drakeet.multitype.MultiTypeAdapter;
 
 /**
  * @date : 2019-09-05 15:14
@@ -24,6 +28,11 @@ import java.util.ArrayList;
  * @description :
  */
 public class SongSheetDetailActivity extends BaseAppActivity<HomeActivitySongSheetActivityBinding, SongSheetDetailViewModel> {
+
+
+    private MultiTypeAdapter adapter;
+    private Items items;
+
     @Override
     public int initVariableId() {
         return 0;
@@ -37,38 +46,26 @@ public class SongSheetDetailActivity extends BaseAppActivity<HomeActivitySongShe
 
     @Override
     public void initView() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.image3);
+        Palette palette = Palette.from(bitmap).generate();
+        int colorMain = palette.getDominantColor(ContextCompat.getColor(this, R.color.color_transparent));
+        binding.scaleBehaviorView.setColorList(new int[]{colorMain, Color.BLACK});
+
+        adapter = new MultiTypeAdapter();
+        adapter.register(SongBean.class, new HomeSongViewBinder());
+        items = new Items();
+
 
         binding.rvContainer.setLayoutManager(new LinearLayoutManager(this));
-        BaseRecyclerAdapter adapter = new BaseRecyclerAdapter(this) {
-            @NonNull
-            @Override
-            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View root = LayoutInflater.from(context).inflate(R.layout.home_item_song, parent, false);
-                return new ViewHolder(root);
-            }
 
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-                super.onBindViewHolder(holder, position);
-                ViewHolder viewHolder = (ViewHolder) holder;
-                viewHolder.textView.setText("测试" + position);
-            }
-
-            class ViewHolder extends RecyclerView.ViewHolder {
-                TextView textView;
-
-                public ViewHolder(@NonNull View itemView) {
-                    super(itemView);
-                    textView = itemView.findViewById(R.id.tvName);
-                }
-            }
-        };
         binding.rvContainer.setAdapter(adapter);
-//        List list=new
-//        for (int i = 0; i <30 ; i++) {
-//
-//        }
-        adapter.setData(new ArrayList(30));
+        List<SongBean> list = new ArrayList(30);
+        for (int i = 0; i < 30; i++) {
+            SongBean songBean = new SongBean();
+            songBean.setName("测试" + i);
+            items.add(songBean);
+        }
+        adapter.setItems(items);
 
     }
 

@@ -13,7 +13,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
  * @description :
  */
 public class ViewOffsetBehavior<V extends View> extends CoordinatorLayout.Behavior<V> {
-    private BehaviorHelper behaviorHelper;
+    private ViewOffsetHelper behaviorHelper;
 
     private int tempTopBottomOffset = 0;
     private int tempLeftRightOffset = 0;
@@ -31,7 +31,7 @@ public class ViewOffsetBehavior<V extends View> extends CoordinatorLayout.Behavi
         layoutChild(parent, child, layoutDirection);
 
         if (behaviorHelper == null) {
-            behaviorHelper = new BehaviorHelper(child);
+            behaviorHelper = new ViewOffsetHelper(child);
         }
         behaviorHelper.onViewLayout();
 

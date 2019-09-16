@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
@@ -64,8 +65,6 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
             }
         }
         abl.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-
-
             @Override
             public final void onOffsetChanged(AppBarLayout appBarLayout, int i) {
                 mToolBar.setAlpha(Float.valueOf(Math.abs(i)) / Float.valueOf(appBarLayout.getTotalScrollRange()));
@@ -97,12 +96,17 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
     }
 
+    @Override
+    public boolean onNestedFling(@NonNull CoordinatorLayout coordinatorLayout, @NonNull AppBarLayout child, @NonNull View target, float velocityX, float velocityY, boolean consumed) {
+        return super.onNestedFling(coordinatorLayout, child, target, velocityX, velocityY, consumed);
+    }
 
     @Override
     public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, float velocityX, float velocityY) {
         if (velocityY > 100) {//当y速度>100,就秒弹回
             isAnimate = false;
         }
+//        return true;
         return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY);
     }
 
@@ -165,7 +169,9 @@ public class AppBarLayoutOverScrollViewBehavior extends AppBarLayout.Behavior {
         if (isRecovering) {
             return;
         }
+
         if (mTotalDy > 0) {
+
             isRecovering = true;
             mTotalDy = 0;
             if (isAnimate) {
