@@ -11,14 +11,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:clipChildren="false"
-            android:clipToPadding="false"
+            android:visibility="visible"
             app:layout_behavior="@string/behavior_header">
 
             <com.song.tasty.common.ui.widget.NestedLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="false">
+                android:layout_height="wrap_content">
 
                 <com.song.tasty.common.ui.widget.GradientView
                     android:id="@+id/scaleBehaviorView"
@@ -45,14 +43,13 @@
             android:text="tab"
             app:layout_behavior="@string/behavior_tab" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#ffffff"
-            app:layout_behavior="@string/behavior_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
+            android:visibility="visible"
+            app:layout_behavior="@string/behavior_content" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

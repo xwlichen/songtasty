@@ -21,7 +21,7 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
     private final int[] offset = new int[2];
     private final int[] consumed = new int[2];
 
-    private NestedScrollingChildHelper scrollingChildHelper;
+    private NestedScrollingChildHelper mScrollingChildHelper;
     private int lastY;
 
     public NestedLinearLayout(Context context) {
@@ -35,7 +35,6 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
     public NestedLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setNestedScrollingEnabled(true);
-        requestDisallowInterceptTouchEvent(true);
     }
 
     @Override
@@ -51,13 +50,6 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
                 int dy = lastY - y;
                 lastY = y;
                 dispatchNestedPreScroll(0, dy, consumed, offset);
-                requestDisallowInterceptTouchEvent(true);
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                requestDisallowInterceptTouchEvent(true);
-                break;
-            default:
                 break;
         }
         return true;
@@ -117,9 +109,9 @@ public class NestedLinearLayout extends LinearLayout implements NestedScrollingC
     }
 
     private NestedScrollingChildHelper getScrollingChildHelper() {
-        if (scrollingChildHelper == null) {
-            scrollingChildHelper = new NestedScrollingChildHelper(this);
+        if (mScrollingChildHelper == null) {
+            mScrollingChildHelper = new NestedScrollingChildHelper(this);
         }
-        return scrollingChildHelper;
+        return mScrollingChildHelper;
     }
 }
