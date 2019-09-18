@@ -26,12 +26,27 @@ public class TabBehavior extends CoordinatorLayout.Behavior<View> {
         mContext = context;
     }
 
+    /**
+     * * 表示是否给应用了Behavior 的View 指定一个依赖的布局，通常，当依赖的View 布局发生变化时
+     * * 不管被被依赖View 的顺序怎样，被依赖的View也会重新布局
+     *
+     * @param parent
+     * @param child
+     * @param dependency
+     * @return
+     */
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
         return isDependOn(dependency);
     }
 
-
+    /**
+     * 当被依赖的View 状态（如：位置、大小）发生变化时，这个方法被调用
+     * @param parent
+     * @param child
+     * @param dependency
+     * @return
+     */
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
         float tabScrollY = (dependency.getTranslationY() / getHeaderOffset()) * (dependency.getHeight() - 2 * getTitleHeight());

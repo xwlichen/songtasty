@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.smart.ui.LogUtils;
 import com.song.tasty.common.ui.R;
 import com.song.tasty.common.ui.widget.NestedLinearLayout;
 
@@ -66,6 +67,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         mOverScroller = new OverScroller(mContext);
     }
 
+    //可以重写这个方法对子View 进行重新布局
     @Override
     protected void layoutChild(CoordinatorLayout parent, View child, int layoutDirection) {
         super.layoutChild(parent, child, layoutDirection);
@@ -74,23 +76,75 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     }
 
 
-    @Override
-    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int axes) {
-
 //    @Override
-//    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+//    public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int axes) {
+//
+////    @Override
+////    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+//
+//        if (tabSuspension) {
+//            return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0 && !isClosed();
+//        }
+//        return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
+//    }
 
+
+    /**
+     * 当coordinatorLayout 的子View试图开始嵌套滑动的时候被调用。当返回值为true的时候表明
+     * coordinatorLayout 充当nested scroll parent 处理这次滑动，需要注意的是只有当返回值为true
+     * 的时候，Behavior 才能收到后面的一些nested scroll 事件回调（如：onNestedPreScroll、onNestedScroll等）
+     * 这个方法有个重要的参数nestedScrollAxes，表明处理的滑动的方向。
+     *
+     * @param coordinatorLayout 和Behavior 绑定的View的父CoordinatorLayout
+     * @param child             和Behavior 绑定的View
+     * @param directTargetChild
+     * @param target
+     * @param axes              嵌套滑动 应用的滑动方向，看 {@link ViewCompat#SCROLL_AXIS_HORIZONTAL},
+     *                          {@link ViewCompat#SCROLL_AXIS_VERTICAL}
+     * @return
+     */
+
+    @Override
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
         if (tabSuspension) {
             return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0 && !isClosed();
         }
-        return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
+
+        boolean flag = (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
+        if (flag) {
+            LogUtils.e("xw", "flag true");
+        } else {
+            LogUtils.e("xw", "flag false");
+
+        }
+
+        return true;
     }
 
 
+    /**
+     * 用户松开手指并且会发生惯性动作之前调用，参数提供了速度信息，可以根据这些速度信息
+     * 决定最终状态，比如滚动Header，是让Header处于展开状态还是折叠状态。返回true 表
+     * 示消费了fling.
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param target
+     * @param velocityX x 方向的速度
+     * @param velocityY y 方向的速度
+     * @return
+     */
     @Override
     public boolean onNestedPreFling(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, float velocityX, float velocityY) {
         lastPosition = -1;
-        return !isClosed();
+        boolean flag = !isClosed();
+//        if (flag) {
+//            LogUtils.e("xw", "flag true");
+//        }else{
+//            LogUtils.e("xw", "flag false");
+//
+//        }
+        return false;
     }
 
     @Override
@@ -99,6 +153,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
             case MotionEvent.ACTION_DOWN:
                 downReach = false;
                 upReach = false;
+                mOverScroller.abortAnimation();
                 break;
             case MotionEvent.ACTION_UP:
 //                handleActionUp(child);
@@ -116,12 +171,29 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
      * @param dy                上滑 dy>0， 下滑dy<0
      *                          //     * @param consumed
      */
-    @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
-        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
 //    @Override
-//    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-//        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
+//    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
+//        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
+
+    /**
+     * 嵌套滚动发生之前被调用
+     * 在nested scroll child 消费掉自己的滚动距离之前，嵌套滚动每次被nested scroll child
+     * 更新都会调用onNestedPreScroll。注意有个重要的参数consumed，可以修改这个数组表示你消费
+     * 了多少距离。假设用户滑动了100px,child 做了90px 的位移，你需要把 consumed［1］的值改成90，
+     * 这样coordinatorLayout就能知道只处理剩下的10px的滚动。
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param target
+     * @param dx                用户水平方向的滚动距离
+     * @param dy                用户竖直方向的滚动距离
+     * @param consumed
+     */
+    @Override
+    public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
+        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
+
+        LogUtils.e("xw","type:"+type);
 
         //制造滑动视察，使header的移动比手指滑动慢
         float scrollY = dy / 4.0f;
@@ -168,8 +240,43 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                 child.setTranslationY(finalY);
                 consumed[1] = dy;//让CoordinatorLayout消费掉事件，实现整体滑动
             }
+//            if (pos==0){
+//                consumed[0] = dy;
+//            }
             lastPosition = pos;
         }
+    }
+
+    /**
+     * 进行嵌套滚动时被调用
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param target
+     * @param dxConsumed        target 已经消费的x方向的距离
+     * @param dyConsumed        target 已经消费的y方向的距离
+     * @param dxUnconsumed      x 方向剩下的滚动距离
+     * @param dyUnconsumed      y 方向剩下的滚动距离
+     */
+    @Override
+    public void onNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed, int type) {
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type);
+    }
+
+
+    /**
+     * onStartNestedScroll返回true才会触发这个方法，接受滚动处理后回调，可以在这个
+     * 方法里做一些准备工作，如一些状态的重置等。
+     *
+     * @param coordinatorLayout
+     * @param child
+     * @param directTargetChild
+     * @param target
+     * @param nestedScrollAxes
+     */
+    @Override
+    public void onNestedScrollAccepted(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
+        super.onNestedScrollAccepted(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);
     }
 
     /**

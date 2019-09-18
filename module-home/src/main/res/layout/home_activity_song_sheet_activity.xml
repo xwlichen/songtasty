@@ -35,13 +35,13 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_045"
-            android:background="@color/app_bg"
-            android:text="tab"
-            app:layout_behavior="@string/behavior_tab" />
+        <!--<TextView-->
+        <!--android:id="@+id/tablayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/dp_045"-->
+        <!--android:background="@color/app_bg"-->
+        <!--android:text="tab"-->
+        <!--app:layout_behavior="@string/behavior_tab" />-->
 
 
         <androidx.recyclerview.widget.RecyclerView
