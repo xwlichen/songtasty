@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: '../common-setting.gradle'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 
 
@@ -43,6 +45,9 @@ dependencies {
 
     api rootProject.ext.dependencies["recyclerview"]
     api rootProject.ext.dependencies["multitype"]
+
+    api rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
+
 
 
     api project(':common-core')
