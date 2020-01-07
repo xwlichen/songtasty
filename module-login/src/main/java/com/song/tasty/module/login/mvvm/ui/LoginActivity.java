@@ -4,20 +4,15 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.lifecycle.Observer;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.smart.ui.utils.SMUIDisplayHelper;
 import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.common.core.utils.KeyBoardUtils;
+import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.module.login.BR;
 import com.song.tasty.module.login.R;
 import com.song.tasty.module.login.databinding.LoginActivityLoginBinding;
@@ -47,15 +42,9 @@ public class LoginActivity extends BaseAppActivity<LoginActivityLoginBinding, Lo
     public void initView() {
 
         KeyBoardUtils.getInstance().setOnKeyboardStatusChangeListener(this, onKeyBoardStatusChangeListener);
-
-
-        ImageView ivBg = findViewById(R.id.ivBg);
-        RequestOptions options = new RequestOptions()
-                .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).diskCacheStrategy(DiskCacheStrategy.NONE);
-        Glide.with(this)
-                .load("file:///android_asset/login_background_video.webp")
-                .apply(options).transition(new DrawableTransitionOptions().crossFade(200))
-                .into(ivBg);
+        GlideUtils.loadImage(this
+                , "file:///android_asset/login_background_video.webp"
+                , binding.ivBg);
 
 
         viewModel.pwdSwitchData.observe(this, new Observer<Boolean>() {

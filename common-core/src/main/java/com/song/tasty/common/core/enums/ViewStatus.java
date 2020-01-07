@@ -26,4 +26,9 @@ public enum ViewStatus {
      * 无数据
      */
     NO_DATA,
+
+    /**
+     * 未知错误
+     */
+    ERROR,
 }

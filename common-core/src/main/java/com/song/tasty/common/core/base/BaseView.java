@@ -45,6 +45,12 @@ public interface BaseView extends IView {
 
 
     /**
+     * 显示未知错误布局
+     */
+    void showError();
+
+
+    /**
      * 跳转{@link android.app.Activity}
      * @param clz
      * @param bundle

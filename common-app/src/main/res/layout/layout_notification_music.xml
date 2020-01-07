@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_130"
+    android:orientation="vertical">
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivCover"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_130"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:src="@mipmap/ic_logo" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/AppTextAppearance.Big.color1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_010"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintRight_toLeftOf="@id/ivClose"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:text="七里香七里香七里香七里香七里香七里香七里香七里香七里香七里香七里香七里香七里香" />
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivClose"
+        android:layout_width="@dimen/dp_025"
+        android:layout_height="@dimen/dp_026"
+        android:layout_marginLeft="@dimen/dp_010"
+        android:layout_marginTop="@dimen/dp_08"
+        android:layout_marginRight="@dimen/dp_08"
+        android:src="@mipmap/ic_close1"
+        app:layout_constraintLeft_toRightOf="@id/tvName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSonger"
+        style="@style/AppTextAppearance.middle.color2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_010"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintLeft_toLeftOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tool:text="周杰伦" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="@dimen/dp_00"
+        android:layout_height="@dimen/line_size"
+        android:layout_marginTop="@dimen/margin_normal"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSonger" />
+
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivLike"
+        android:layout_width="@dimen/dp_016"
+        android:layout_height="@dimen/dp_016"
+        android:layout_marginLeft="@dimen/dp_010"
+        android:src="@mipmap/ic_like"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivPre"
+        android:layout_width="@dimen/dp_016"
+        android:layout_height="@dimen/dp_016"
+        android:layout_marginRight="@dimen/dp_040"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_play_pre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ivPlay"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="@dimen/dp_016"
+        android:layout_height="@dimen/dp_016"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ivCover"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+
+    <com.smart.ui.widget.image.SMUIImageView
+        android:id="@+id/ivNext"
+        android:layout_width="@dimen/dp_016"
+        android:layout_height="@dimen/dp_016"
+        android:layout_marginLeft="@dimen/dp_040"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_play_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ivPlay"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+
+    <TextView
+        android:id="@+id/tvLyrics"
+        style="@style/AppTextAppearance.Big.Bold.color1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_010"
+        android:text="词"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

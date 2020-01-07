@@ -1,11 +1,11 @@
 package com.song.tasty.common.core.observer;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
+
 import com.song.tasty.common.core.base.BaseView;
 import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.utils.Preconditions;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
 
 /**
  * @date : 2019-07-22 17:26
@@ -43,6 +43,11 @@ public class ViewStatusObserver<V extends ViewStatus> implements Observer<V> {
             case NO_NETWORK:
                 view.hideLoading();
                 view.showNoNetWork();
+                break;
+
+            case ERROR:
+                view.hideLoading();
+                view.showError();
                 break;
 
             default:

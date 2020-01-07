@@ -95,6 +95,11 @@ public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends Base
     }
 
     @Override
+    public void showError() {
+
+    }
+
+    @Override
     public void launchActivity(Class<?> clz, Bundle bundle) {
         Intent intent = new Intent(getActivity(), clz);
         if (bundle != null) {

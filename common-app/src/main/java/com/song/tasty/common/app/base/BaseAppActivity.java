@@ -58,6 +58,11 @@ public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends Base
     }
 
     @Override
+    public void showError() {
+
+    }
+
+    @Override
     public void launchActivity(Class<?> clz, Bundle bundle) {
         Intent intent = new Intent(this, clz);
         if (bundle != null) {

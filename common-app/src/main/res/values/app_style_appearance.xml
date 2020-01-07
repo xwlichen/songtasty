@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--    txt_size_large->18sp-->
+    <!--    txt_size_big->16sp-->
+    <!--    txt_size_middle->14sp-->
+    <!--    txt_size_small->12sp-->
+
+    <!--   app_txt_color1->#333333-->
+    <!--   app_txt_color2->#666666-->
+    <!--   app_txt_color3->#999999-->
+
     <style name="AppTextAppearance" parent="@android:style/TextAppearance.Small">
         <!--<item name="android:fontFamily">@font/roboto_thin</item>-->
 
@@ -21,6 +30,7 @@
     <style name="AppTextAppearance.Big.Bold">
         <item name="android:textStyle">bold</item>
     </style>
+
 
     <style name="AppTextAppearance.Big.color1">
         <item name="android:textColor">?attr/app_txt_color1</item>

@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.song.tasty.common.core.enums.ViewStatus;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.common.core.observer.ToastObserver;
 import com.song.tasty.common.core.observer.ViewStatusObserver;
@@ -87,7 +86,6 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
         return liveData;
     }
 
-    private SingleLiveData<ViewStatus> viewStatusEvent;
 
 
     protected <VM extends BaseViewModel> void subscribeViewEvent(@NonNull VM viewModel) {
