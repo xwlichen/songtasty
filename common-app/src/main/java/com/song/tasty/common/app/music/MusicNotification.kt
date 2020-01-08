@@ -1,5 +1,6 @@
 package com.song.tasty.common.app.music
 
+
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -16,7 +17,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.song.tasty.common.app.R
-import com.song.tasty.common.app.music.bean.PlayInfo
+import com.song.tasty.common.app.music.bean.MusicBean
 
 /**
  * @date : 2020-01-07 11:25
@@ -26,14 +27,21 @@ import com.song.tasty.common.app.music.bean.PlayInfo
  * 关闭通知栏通知  https://www.jianshu.com/p/4df783c4e80d
  */
 
-//internal:在同一模块内使用  模块(module)是指一起编译的一组 Kotlin 源代码文件
+
+/**internal:在同一模块内使用  模块(module)是指一起编译的一组 Kotlin 源代码文件
+ * 在java文件中使用getMUSIC_NOTIFICATION_ACTION_CLOSE()调用
+ */
+
+
 internal val MUSIC_NOTIFICATION_ACTION_PRE = "MUSIC_NOTIFICATION_ACTION_PRE"
 internal val MUSIC_NOTIFICATION_ACTION_NEXT = "MUSIC_NOTIFICATION_ACTION_NEXT"
 internal val MUSIC_NOTIFICATION_ACTION_PLAY = "MUSIC_NOTIFICATION_ACTION_PLAY"
 internal val MUSIC_NOTIFICATION_ACTION_CLOSE = "MUSIC_NOTIFICATION_ACTION_CLOSE"
 
-class MusicNotification(private val service: MusicManagerService) {
+open class MusicNotification(private val service: MusicService) {
 
+
+    //val 不可变  var 可变
     private val CHANNEL_ID = "chanel_play_music"
     private val NOTIFICATION_ID = 0x1234
 
@@ -90,9 +98,9 @@ class MusicNotification(private val service: MusicManagerService) {
     }
 
 
-    fun startNotification(playInfo: PlayInfo) {
+    fun startNotification(musicBean: MusicBean) {
         remoteView.setImageViewResource(R.id.ivPlay, R.mipmap.ic_pause)
-        remoteView.setTextViewText(R.id.tvName, playInfo.name)
+        remoteView.setTextViewText(R.id.tvName, musicBean.name)
 
         if (notification == null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -133,13 +141,13 @@ class MusicNotification(private val service: MusicManagerService) {
         }
 
 //        val activityIntent = Intent(context, PlayerHandleActivity::class.java).apply {
-//            data = Uri.parse("${BuildConfig.APP_SCHEME}://goto_play_audio/${playInfo.toJson()}")
+//            data = Uri.parse("${BuildConfig.APP_SCHEME}://goto_play_audio/${musicBean.toJson()}")
 //        }
 //        remoteView.setOnClickPendingIntent(R.id.root, PendingIntent.getActivity(context,
 //                0, activityIntent, PendingIntent.FLAG_UPDATE_CURRENT))
 
         service.startForeground(NOTIFICATION_ID, notification)
-        playInfo.cover?.let {
+        musicBean.cover?.let {
             loadBitmap(it)
         }
 

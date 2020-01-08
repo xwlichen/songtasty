@@ -7,18 +7,19 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.song.tasty.common.app.R;
-import com.song.tasty.common.app.adapter.MusicBottomNavItemViewBinder;
-import com.song.tasty.common.app.entity.MusicBean;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.song.tasty.common.app.R;
+import com.song.tasty.common.app.adapter.MusicBottomNavItemViewBinder;
+import com.song.tasty.common.app.music.bean.MusicBean;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 

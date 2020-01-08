@@ -52,6 +52,7 @@ dependencies {
 
     api project(':common-core')
     api project(':common-ui')
+//    api 'com.samrt.media.player:smart-media-player:1.0.0'
 
 
 
