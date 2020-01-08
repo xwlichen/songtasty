@@ -73,28 +73,28 @@ public class MusicBottomNavView extends FrameLayout {
 
 
         List<MusicBean> list = new ArrayList<>();
-        MusicBean musicBean1 = new MusicBean("反方向的钟",
-                "https://x128.bailemi.com/attachment/20190820/ApgDZcy9S2IbCkxGK7lm.jpg",
-                "周杰伦");
-
-        MusicBean musicBean2 = new MusicBean("七里香",
-                "https://x128.bailemi.com/attachment/20190820/fkDdEmN26Hn4PezaoCM8.png",
-                "周杰伦");
-
-
-        MusicBean musicBean3 = new MusicBean("发如雪",
-                "https://x128.bailemi.com/attachment/20190819/JELqBZpwo9Mkt86TDUbl.jpg",
-                "周杰伦");
-
-
-        MusicBean musicBean4 = new MusicBean("本草纲目",
-                "https://x128.bailemi.com/attachment/20190819/doaJD6FfGniZ8qgMUzWl.jpg",
-                "周杰伦");
-
-        list.add(musicBean1);
-        list.add(musicBean2);
-        list.add(musicBean3);
-        list.add(musicBean4);
+//        MusicBean musicBean1 = new MusicBean("反方向的钟",
+//                "https://x128.bailemi.com/attachment/20190820/ApgDZcy9S2IbCkxGK7lm.jpg",
+//                "周杰伦");
+//
+//        MusicBean musicBean2 = new MusicBean("七里香",
+//                "https://x128.bailemi.com/attachment/20190820/fkDdEmN26Hn4PezaoCM8.png",
+//                "周杰伦");
+//
+//
+//        MusicBean musicBean3 = new MusicBean("发如雪",
+//                "https://x128.bailemi.com/attachment/20190819/JELqBZpwo9Mkt86TDUbl.jpg",
+//                "周杰伦");
+//
+//
+//        MusicBean musicBean4 = new MusicBean("本草纲目",
+//                "https://x128.bailemi.com/attachment/20190819/doaJD6FfGniZ8qgMUzWl.jpg",
+//                "周杰伦");
+//
+//        list.add(musicBean1);
+//        list.add(musicBean2);
+//        list.add(musicBean3);
+//        list.add(musicBean4);
 
         items.addAll(list);
         adapter.setItems(items);
