@@ -33,16 +33,22 @@ public interface AppRouters {
     //---------------------------------------------首页模块相关开放api------------------------------------------------------
 
     /**
-     * HomeComponent 对HomeFragment的开放Api
+     * HomeComponent 对 HomeFragment 的开放Api
      * (@link com.song.tasty.module.home.components.HomeComponent for HomeFragment )
      */
     String HOME_COMP_MAIN = "module.home.component.main";
 
     /**
-     * SongSheetDetailComponent 对SongSheetDetailActivity的开放Api
+     * SongSheetDetailComponent 对 SongSheetDetailActivity 的开放Api
      * (@link com.song.tasty.module.home.components.SongSheetDetailComponent for SongSheetDetailActivity )
      */
     String HOME_COMP_SONGSHEETDETAIL = "module.home.component.songsheetdetail";
+
+    /**
+     * MusicPlayComponent 对 MusicPlayActivity 的开放Api
+     * (@link com.song.tasty.module.home.components.MusicPlayComponent for MusicPlayActivity )
+     */
+    String HOME_COMP_MUSICPLAY = "module.home.component.musicplay";
     //---------------------------------------------首页模块相关开放api------------------------------------------------------
 
 
@@ -61,8 +67,6 @@ public interface AppRouters {
 
 
     //---------------------------------------------我的模块相关开放api------------------------------------------------------
-
-
     /**
      * MineComponent 对MineFragment的开放Api
      * (@link com.song.tasty.module.mine.components.MineComponent for MineFragment )

@@ -1,5 +1,8 @@
 apply from: rootProject.file('cc-settings-app.gradle')
 apply from: '../common-setting.gradle'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-kapt'
 
 android {
 

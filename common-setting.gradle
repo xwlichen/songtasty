@@ -1,3 +1,7 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     useLibrary 'org.apache.http.legacy'
@@ -67,6 +71,10 @@ android {
         }
     }
 
+    dependencies {
+        //解决Kotlin和DataBinding冲突
+        kapt "com.android.databinding:compiler:$android_version"
+    }
 
 
 }

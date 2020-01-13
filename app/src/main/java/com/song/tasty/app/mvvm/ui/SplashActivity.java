@@ -1,9 +1,13 @@
 package com.song.tasty.app.mvvm.ui;
 
+import android.view.View;
+import android.widget.LinearLayout;
+
 import com.billy.cc.core.component.CC;
 import com.song.tasty.app.R;
 import com.song.tasty.common.core.base.BaseActivity;
 
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
 import static com.song.tasty.common.app.AppRouters.LOGIN_COMP_MAIN;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
@@ -23,13 +27,24 @@ public class SplashActivity extends BaseActivity {
     public void initView() {
 //        DataRepository dataRepository = Injection.provideDataRepository();
 //        if (dataRepository.isLogin()) {
-        toMain();
+//        toMain();
 //        } else {
 //            CCResult result = null;
 
 //
 //            result.cc
 //        }
+
+        LinearLayout bgContainer = findViewById(R.id.bgContainer);
+        bgContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CC cc = CC.obtainBuilder(HOME_COMP_MUSICPLAY)
+                        .setActionName(START_ACTIVITY)
+                        .build();
+                cc.call();
+            }
+        });
 
     }
 
@@ -39,6 +54,6 @@ public class SplashActivity extends BaseActivity {
                 .setActionName(START_ACTIVITY)
                 .build();
         cc.call();
-        finish();
+//        finish();
     }
 }

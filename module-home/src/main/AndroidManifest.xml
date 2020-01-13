@@ -6,5 +6,8 @@
         <activity
             android:name=".mvvm.ui.SongSheetDetailActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".mvvm.ui.MusicPlayActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

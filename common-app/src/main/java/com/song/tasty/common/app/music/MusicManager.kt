@@ -80,6 +80,7 @@ class MusicManager {
         musicList.clear()
         musicList.add(bean)
         currentIndex = 0;
+        play()
 
     }
 
