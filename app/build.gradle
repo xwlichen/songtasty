@@ -13,6 +13,8 @@ android {
         enabled true
     }
 
+
+
 }
 
 dependencies {
@@ -24,6 +26,9 @@ dependencies {
     addComponent 'module-video'
 
     addComponent 'module-mine'
+
+//    api rootProject.ext.dependencies["smart-media-player"]
+
 
     api project(':common-app')
 

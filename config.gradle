@@ -57,7 +57,7 @@ ext {
             //ui组件
             "smart-ui"                   : "com.samrt.component:smart-ui:1.0.4",
             //播放器组件
-            "smart-media-player"                   : "com.samrt.media.player:smart-media-player:1.0.0",
+            "smart-media-player"         : "com.samrt.media.player:smart-media-player:1.0.3",
 
 
             //网络

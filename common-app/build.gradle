@@ -4,16 +4,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 
-
-
 android {
     dataBinding {
         enabled true
     }
 
-    packagingOptions {
-        exclude 'lib/arm64-v8a/libc++_shared.so'
-    }
+
+
 
 }
 
@@ -21,11 +18,9 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
 
-
     api rootProject.ext.dependencies["toast"]
     //k-v 腾讯存储
     api rootProject.ext.dependencies["mmkv"]
-
 
 
     api(rootProject.ext.dependencies["retrofit"]) {
@@ -54,14 +49,8 @@ dependencies {
     api rootProject.ext.dependencies["smart-media-player"]
 
 
-
-
     api project(':common-core')
     api project(':common-ui')
-
-
-
-
 
 
 }
