@@ -5,8 +5,8 @@ import com.smart.media.player.SmartMusicPlayer
 import com.smart.media.player.bean.InfoBean
 import com.smart.media.player.enums.InfoCode
 import com.smart.media.player.interf.IPlayer
-import com.song.tasty.common.app.music.bean.MusicBean
-import com.song.tasty.common.app.music.emums.PlayModel
+import com.song.tasty.common.app.music.bean.MusicBean1
+import com.song.tasty.common.app.music.emums.PlayModel1
 
 /**
  * @date : 2020-01-08 11:09
@@ -14,13 +14,15 @@ import com.song.tasty.common.app.music.emums.PlayModel
  * @email : 1960003945@qq.com
  * @description :
  */
-class MusicManager {
+class MusicManager1 {
 
 
     lateinit var musicPlayer: SmartMusicPlayer
-    var musicList: ArrayList<MusicBean>
-    var playModel: PlayModel = PlayModel.CIRCLE
+    var musicList1: ArrayList<MusicBean1>
+    var playModel1: PlayModel1 = PlayModel1.CIRCLE
     var currentIndex: Int = 0;
+
+    var musicNotification: MusicNotification? = null
 
     /**
      * PLAYER_STATUS_PREPARED 1 //准备完成
@@ -34,14 +36,14 @@ class MusicManager {
 
     private constructor() {
 
-        musicList = ArrayList()
+        musicList1 = ArrayList()
         initPlayer()
 
     }
 
     //静态方法、变量
     companion object {
-        val instance: MusicManager by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { MusicManager() }
+        val instance: MusicManager1 by lazy(LazyThreadSafetyMode.SYNCHRONIZED) { MusicManager1() }
 
     }
 
@@ -71,23 +73,23 @@ class MusicManager {
     }
 
 
-    fun setDataList(list: ArrayList<MusicBean>) {
-        musicList.clear()
-        musicList.addAll(list)
+    fun setDataList(list: ArrayList<MusicBean1>) {
+        musicList1.clear()
+        musicList1.addAll(list)
     }
 
-    fun playMusic(bean: MusicBean) {
-        musicList.clear()
-        musicList.add(bean)
+    fun playMusic(bean1: MusicBean1) {
+        musicList1.clear()
+        musicList1.add(bean1)
         currentIndex = 0;
         play()
 
     }
 
     fun play() {
-        musicList.isNotEmpty().let {
-            if (currentIndex < musicList.size) {
-                musicPlayer.setDataSource(musicList[currentIndex].url)
+        musicList1.isNotEmpty().let {
+            if (currentIndex < musicList1.size) {
+                musicPlayer.setDataSource(musicList1[currentIndex].url)
                 musicPlayer.prepare()
             }
 
@@ -117,9 +119,9 @@ class MusicManager {
 
     fun pre() {
         currentIndex -= 1
-        musicList.isNotEmpty().let {
-            if (currentIndex < musicList.size) {
-                musicPlayer.next(musicList[currentIndex].url)
+        musicList1.isNotEmpty().let {
+            if (currentIndex < musicList1.size) {
+                musicPlayer.next(musicList1[currentIndex].url)
             }
 
         }
@@ -128,9 +130,9 @@ class MusicManager {
 
     fun next() {
         currentIndex + 1
-        musicList.isNotEmpty().let {
-            if (currentIndex < musicList.size) {
-                musicPlayer.next(musicList[currentIndex].url)
+        musicList1.isNotEmpty().let {
+            if (currentIndex < musicList1.size) {
+                musicPlayer.next(musicList1[currentIndex].url)
             }
 
         }

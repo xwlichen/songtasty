@@ -7,7 +7,7 @@ package com.song.tasty.common.core.utils;
  * @description :
  */
 public class LogUtils {
-    public interface QMUILogDelegate {
+    public interface SMUILogDelegate {
         void e(final String tag, final String msg, final Object... obj);
         void w(final String tag, final String msg, final Object... obj);
         void i(final String tag, final String msg, final Object... obj);
@@ -15,9 +15,9 @@ public class LogUtils {
         void printErrStackTrace(String tag, Throwable tr, final String format, final Object... obj);
     }
 
-    private static QMUILogDelegate logDelegate = null;
+    private static SMUILogDelegate logDelegate = null;
 
-    public static void setDelegete(QMUILogDelegate delegete) {
+    public static void setDelegete(SMUILogDelegate delegete) {
         logDelegate = delegete;
     }
 

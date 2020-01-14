@@ -6,7 +6,7 @@ package com.song.tasty.common.app.music.emums
  * @email : 1960003945@qq.com
  * @description :
  */
-enum class PlayModel {
+enum class PlayModel1 {
     SINGLE,//单曲
     CIRCLE,//循环
     SEQUENCE,//顺序播放

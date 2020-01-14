@@ -10,8 +10,8 @@ import android.content.Intent
  * @email : 1960003945@qq.com
  * @description :
  */
-class MusicBroadcastReceiver(musicService: MusicService) : BroadcastReceiver() {
-    var service = musicService;
+class MusicBroadcastReceiver1(musicService1: MusicService1) : BroadcastReceiver() {
+    var service = musicService1;
     override fun onReceive(context: Context?, intent: Intent?) {
         if (intent == null || intent.action.isNullOrEmpty()) {
             return
@@ -19,13 +19,13 @@ class MusicBroadcastReceiver(musicService: MusicService) : BroadcastReceiver() {
 
         when (intent.action) {
             MUSIC_NOTIFICATION_ACTION_PLAY -> {
-                MusicManager.instance.play()
+                MusicManager1.instance.play()
 //                service.musicNotification.pause()
             }
-            MUSIC_NOTIFICATION_ACTION_PRE -> MusicManager.instance.pre()
-            MUSIC_NOTIFICATION_ACTION_NEXT -> MusicManager.instance.next()
+            MUSIC_NOTIFICATION_ACTION_PRE -> MusicManager1.instance.pre()
+            MUSIC_NOTIFICATION_ACTION_NEXT -> MusicManager1.instance.next()
             MUSIC_NOTIFICATION_ACTION_CLOSE -> {
-                MusicManager.instance.stop()
+                MusicManager1.instance.stop()
                 service.musicNotification?.stopNotification() ?: return;
             }
 

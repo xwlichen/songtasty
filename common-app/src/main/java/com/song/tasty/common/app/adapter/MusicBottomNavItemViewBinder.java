@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.tasty.common.app.R;
-import com.song.tasty.common.app.music.bean.MusicBean;
+import com.song.tasty.common.app.music.bean.MusicBean1;
 import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.common.ui.widget.MusicCoverView;
 
@@ -21,7 +21,7 @@ import me.drakeet.multitype.ItemViewBinder;
  * @email : 1960003945@qq.com
  * @description :
  */
-public class MusicBottomNavItemViewBinder extends ItemViewBinder<MusicBean, MusicBottomNavItemViewBinder.ViewHolder> {
+public class MusicBottomNavItemViewBinder extends ItemViewBinder<MusicBean1, MusicBottomNavItemViewBinder.ViewHolder> {
 
 
     @NonNull
@@ -32,7 +32,7 @@ public class MusicBottomNavItemViewBinder extends ItemViewBinder<MusicBean, Musi
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MusicBean item) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull MusicBean1 item) {
 
         holder.tvTitle.setText(item.getName() + " - " + item.getName());
         GlideUtils.loadImage(holder.itemView.getContext(), item.getCover(), holder.ivCover);

@@ -9,7 +9,7 @@ import android.os.Parcelable
  * @email : 1960003945@qq.com
  * @description :
  */
-class MusicBean() : Parcelable {
+class MusicBean1() : Parcelable {
 
     var id: String? = null
     var name: String? = null
@@ -40,12 +40,12 @@ class MusicBean() : Parcelable {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<MusicBean> {
-        override fun createFromParcel(parcel: Parcel): MusicBean {
-            return MusicBean(parcel)
+    companion object CREATOR : Parcelable.Creator<MusicBean1> {
+        override fun createFromParcel(parcel: Parcel): MusicBean1 {
+            return MusicBean1(parcel)
         }
 
-        override fun newArray(size: Int): Array<MusicBean?> {
+        override fun newArray(size: Int): Array<MusicBean1?> {
             return arrayOfNulls(size)
         }
     }

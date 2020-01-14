@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.song.tasty.common.app.R
-import com.song.tasty.common.app.music.bean.MusicBean
+import com.song.tasty.common.app.music.bean.MusicBean1
 
 /**
  * @date : 2020-01-07 11:25
@@ -38,14 +38,14 @@ internal val MUSIC_NOTIFICATION_ACTION_NEXT = "MUSIC_NOTIFICATION_ACTION_NEXT"
 internal val MUSIC_NOTIFICATION_ACTION_PLAY = "MUSIC_NOTIFICATION_ACTION_PLAY"
 internal val MUSIC_NOTIFICATION_ACTION_CLOSE = "MUSIC_NOTIFICATION_ACTION_CLOSE"
 
-open class MusicNotification(private val service: MusicService) {
+open class MusicNotification1(private val service1: MusicService1) {
 
 
     //val 不可变  var 可变
     private val CHANNEL_ID = "chanel_play_music"
     private val NOTIFICATION_ID = 0x1234
 
-    private val context: Context = service.applicationContext
+    private val context: Context = service1.applicationContext
     private var notification: Notification? = null;
 
     private val preIntent: Intent by lazy {
@@ -78,7 +78,7 @@ open class MusicNotification(private val service: MusicService) {
 
 
     fun stopNotification() {
-        service.stopForeground(true)
+        service1.stopForeground(true)
         notification = null
     }
 
@@ -86,21 +86,21 @@ open class MusicNotification(private val service: MusicService) {
     fun pause() {
         notification?.let {
             remoteView.setImageViewResource(R.id.ivPlay, R.mipmap.ic_play)
-            service.startForeground(NOTIFICATION_ID, notification)
+            service1.startForeground(NOTIFICATION_ID, notification)
         }
     }
 
     fun resume() {
         notification?.let {
             remoteView.setImageViewResource(R.id.ivPlay, R.mipmap.ic_pause)
-            service.startForeground(NOTIFICATION_ID, notification)
+            service1.startForeground(NOTIFICATION_ID, notification)
         }
     }
 
 
-    fun startNotification(musicBean: MusicBean) {
+    fun startNotification(musicBean1: MusicBean1) {
         remoteView.setImageViewResource(R.id.ivPlay, R.mipmap.ic_pause)
-        remoteView.setTextViewText(R.id.tvName, musicBean.name)
+        remoteView.setTextViewText(R.id.tvName, musicBean1.name)
 
         if (notification == null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -141,13 +141,13 @@ open class MusicNotification(private val service: MusicService) {
         }
 
 //        val activityIntent = Intent(context, PlayerHandleActivity::class.java).apply {
-//            data = Uri.parse("${BuildConfig.APP_SCHEME}://goto_play_audio/${musicBean.toJson()}")
+//            data = Uri.parse("${BuildConfig.APP_SCHEME}://goto_play_audio/${musicBean1.toJson()}")
 //        }
 //        remoteView.setOnClickPendingIntent(R.id.root, PendingIntent.getActivity(context,
 //                0, activityIntent, PendingIntent.FLAG_UPDATE_CURRENT))
 
-        service.startForeground(NOTIFICATION_ID, notification)
-        musicBean.cover?.let {
+        service1.startForeground(NOTIFICATION_ID, notification)
+        musicBean1.cover?.let {
             loadBitmap(it)
         }
 
@@ -163,7 +163,7 @@ open class MusicNotification(private val service: MusicService) {
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
                 notification?.let {
                     remoteView.setBitmap(R.id.ivClose, "setImageBitmap", resource)
-                    service.startForeground(NOTIFICATION_ID, notification)
+                    service1.startForeground(NOTIFICATION_ID, notification)
                 }
             }
         }

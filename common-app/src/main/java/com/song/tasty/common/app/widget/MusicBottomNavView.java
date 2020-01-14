@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.app.adapter.MusicBottomNavItemViewBinder;
-import com.song.tasty.common.app.music.bean.MusicBean;
+import com.song.tasty.common.app.music.bean.MusicBean1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +62,7 @@ public class MusicBottomNavView extends FrameLayout {
         rvMusic = view.findViewById(R.id.rvMusic);
 
         adapter = new MultiTypeAdapter();
-        adapter.register(MusicBean.class, new MusicBottomNavItemViewBinder());
+        adapter.register(MusicBean1.class, new MusicBottomNavItemViewBinder());
         items = new Items();
 
         rvMusic.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
@@ -72,22 +72,22 @@ public class MusicBottomNavView extends FrameLayout {
         snapHelper.attachToRecyclerView(rvMusic);
 
 
-        List<MusicBean> list = new ArrayList<>();
-//        MusicBean musicBean1 = new MusicBean("反方向的钟",
+        List<MusicBean1> list = new ArrayList<>();
+//        MusicBean1 musicBean1 = new MusicBean1("反方向的钟",
 //                "https://x128.bailemi.com/attachment/20190820/ApgDZcy9S2IbCkxGK7lm.jpg",
 //                "周杰伦");
 //
-//        MusicBean musicBean2 = new MusicBean("七里香",
+//        MusicBean1 musicBean2 = new MusicBean1("七里香",
 //                "https://x128.bailemi.com/attachment/20190820/fkDdEmN26Hn4PezaoCM8.png",
 //                "周杰伦");
 //
 //
-//        MusicBean musicBean3 = new MusicBean("发如雪",
+//        MusicBean1 musicBean3 = new MusicBean1("发如雪",
 //                "https://x128.bailemi.com/attachment/20190819/JELqBZpwo9Mkt86TDUbl.jpg",
 //                "周杰伦");
 //
 //
-//        MusicBean musicBean4 = new MusicBean("本草纲目",
+//        MusicBean1 musicBean4 = new MusicBean1("本草纲目",
 //                "https://x128.bailemi.com/attachment/20190819/doaJD6FfGniZ8qgMUzWl.jpg",
 //                "周杰伦");
 //
