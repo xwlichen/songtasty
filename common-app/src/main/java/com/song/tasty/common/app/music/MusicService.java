@@ -50,6 +50,7 @@ public class MusicService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String url = "http://mpge.5nd.com/2015/2015-11-26/69708/1.mp3";
+        url = "https://cdn.changguwen.com/cms/media/2020116/3b8a3f6b-1813-46d5-a381-75a69fb9d09d-1579143666508.mp3";
         MusicBean bean = new MusicBean();
         bean.setUrl(url);
         MusicManager.getInstance().playMusic(bean);

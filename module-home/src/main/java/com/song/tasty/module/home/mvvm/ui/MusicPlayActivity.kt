@@ -2,7 +2,7 @@ package com.song.tasty.module.home.mvvm.ui
 
 import android.content.Intent
 import com.song.tasty.common.app.base.BaseAppActivity
-import com.song.tasty.common.app.music.MusicService1
+import com.song.tasty.common.app.music.MusicService
 import com.song.tasty.common.app.utils.AppUtils
 import com.song.tasty.module.home.BR
 import com.song.tasty.module.home.R
@@ -26,8 +26,8 @@ class MusicPlayActivity : BaseAppActivity<HomeActivityMusicPlayBinding, MusicPla
     }
 
     override fun initView() {
-        if (!AppUtils.isServiceRunning(this, "MusicService1")) {
-            startService(Intent(this, MusicService1::class.java))
+        if (!AppUtils.isServiceRunning(this, "MusicService")) {
+            startService(Intent(this, MusicService::class.java))
         }
     }
 }
