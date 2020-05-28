@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.music;
+package com.song.tasty.common.player;
 
 import android.app.Service;
 import android.content.Intent;
@@ -7,12 +7,13 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import com.song.tasty.common.app.music.bean.MusicBean;
+import com.song.tasty.common.player.bean.MusicBean;
 
-import static com.song.tasty.common.app.music.MusicNotification.MUSIC_NOTIFICATION_ACTION_CLOSE;
-import static com.song.tasty.common.app.music.MusicNotification.MUSIC_NOTIFICATION_ACTION_NEXT;
-import static com.song.tasty.common.app.music.MusicNotification.MUSIC_NOTIFICATION_ACTION_PLAY;
-import static com.song.tasty.common.app.music.MusicNotification.MUSIC_NOTIFICATION_ACTION_PRE;
+import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_CLOSE;
+import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_NEXT;
+import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_PLAY;
+import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_PRE;
+
 
 /**
  * @date : 2020-01-14 10:44

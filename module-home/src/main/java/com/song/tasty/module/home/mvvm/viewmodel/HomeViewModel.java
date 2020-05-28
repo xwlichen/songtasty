@@ -13,6 +13,9 @@ import com.song.tasty.module.home.datasource.DataRepository;
 import com.song.tasty.module.home.datasource.Injection;
 import com.song.tasty.module.home.entity.HomeResult;
 
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+
 /**
  * @date : 2019-07-23 09:53
  * @author: lichen
@@ -38,14 +41,19 @@ public class HomeViewModel extends BaseViewModel<DataRepository> {
 
         addSubcribe(model
                 .getRemoteDataSource()
-                .index()
+                .discover()
                 .compose(RxUtils.schedulersTransformer())
                 .doOnSubscribe(disposable -> uiChange.getViewStatusSource().setValue(ViewStatus.LOADING))
-                .subscribe(result -> {
-                    successResult.setValue(result);
-
-                }, new ResponseErrorHandler(), () -> {
-                    uiChange.getViewStatusSource().setValue(ViewStatus.COMPLETE);
+                .subscribe(new Consumer<HomeResult>() {
+                    @Override
+                    public void accept(HomeResult result) throws Exception {
+                        successResult.setValue(result);
+                    }
+                }, new ResponseErrorHandler(), new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        uiChange.getViewStatusSource().setValue(ViewStatus.COMPLETE);
+                    }
                 }));
 
     }

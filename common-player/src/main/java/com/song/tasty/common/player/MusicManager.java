@@ -1,12 +1,12 @@
-package com.song.tasty.common.app.music;
+package com.song.tasty.common.player;
 
 import com.hjq.toast.ToastUtils;
 import com.smart.media.player.SmartMusicPlayer;
 import com.smart.media.player.bean.InfoBean;
 import com.smart.media.player.enums.InfoCode;
 import com.smart.media.player.interf.IPlayer;
-import com.song.tasty.common.app.music.bean.MusicBean;
-import com.song.tasty.common.app.music.emums.PlayModel;
+import com.song.tasty.common.player.bean.MusicBean;
+import com.song.tasty.common.player.emums.PlayModel;
 
 import java.util.ArrayList;
 import java.util.List;

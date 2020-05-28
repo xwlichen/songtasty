@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.music.emums;
+package com.song.tasty.common.player.emums;
 
 /**
  * @date : 2020-01-14 10:41

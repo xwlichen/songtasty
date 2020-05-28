@@ -28,6 +28,7 @@ import com.song.tasty.module.home.entity.HomeNavBean;
 import com.song.tasty.module.home.entity.HomeNavListBean;
 import com.song.tasty.module.home.entity.HomeResult;
 import com.song.tasty.module.home.entity.HomeTitleBean;
+import com.song.tasty.module.home.entity.NewsBean;
 import com.song.tasty.module.home.entity.SongBean;
 import com.song.tasty.module.home.entity.SongSheetBean;
 import com.song.tasty.module.home.entity.SongSheetListBean;
@@ -142,28 +143,34 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
         initNav();
 
 
-        //歌单
+        //官方歌单
         items.add(new HomeTitleBean(getResources().getString(R.string.home_offocal_song_sheet)));
         List<SongSheetBean> songSheetList = result.getGedanx();
         songSheetList.remove(songSheetList.size() - 1);
         items.add(new SongSheetListBean(songSheetList));
 
-        //新歌推荐
-        items.add(new HomeTitleBean(getResources().getString(R.string.home_recomend_new_song)));
-        List<SongBean> danceist = result.getDancelist();
-        danceist.remove(danceist.size() - 1);
-        items.addAll(danceist);
+        //好音乐
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_good_song)));
+        List<SongBean> goodList = result.getGoodlist().get(0);
+        goodList.remove(goodList.size() - 1);
+        items.addAll(goodList);
 
-        //每日榜单
-        items.add(new HomeTitleBean(getResources().getString(R.string.home_day_list)));
-        List<SongBean> musicList = result.getMusiclist();
-        musicList.remove(musicList.size() - 1);
-        items.addAll(musicList);
+        //日推
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_day_song)));
+        List<SongBean> daySongList = result.getNewmlist().get(0);
+        daySongList.remove(daySongList.size() - 1);
+        items.addAll(daySongList);
 
-        //猜你喜欢
-        items.add(new HomeTitleBean(getResources().getString(R.string.home_you_like)));
-        List<SongBean> guestList = result.getGuestlist();
-//        guestList.remove(guestList.size() - 1);
+        //文章
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_essay)));
+        List<NewsBean> newsList = result.getNewslist().get(0);
+        newsList.remove(newsList.size() - 1);
+        items.addAll(newsList);
+
+        //周榜
+        items.add(new HomeTitleBean(getResources().getString(R.string.home_week_board)));
+        List<SongBean> guestList = result.getWeeklist().get(0);
+        guestList.remove(guestList.size() - 1);
         items.addAll(guestList);
 
 
@@ -184,15 +191,17 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
         list.get(1).setText(getResources().getString(R.string.home_singer));
         list.get(1).setImgRes(R.mipmap.ic_home_nav_singer);
 
-        list.get(2).setText(getResources().getString(R.string.home_random));
-        list.get(2).setImgRes(R.mipmap.ic_home_nav_random);
 
-        list.get(3).setText(getResources().getString(R.string.home_total_list));
-        list.get(3).setImgRes(R.mipmap.ic_home_nav_list);
+        list.get(2).setText(getResources().getString(R.string.home_billborad));
+        list.get(2).setImgRes(R.mipmap.ic_home_nav_list);
 
 
-        list.get(4).setText(getResources().getString(R.string.home_sort));
+        list.get(3).setText(getResources().getString(R.string.home_sort));
         list.get(4).setImgRes(R.mipmap.ic_home_nav_sort);
+
+        list.get(4).setText(getResources().getString(R.string.home_news));
+        list.get(4).setImgRes(R.mipmap.ic_home_nav_random);
+
 
 
         HomeNavListBean bean = new HomeNavListBean(list);

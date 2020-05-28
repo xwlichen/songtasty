@@ -1,6 +1,8 @@
-package com.song.tasty.common.app.utils;
+package com.song.tasty.common.core.utils;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -15,6 +17,30 @@ import java.util.ArrayList;
 public class AppUtils {
 
 
+    @SuppressLint("StaticFieldLeak")
+    private static Application application;
+
+    private AppUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    /**
+     * Init utils.
+     * <p>Init it in the class of UtilsFileProvider.</p>
+     *
+     * @param app application
+     */
+    public static void init(final Application app) {
+        if (application != null) {
+            return;
+        }
+        application = app;
+    }
+
+    public static Application getApp() {
+        return application;
+    }
+
     /**
      * @param context
      * @param serviceName
@@ -27,10 +53,10 @@ public class AppUtils {
         ActivityManager myManager = (ActivityManager) context
                 .getSystemService(Context.ACTIVITY_SERVICE);
         ArrayList<ActivityManager.RunningServiceInfo> runningService = (ArrayList<ActivityManager.RunningServiceInfo>) myManager
-                .getRunningServices(30);
+                .getRunningServices(Integer.MAX_VALUE);
         for (int i = 0; i < runningService.size(); i++) {
-            if (runningService.get(i).service.getClassName().toString()
-                    .equals(serviceName)) {
+            if (serviceName
+                    .equals(runningService.get(i).service.getClassName())) {
                 return true;
             }
         }

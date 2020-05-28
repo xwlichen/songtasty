@@ -55,6 +55,9 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 .build()
                 .callAsyncCallbackOnMainThread(fragmentCallback);
 
+//        EventBus.getDefault().register(this);
+//        EventBus.getDefault().post("");
+
 
     }
 

@@ -35,11 +35,11 @@ public class RemoteDataSourceImp implements RemoteDataSource {
     }
 
     @Override
-    public Observable<HomeResult> index() {
+    public Observable<HomeResult> discover() {
         return RetrofitManager
                 .init()
                 .obtainRetrofitService(HomeApiService.class)
-                .index();
+                .discover();
     }
 
 

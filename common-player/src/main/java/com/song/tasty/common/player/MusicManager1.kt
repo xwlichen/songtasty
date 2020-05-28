@@ -7,6 +7,7 @@ import com.smart.media.player.enums.InfoCode
 import com.smart.media.player.interf.IPlayer
 import com.song.tasty.common.app.music.bean.MusicBean1
 import com.song.tasty.common.app.music.emums.PlayModel1
+import com.song.tasty.common.player.MusicNotification
 
 /**
  * @date : 2020-01-08 11:09

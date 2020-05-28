@@ -15,8 +15,8 @@ public interface RemoteDataSource {
 
 
     /**
-     * 首页接口
+     * 发现接口
      * @return
      */
-    Observable<HomeResult> index();
+    Observable<HomeResult> discover();
 }

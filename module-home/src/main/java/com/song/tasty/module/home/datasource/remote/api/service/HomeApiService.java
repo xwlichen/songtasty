@@ -22,9 +22,9 @@ public interface HomeApiService {
 
 
     /**
-     * 登录
+     * 发现
      */
     @Headers({DOMAIN_NAME_HEADER + HOME_DOMAIN_NAME})
-    @GET("index.php")
-    Observable<HomeResult> index();
+    @GET("index.php/dance")
+    Observable<HomeResult> discover();
 }

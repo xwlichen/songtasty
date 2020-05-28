@@ -26,58 +26,24 @@ public class HomeResult {
      * newslist : [{"newsid":"643","newsimg":"http://newst.bailemi.com/20190404/5bmm3iKrzxAd3hyjbab3w4P25ADST63K.jpg","newsname":"寻找孤独的影子","newsuid":"1027","newsuser":"街影"},{"newsid":"653","newsimg":"https://newst.bailemi.com/20190416/k4dMwNtGaNFnwap5HrETkJCZ5xS5KKxk.jpg","newsname":"Woman Like Me","newsuid":"15194","newsuser":"请遵医嘱"},{"newsid":"650","newsimg":"https://newst.bailemi.com/20190414/4QJTGhj3msPpmZC3nRrCTzBsad4JskJm.jpg","newsname":"李志专辑","newsuid":"15194","newsuser":"请遵医嘱"},{"newsid":"524","newsimg":"http://st.bailemi.com/20180222/dRdZGHWhpPkRJED4mDeZPbmxMcYdepDj.jpg","newsname":"问：为什么下载音乐需要金币？","newsuid":"15","newsuser":"admin"},{"newsid":"658","newsimg":"http://newst.bailemi.com/20190429/QPXjcZD3SF4d7xN5X35JyCmXEryPZzGz.jpg","newsname":"颓","newsuid":"16800","newsuser":"十七year"},{}]
      */
 
-    private String songnum;
-    private String hanmeitai;
-    private String newurl;
-    private String loginx;
-    private String noticex;
+
+    //banner
     private List<BannerBean> indexad;
-    private List<IndexuserBean> indexuser;
-    private List<SongSheetBean> gedanx;    //推荐歌单
-    private List<SongBean> dancelist; //新歌推荐
-    private List<SongBean> musiclist; //每日榜单
-    private List<SongBean> guestlist; //推荐喜欢
-    private List<NewslistBean> newslist;
+    //推荐歌单
+    private List<SongSheetBean> gedanx;
+    //好音乐
+    private List<List<SongBean>> goodlist;
+    //新歌推荐
+    private List<List<SongBean>> newmlist;
+    //读文章
+    private List<List<NewsBean>> newslist;
+    //每周榜单
+    private List<List<SongBean>> weeklist;
+    //随便听听
+    private List<List<SongBean>> randlist;
+    //歌手们
+    private List<List<SongBean>> vodlist;
 
-    public String getSongnum() {
-        return songnum;
-    }
-
-    public void setSongnum(String songnum) {
-        this.songnum = songnum;
-    }
-
-    public String getHanmeitai() {
-        return hanmeitai;
-    }
-
-    public void setHanmeitai(String hanmeitai) {
-        this.hanmeitai = hanmeitai;
-    }
-
-    public String getNewurl() {
-        return newurl;
-    }
-
-    public void setNewurl(String newurl) {
-        this.newurl = newurl;
-    }
-
-    public String getLoginx() {
-        return loginx;
-    }
-
-    public void setLoginx(String loginx) {
-        this.loginx = loginx;
-    }
-
-    public String getNoticex() {
-        return noticex;
-    }
-
-    public void setNoticex(String noticex) {
-        this.noticex = noticex;
-    }
 
     public List<BannerBean> getIndexad() {
         return indexad;
@@ -85,14 +51,6 @@ public class HomeResult {
 
     public void setIndexad(List<BannerBean> indexad) {
         this.indexad = indexad;
-    }
-
-    public List<IndexuserBean> getIndexuser() {
-        return indexuser;
-    }
-
-    public void setIndexuser(List<IndexuserBean> indexuser) {
-        this.indexuser = indexuser;
     }
 
     public List<SongSheetBean> getGedanx() {
@@ -103,129 +61,51 @@ public class HomeResult {
         this.gedanx = gedanx;
     }
 
-    public List<SongBean> getDancelist() {
-        return dancelist;
+    public List<List<SongBean>> getGoodlist() {
+        return goodlist;
     }
 
-    public void setDancelist(List<SongBean> dancelist) {
-        this.dancelist = dancelist;
+    public void setGoodlist(List<List<SongBean>> goodlist) {
+        this.goodlist = goodlist;
     }
 
-    public List<SongBean> getMusiclist() {
-        return musiclist;
+    public List<List<SongBean>> getNewmlist() {
+        return newmlist;
     }
 
-    public void setMusiclist(List<SongBean> musiclist) {
-        this.musiclist = musiclist;
+    public void setNewmlist(List<List<SongBean>> newmlist) {
+        this.newmlist = newmlist;
     }
 
-    public List<SongBean> getGuestlist() {
-        return guestlist;
-    }
-
-    public void setGuestlist(List<SongBean> guestlist) {
-        this.guestlist = guestlist;
-    }
-
-    public List<NewslistBean> getNewslist() {
+    public List<List<NewsBean>> getNewslist() {
         return newslist;
     }
 
-    public void setNewslist(List<NewslistBean> newslist) {
+    public void setNewslist(List<List<NewsBean>> newslist) {
         this.newslist = newslist;
     }
 
-
-    public static class IndexuserBean {
-        /**
-         * uid : 2922
-         * uname : 化聚＇马典炎
-         * ulogo : https://newst.bailemi.com/20181228/7Mh6ZUgskriaQSj51lOE.jpeg
-         */
-
-        private String uid;
-        private String uname;
-        private String ulogo;
-
-        public String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String getUname() {
-            return uname;
-        }
-
-        public void setUname(String uname) {
-            this.uname = uname;
-        }
-
-        public String getUlogo() {
-            return ulogo;
-        }
-
-        public void setUlogo(String ulogo) {
-            this.ulogo = ulogo;
-        }
+    public List<List<SongBean>> getWeeklist() {
+        return weeklist;
     }
 
+    public void setWeeklist(List<List<SongBean>> weeklist) {
+        this.weeklist = weeklist;
+    }
 
-    public static class NewslistBean {
-        /**
-         * newsid : 643
-         * newsimg : http://newst.bailemi.com/20190404/5bmm3iKrzxAd3hyjbab3w4P25ADST63K.jpg
-         * newsname : 寻找孤独的影子
-         * newsuid : 1027
-         * newsuser : 街影
-         */
+    public List<List<SongBean>> getRandlist() {
+        return randlist;
+    }
 
-        private String newsid;
-        private String newsimg;
-        private String newsname;
-        private String newsuid;
-        private String newsuser;
+    public void setRandlist(List<List<SongBean>> randlist) {
+        this.randlist = randlist;
+    }
 
-        public String getNewsid() {
-            return newsid;
-        }
+    public List<List<SongBean>> getVodlist() {
+        return vodlist;
+    }
 
-        public void setNewsid(String newsid) {
-            this.newsid = newsid;
-        }
-
-        public String getNewsimg() {
-            return newsimg;
-        }
-
-        public void setNewsimg(String newsimg) {
-            this.newsimg = newsimg;
-        }
-
-        public String getNewsname() {
-            return newsname;
-        }
-
-        public void setNewsname(String newsname) {
-            this.newsname = newsname;
-        }
-
-        public String getNewsuid() {
-            return newsuid;
-        }
-
-        public void setNewsuid(String newsuid) {
-            this.newsuid = newsuid;
-        }
-
-        public String getNewsuser() {
-            return newsuser;
-        }
-
-        public void setNewsuser(String newsuser) {
-            this.newsuser = newsuser;
-        }
+    public void setVodlist(List<List<SongBean>> vodlist) {
+        this.vodlist = vodlist;
     }
 }

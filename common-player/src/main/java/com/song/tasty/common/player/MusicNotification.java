@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.music;
+package com.song.tasty.common.player;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.song.tasty.common.app.R;
-import com.song.tasty.common.app.music.bean.MusicBean;
+import com.song.tasty.common.player.bean.MusicBean;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

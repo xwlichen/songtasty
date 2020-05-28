@@ -47,6 +47,9 @@ dependencies {
     api rootProject.ext.dependencies["multitype"]
 
     api rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
+
+
+
     api rootProject.ext.dependencies["smart-media-player"]
 
 

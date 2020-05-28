@@ -1,5 +1,6 @@
 package com.song.tasty.common.core.utils;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -34,6 +35,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.text.NumberFormat;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * ================================================
@@ -603,11 +605,21 @@ public class DeviceUtils {
 
     @SuppressLint("MissingPermission")
     public static String getIMEI(Context context) {
-        TelephonyManager tel = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        String deviceId = tel.getDeviceId();
-        if (deviceId == null) {
-            //android.provider.Settings;
-            deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = "";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            deviceId = UUID.randomUUID().toString();
+        } else {
+            if (!PermissionsUtils.isGranted(Manifest.permission.READ_PHONE_STATE)) {
+                return deviceId;
+            }
+
+            TelephonyManager tel = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            deviceId = tel.getDeviceId();
+            if (deviceId == null) {
+                //android.provider.Settings;
+                deviceId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+            }
         }
         return deviceId;
     }

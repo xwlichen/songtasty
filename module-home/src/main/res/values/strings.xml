@@ -6,16 +6,16 @@
     <string name="home_home">首页</string>
     <string name="home_song_sheet">歌单</string>
     <string name="home_singer">歌手</string>
-    <string name="home_total_list">总榜</string>
+    <string name="home_billborad">榜单</string>
     <string name="home_sort">分类</string>
-    <string name="home_random">随便听</string>
+    <string name="home_news">头条</string>
 
 
     <string name="home_offocal_song_sheet">官方歌单</string>
-    <string name="home_recomend_new_song">推荐新歌</string>
-    <string name="home_day_list">每日榜单</string>
-
-    <string name="home_you_like">猜你喜欢</string>
+    <string name="home_good_song">好音乐</string>
+    <string name="home_day_song">日推</string>
+    <string name="home_essay">文章</string>
+    <string name="home_week_board">周榜</string>
 
 
 </resources>

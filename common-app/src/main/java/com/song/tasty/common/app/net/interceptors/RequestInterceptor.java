@@ -61,6 +61,19 @@ public class RequestInterceptor implements Interceptor {
         builder.addHeader("client-version", DeviceUtils.getVersionName(context));
         builder.addHeader("client-platform", "android");
         builder.addHeader("client-platform_version", Build.VERSION.RELEASE);
+
+
+        String deviceid = MMKV.defaultMMKV().decodeString(KVConstants.KV_DEVICEID);
+        if (!TextUtils.isEmpty(deviceid)) {
+            builder.addHeader("client-deviceid", deviceid);
+        } else {
+            deviceid = DeviceUtils.getIMEI(context);
+            if (!TextUtils.isEmpty(deviceid)) {
+                MMKV.defaultMMKV().putString(KVConstants.KV_DEVICEID, deviceid);
+                builder.addHeader("client-deviceid", deviceid);
+            }
+        }
+
         builder.addHeader("client-deviceid", DeviceUtils.getIMEI(context));
 
 //        MMKV kv = MMKV.defaultMMKV();

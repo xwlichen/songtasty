@@ -49,5 +49,9 @@ dependencies {
     api rootProject.ext.dependencies["autosize"]
 
 
+
+
+
+
 }
 

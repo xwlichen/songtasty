@@ -4,11 +4,12 @@ package com.song.tasty.common.app;
  * @date : 2019-07-23 14:41
  * @author: lichen
  * @email : 1960003945@qq.com
- * @description :
+ * @description :m
  */
 public interface KVConstants {
 
     String KV_COOKIE = "kv_cookie";
+    String KV_DEVICEID = "kv_deviceid";
 
     String KV_USERID="kv_userid";
 

@@ -8,27 +8,44 @@ package com.song.tasty.module.home.entity;
  */
 public class SongBean {
 
+
     /**
-     * songid : 38581
-     * mpic : https://x128.bailemi.com/attachment/20190807/ntPhMIjzJuFWrkS0g6QE.jpg
-     * playurl : https://x128.bailemi.com/attachment/20190807/vLeP3Iz7x8njMdfa0qEJ.mp3
-     * downurl : https://x128.bailemi.com/attachment/20190807/vLeP3Iz7x8njMdfa0qEJ.mp3
-     * name : 悠扬大气女声 陶醉其中.越听越着迷 Sacred Touch (Dave Andres Remix)[320kbps/mp3]
-     * uid : 7986
-     * up_user : 千夜
-     * up_user_logo : https://newst.bailemi.com/20190112/86tNgJWuoZs309ifH1pB.jpg
-     * up_good : 139
+     * songid : 4226
+     * delsongid : 4226
+     * name : Alex Hepburn - Under
+     * playurl : https://x128.bailemi.com/xrkjpay/music/202004/24/5912078.mp3
+     * downurl : https://x128.bailemi.com/xrkjpay/music/202004/24/5912078.mp3
+     * uid : 10
+     * up_user : 高圆圆不是我
+     * up_user_logo : https://x128.bailemi.com/attachment/20191224/mgnY5HdbitPLkrMOlFTG.jpg
+     * down_con : 5
+     * singerid : 27323
+     * usergood : 0
+     * userpl : 0
+     * userdown : 0
+     * userfav : 0
+     * mpicx : https://x128.bailemi.com/xrkjpay/music/202004/24/2053220.jpg
+     * addtime : 43分钟前
+     * singer : Alex Hepburn
      */
 
     private String songid;
-    private String mpic;
+    private String delsongid;
+    private String name;
     private String playurl;
     private String downurl;
-    private String name;
     private String uid;
     private String up_user;
     private String up_user_logo;
-    private String up_good;
+    private String down_con;
+    private String singerid;
+    private String usergood;
+    private String userpl;
+    private String userdown;
+    private String userfav;
+    private String mpicx;
+    private String addtime;
+    private String singer;
 
     public String getSongid() {
         return songid;
@@ -38,12 +55,20 @@ public class SongBean {
         this.songid = songid;
     }
 
-    public String getMpic() {
-        return mpic;
+    public String getDelsongid() {
+        return delsongid;
     }
 
-    public void setMpic(String mpic) {
-        this.mpic = mpic;
+    public void setDelsongid(String delsongid) {
+        this.delsongid = delsongid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPlayurl() {
@@ -60,14 +85,6 @@ public class SongBean {
 
     public void setDownurl(String downurl) {
         this.downurl = downurl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getUid() {
@@ -94,11 +111,75 @@ public class SongBean {
         this.up_user_logo = up_user_logo;
     }
 
-    public String getUp_good() {
-        return up_good;
+    public String getDown_con() {
+        return down_con;
     }
 
-    public void setUp_good(String up_good) {
-        this.up_good = up_good;
+    public void setDown_con(String down_con) {
+        this.down_con = down_con;
+    }
+
+    public String getSingerid() {
+        return singerid;
+    }
+
+    public void setSingerid(String singerid) {
+        this.singerid = singerid;
+    }
+
+    public String getUsergood() {
+        return usergood;
+    }
+
+    public void setUsergood(String usergood) {
+        this.usergood = usergood;
+    }
+
+    public String getUserpl() {
+        return userpl;
+    }
+
+    public void setUserpl(String userpl) {
+        this.userpl = userpl;
+    }
+
+    public String getUserdown() {
+        return userdown;
+    }
+
+    public void setUserdown(String userdown) {
+        this.userdown = userdown;
+    }
+
+    public String getUserfav() {
+        return userfav;
+    }
+
+    public void setUserfav(String userfav) {
+        this.userfav = userfav;
+    }
+
+    public String getMpicx() {
+        return mpicx;
+    }
+
+    public void setMpicx(String mpicx) {
+        this.mpicx = mpicx;
+    }
+
+    public String getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(String addtime) {
+        this.addtime = addtime;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
     }
 }

@@ -8,7 +8,7 @@ package com.song.tasty.module.home;
  */
 public interface Constants {
 
-    String HOME_HOST_ONLINE_URL = "http://newappx.songtasty.com/";
+    String HOME_HOST_ONLINE_URL = "http://appnew.bailemi.com/";
     String HOME_DOMAIN_NAME = "home";
 
 }

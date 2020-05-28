@@ -1,14 +1,15 @@
 package com.song.tasty.app.mvvm.ui;
 
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.billy.cc.core.component.CC;
 import com.song.tasty.app.R;
 import com.song.tasty.common.core.base.BaseActivity;
+import com.song.tasty.common.core.utils.SmartUtils;
 
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
-import static com.song.tasty.common.app.AppRouters.LOGIN_COMP_MAIN;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
@@ -18,6 +19,9 @@ import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
  * @description :
  */
 public class SplashActivity extends BaseActivity {
+
+    private CountDownTimer countDownTimer;
+
     @Override
     protected int getLayoutResId() {
         return R.layout.app_activity_splash;
@@ -46,14 +50,30 @@ public class SplashActivity extends BaseActivity {
             }
         });
 
+        if (countDownTimer == null) {
+            countDownTimer = new CountDownTimer(1000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    toMain();
+                }
+            };
+        }
+
+        countDownTimer.start();
+
     }
 
     private void toMain() {
-//        SmartUtils.startActivity(MainActivity.class);
-        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
-                .setActionName(START_ACTIVITY)
-                .build();
-        cc.call();
-//        finish();
+        SmartUtils.startActivity(MainActivity.class);
+//        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
+//                .setActionName(START_ACTIVITY)
+//                .build();
+//        cc.call();
+        finish();
     }
 }

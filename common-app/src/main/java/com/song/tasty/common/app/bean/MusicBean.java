@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.music.bean;
+package com.song.tasty.common.app.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
