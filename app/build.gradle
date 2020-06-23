@@ -31,6 +31,7 @@ dependencies {
 
 
     api project(':common-app')
+    api project(':flutter')
 
     implementation 'org.greenrobot:eventbus:3.2.0'
 
