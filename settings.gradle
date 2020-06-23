@@ -1,2 +1,16 @@
 include ':app', ':common-core', ':common-ui', ':common-app', ':module-login', ':module-mine', ':module-home', ':module-video', ':module-hamlet'
 include ':common-player'
+
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(settingsDir.parentFile, 'songtasty-flutter/.android/include_flutter.groovy'))
+//include ':module-flutter'
+
+
+//include ':app'
+//
+//rootProject.name = 'android_generated'
+//setBinding(new Binding([gradle: this]))
+//evaluate(new File(settingsDir, 'include_flutter.groovy'))
+include ':songtasty-flutter'
+project(':songtasty-flutter').projectDir = new File('../songtasty-flutter')

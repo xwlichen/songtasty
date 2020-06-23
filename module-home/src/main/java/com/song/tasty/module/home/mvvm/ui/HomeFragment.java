@@ -11,9 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.billy.cc.core.component.CC;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.song.tasty.common.app.base.BaseAppFragment;
+import com.song.tasty.common.core.utils.SmartUtils;
 import com.song.tasty.module.home.BR;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.adapter.HomeBannerViewBinder;
@@ -39,6 +41,9 @@ import java.util.List;
 
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
+
+import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
+import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
  * @author lichen
@@ -99,6 +104,15 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
         binding.rvContainer.setAdapter(adapter);
 
         binding.refresh.setEnableLoadMore(false);
+        tvTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CC cc = CC.obtainBuilder(HOME_COMP_MUSICPLAY)
+                        .setActionName(START_ACTIVITY)
+                        .build();
+                cc.call();
+            }
+        });
 
 
     }

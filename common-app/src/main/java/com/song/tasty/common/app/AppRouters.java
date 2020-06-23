@@ -76,4 +76,9 @@ public interface AppRouters {
 
     //---------------------------------------------我的模块相关开放api------------------------------------------------------
 
+
+
+
+    String  APP_COMP_FLUTTER = "app.comp.flutter";
+
 }
