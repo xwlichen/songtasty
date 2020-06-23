@@ -7,7 +7,10 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+//        jcenter()
+        maven { url "http://download.flutter.io"}
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
@@ -23,8 +26,11 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+//        jcenter()
+        maven { url "http://download.flutter.io"}
         maven { url "https://jitpack.io" }
+        maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
 
     }
 }
