@@ -24,5 +24,18 @@
         <!--相关attrs 初始化-->
 
     </style>
+    <style name="App_SplashTheme" parent="SMUI.Compat.NoActionBar">
+        <item name="android:background">@color/color_white</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">false</item>
+    </style>
+
+
+    <style name="AppTheme_Flutter" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+<!--        <item name="android:windowBackground">@color/color_transparent</item>-->
+    </style>
 
 </resources>

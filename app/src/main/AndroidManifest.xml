@@ -41,10 +41,24 @@
         </activity>
 
 
-        <activity
-            android:name=".mvvm.ui.FlutterActivity"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/App_SplashTheme"/>
+
+
+<!--        <activity-->
+<!--        android:name="io.flutter.embedding.android.FlutterActivity"-->
+<!--        android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"-->
+<!--        android:hardwareAccelerated="true"-->
+<!--        android:windowSoftInputMode="adjustResize"-->
+<!--        android:theme="@style/AppTheme_Flutter">-->
+<!--                    <meta-data-->
+<!--                        android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"-->
+<!--                        android:value="true" />-->
+<!--                    <meta-data-->
+<!--                        android:name="io.flutter.embedding.android.SplashScreenDrawable"-->
+<!--                        android:resource="@color/color_transparent" />-->
+<!--    </activity>-->
+
+
+
 
 
         <!-- 如果您项目中的所有页面都只需要以高或宽中的一个作为基准进行适配的话, 那就只需要填写高或宽中的一个设计图尺寸即可 -->

@@ -17,12 +17,15 @@ import com.song.tasty.app.R;
 import com.song.tasty.app.databinding.AppActivityMainBinding;
 import com.song.tasty.app.mvvm.viewmodel.MainViewModel;
 import com.song.tasty.common.app.base.BaseAppActivity;
+import com.song.tasty.common.core.AppManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import io.flutter.embedding.android.FlutterActivity;
 
 import static com.song.tasty.common.app.AppRouters.GET_FRAGMENT;
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
@@ -98,6 +101,11 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
             public void onNavSelected(int oldIndex, int newIndex, NavItem menuItem) {
                 changeFragment(newIndex);
 
+//                startActivity(
+//                        FlutterActivity
+//                                .withNewEngine()
+//                                .initialRoute("route1")
+//                                .build(MainActivity.this));
             }
 
             @Override

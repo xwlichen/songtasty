@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.song.tasty.common.app.R;
-import com.song.tasty.common.player.bean.MusicBean;
+import com.song.tasty.common.app.bean.MusicBean;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 

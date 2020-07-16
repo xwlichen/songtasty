@@ -39,9 +39,11 @@ import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.flutter.embedding.android.FlutterActivity;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 
+import static com.song.tasty.common.app.AppRouters.APP_COMP_FLUTTER;
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
@@ -107,10 +109,17 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
         tvTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CC cc = CC.obtainBuilder(HOME_COMP_MUSICPLAY)
+                CC cc = CC.obtainBuilder(APP_COMP_FLUTTER)
                         .setActionName(START_ACTIVITY)
+                        .addParam("pContext",getActivity())
                         .build();
                 cc.call();
+
+//                                startActivity(
+//                        FlutterActivity
+//                                .withNewEngine()
+//                                .initialRoute("route1")
+//                                .build(getActivity()));
             }
         });
 
