@@ -45,6 +45,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 
 import static com.song.tasty.common.app.AppRouters.APP_COMP_FLUTTER;
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
+import static com.song.tasty.common.app.AppRouters.LOGIN_COMP_MAIN;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
@@ -114,6 +115,11 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
                         .addParam("pContext",getActivity())
                         .build();
                 cc.call();
+
+//                CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
+//                        .setActionName(START_ACTIVITY)
+//                        .build();
+//                cc.call();
 
 //                                startActivity(
 //                        FlutterActivity
@@ -224,7 +230,6 @@ public class HomeFragment extends BaseAppFragment<HomeFragmentBinding, HomeViewM
 
         list.get(4).setText(getResources().getString(R.string.home_news));
         list.get(4).setImgRes(R.mipmap.ic_home_nav_random);
-
 
 
         HomeNavListBean bean = new HomeNavListBean(list);

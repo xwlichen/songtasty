@@ -2,6 +2,7 @@ package com.song.tasty.module.login.mvvm.ui;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,6 +13,7 @@ import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.common.core.utils.KeyBoardUtils;
+import com.song.tasty.common.core.utils.LogUtils;
 import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.module.login.BR;
 import com.song.tasty.module.login.R;
@@ -132,9 +134,5 @@ public class LoginActivity extends BaseAppActivity<LoginActivityLoginBinding, Lo
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        KeyBoardUtils.getInstance().release();
-        super.onDestroy();
-    }
+
 }

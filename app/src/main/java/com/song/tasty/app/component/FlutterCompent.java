@@ -7,7 +7,9 @@ import android.util.Log;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.common.app.activitys.flutter.FlutterLoadingActivity;
+import com.song.tasty.common.app.activitys.flutter.FlutterCustomSplashActivity;
+
+import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
 
 import static com.song.tasty.common.app.AppRouters.APP_COMP_FLUTTER;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
@@ -48,7 +50,7 @@ public class FlutterCompent implements IComponent {
         Log.e("xwlc","FlutterCompent startActivity");
         Context context=cc.getParamItem("pContext");
 //        Intent intent = FlutterActivity.withNewEngine().initialRoute("route1").build(context);
-        Intent intent = FlutterLoadingActivity.withNewEngine().initialRoute("route1").build(context);
+        Intent intent = FlutterCustomSplashActivity.withNewEngine().initialRoute("route1").build(context);
         Log.e("xwlc","FlutterCompent LoadingActivity");
 //        intent.putExtra("background_mode","transparent");
         context.startActivity(intent);
