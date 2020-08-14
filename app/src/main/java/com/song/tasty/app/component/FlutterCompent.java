@@ -7,9 +7,14 @@ import android.util.Log;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.common.app.activitys.flutter.FlutterCustomSplashActivity;
+import com.song.tasty.common.app.FlutterRouterConstants;
+import com.song.tasty.common.app.activitys.flutter.FlutterCustomActivity;
+import com.song.tasty.common.app.activitys.flutter.FlutterPageUtils;
+import com.song.tasty.common.core.utils.AppUtils;
 
-import io.flutter.embedding.android.FlutterActivityLaunchConfigs;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.FlutterEngineCache;
+import io.flutter.embedding.engine.dart.DartExecutor;
 
 import static com.song.tasty.common.app.AppRouters.APP_COMP_FLUTTER;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
@@ -50,10 +55,44 @@ public class FlutterCompent implements IComponent {
         Log.e("xwlc","FlutterCompent startActivity");
         Context context=cc.getParamItem("pContext");
 //        Intent intent = FlutterActivity.withNewEngine().initialRoute("route1").build(context);
-        Intent intent = FlutterCustomSplashActivity.withNewEngine().initialRoute("route1").build(context);
-        Log.e("xwlc","FlutterCompent LoadingActivity");
+//        Intent intent = FlutterCustomActivity
+//                .withCachedEngine("my_engine_id")
+////                .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
+//                .build(context);
+//        Log.e("xwlc","FlutterCompent LoadingActivity");
 //        intent.putExtra("background_mode","transparent");
-        context.startActivity(intent);
+
+
+
+//        FlutterEngineCache flutterEngineCache= FlutterEngineCache.getInstance();
+//        if (!flutterEngineCache.contains(FlutterRouterConstants.ROUTER_SETTING)){
+//
+//            // Instantiate a FlutterEngine.
+//            FlutterEngine flutterEngine = new FlutterEngine(context);
+//            // Configure an initial route.
+//            flutterEngine.getNavigationChannel().setInitialRoute(FlutterRouterConstants.ROUTER_SETTING);
+//            // Start executing Dart code to pre-warm the FlutterEngine.
+//            flutterEngine.getDartExecutor().executeDartEntrypoint(
+//                    DartExecutor.DartEntrypoint.createDefault()
+//            );
+//            // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
+//            FlutterEngineCache
+//                    .getInstance()
+//                    .put(FlutterRouterConstants.ROUTER_SETTING, flutterEngine);
+//
+//        }
+
+//        Intent intent=FlutterCustomActivity
+//                .withCachedEngine(FlutterRouterConstants.ROUTER_SETTING)
+////                .withNewEngine()
+////                .initialRoute("/router_mine_main")
+////                .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
+//                .build(context);
+
+
+
+
+        context.startActivity(FlutterPageUtils.getInstance().createIntent(context,FlutterRouterConstants.ROUTER_SETTING));
         CC.sendCCResult(cc.getCallId(), CCResult.success());
     }
 }

@@ -6,7 +6,7 @@
 <!--        <service android:name=".music.M" />-->
 
         <activity
-            android:name=".activitys.flutter.FlutterCustomSplashActivity"
+            android:name=".activitys.flutter.FlutterCustomActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize"

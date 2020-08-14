@@ -207,6 +207,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 if (currentFragment == null) {
                     CC.obtainBuilder(MINE_COMP_MAIN)
                             .setActionName(GET_FRAGMENT)
+                            .addParam("pContext",this)
                             .build()
                             .callAsyncCallbackOnMainThread(fragmentCallback);
                 } else {

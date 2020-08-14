@@ -33,7 +33,7 @@ public class FlutterCustomSplashView extends LinearLayout {
         imageView.setLayoutParams(layoutParams);
         layoutParams.gravity= Gravity.CENTER;
         addView(imageView,layoutParams);
-        setBackgroundColor(ContextCompat.getColor(context,R.color.color_EC512C));
+        setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent));
 
     }
 }

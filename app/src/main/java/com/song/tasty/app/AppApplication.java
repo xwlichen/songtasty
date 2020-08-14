@@ -2,6 +2,7 @@ package com.song.tasty.app;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -19,6 +20,10 @@ import com.tencent.mmkv.MMKV;
 
 import java.io.InputStream;
 import java.nio.ByteBuffer;
+
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.FlutterEngineCache;
+import io.flutter.embedding.engine.dart.DartExecutor;
 
 /**
  * @date : 2019-07-23 11:33
@@ -51,6 +56,24 @@ public class AppApplication extends MultiDexApplication {
         Glide.get(this).getRegistry()
                 .prepend(InputStream.class, Drawable.class, decoder)
                 .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
+
+//
+//        Log.e("xwlc","FlutterEngine start");
+//
+//        // Instantiate a FlutterEngine.
+//        FlutterEngine flutterEngine = new FlutterEngine(this);
+//        // Configure an initial route.
+//        flutterEngine.getNavigationChannel().setInitialRoute("/");
+//        // Start executing Dart code to pre-warm the FlutterEngine.
+//        flutterEngine.getDartExecutor().executeDartEntrypoint(
+//                DartExecutor.DartEntrypoint.createDefault()
+//        );
+//        // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
+//        FlutterEngineCache
+//                .getInstance()
+//                .put("my_engine_id", flutterEngine);
+//        Log.e("xwlc","FlutterEngine end");
+
     }
 
     @Override
