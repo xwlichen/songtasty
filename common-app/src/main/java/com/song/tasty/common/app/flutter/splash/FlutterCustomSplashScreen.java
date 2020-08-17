@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.activitys.flutter;
+package com.song.tasty.common.app.flutter.splash;
 
 import android.content.Context;
 import android.os.Bundle;

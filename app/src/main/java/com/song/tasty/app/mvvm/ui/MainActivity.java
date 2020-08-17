@@ -1,7 +1,9 @@
 package com.song.tasty.app.mvvm.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,6 +19,7 @@ import com.song.tasty.app.R;
 import com.song.tasty.app.databinding.AppActivityMainBinding;
 import com.song.tasty.app.mvvm.viewmodel.MainViewModel;
 import com.song.tasty.common.app.base.BaseAppActivity;
+import com.song.tasty.common.app.flutter.ui.FlutterCommonFragment;
 import com.song.tasty.common.core.AppManager;
 
 import java.util.ArrayList;
@@ -96,6 +99,7 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
         list.add(item2);
         list.add(item3);
 
+        binding.musicNav.bringToFront();
         binding.bottomNav.setCallback(new ILottieBottomNavViewCallback() {
             @Override
             public void onNavSelected(int oldIndex, int newIndex, NavItem menuItem) {
@@ -132,6 +136,8 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
         public void onResult(CC cc, CCResult result) {
             if (result.isSuccess()) {
                 String tag = cc.getComponentName() + cc.getActionName();
+                if (cc.getParamItem("pContext")!=null){
+                }
                 Fragment fragment = fragments.get(tag);
                 if (fragment == null) {
                     Fragment newFragment = result.getDataItemWithNoKey();
@@ -140,6 +146,8 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 } else {
                     showFragment(tag, fragment, false);
                 }
+
+                binding.musicNav.bringToFront();
 
             } else {
                 ToastUtils.show("显示fragment失败");
@@ -203,6 +211,9 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
                 break;
             case 2:
                 currentFragment = fragments.get(MINE_COMP_MAIN + GET_FRAGMENT);
+                if (currentFragment!=null&&currentFragment instanceof FlutterCommonFragment) {
+                    flutterFragment = (FlutterCommonFragment) currentFragment;
+                }
                 tag = GET_FRAGMENT;
                 if (currentFragment == null) {
                     CC.obtainBuilder(MINE_COMP_MAIN)
@@ -221,4 +232,74 @@ public class MainActivity extends BaseAppActivity<AppActivityMainBinding, MainVi
     }
 
 
+    FlutterCommonFragment flutterFragment;
+
+
+    @Override
+    public void onPostResume() {
+        super.onPostResume();
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onPostResume();
+    }
+
+    @Override
+    protected void onNewIntent(@NonNull Intent intent) {
+        super.onNewIntent(intent);
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onNewIntent(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onBackPressed();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults
+    ) {
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onRequestPermissionsResult(
+                requestCode,
+                permissions,
+                grantResults
+        );
+    }
+
+    @Override
+    public void onUserLeaveHint() {
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onUserLeaveHint();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+        if (flutterFragment==null){
+            return;
+        }
+        flutterFragment.onTrimMemory(level);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+    //    getMain
 }
+

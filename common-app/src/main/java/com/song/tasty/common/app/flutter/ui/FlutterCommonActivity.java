@@ -1,4 +1,4 @@
-package com.song.tasty.common.app.activitys.flutter;
+package com.song.tasty.common.app.flutter.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,6 +12,7 @@ import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.R;
+import com.song.tasty.common.app.flutter.splash.FlutterCustomSplashScreen;
 import com.song.tasty.common.core.utils.LogUtils;
 import com.song.tasty.common.core.utils.SmartUtils;
 
@@ -19,8 +20,12 @@ import java.lang.reflect.Constructor;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.android.SplashScreen;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 
-public class FlutterCustomActivity extends FlutterActivity {
+public class FlutterCommonActivity extends FlutterActivity {
 
     protected SMUITipDialog smuiTipDialog;
 
@@ -39,13 +44,40 @@ public class FlutterCustomActivity extends FlutterActivity {
         return new FlutterCustomSplashScreen();
     }
 
+
+    @Override
+    public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
+//        super.configureFlutterEngine(flutterEngine);
+        GeneratedPluginRegistrant.registerWith(flutterEngine);
+        MethodChannel methodChannel = new MethodChannel(flutterEngine.getDartExecutor(), "com.song.tasty.module.flutterpage.host"); //此处名称应与Flutter端保持一致
+        //接收Flutter消息
+        methodChannel.setMethodCallHandler(new MethodChannel.MethodCallHandler() {
+            @Override
+            public void onMethodCall(@NonNull MethodCall call, @NonNull MethodChannel.Result result) {
+                System.out.println("MethodChannel call.method:"+call.method+ "  call arguments:"+call.arguments);
+                switch (call.method){
+                    case "envType":
+                        result.success("2");
+                        break;
+                    case "toast":
+                        String msg = call.argument("msg");
+                        break;
+                    default:
+                        result.error("404", "未匹配到对应的方法"+call.method, null);
+                }
+            }
+        });
+
+        methodChannel.invokeMethod("aaa", "c") ;//发送消息
+    }
+
     @NonNull
     public static NewEngineIntentBuilder withNewEngine() {
         Class<?> builderClass = null;
         try {
             builderClass = Class.forName(NewEngineIntentBuilder.class.getName());
             Constructor builderConstructor = builderClass.getDeclaredConstructor(Class.class);
-            Object builder=builderConstructor.newInstance(FlutterCustomActivity.class);
+            Object builder=builderConstructor.newInstance(FlutterCommonActivity.class);
             return (NewEngineIntentBuilder) builder;
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +91,7 @@ public class FlutterCustomActivity extends FlutterActivity {
         try {
             builderClass = Class.forName(CachedEngineIntentBuilder.class.getName());
             Constructor builderConstructor = builderClass.getDeclaredConstructor(Class.class,String.class);
-            Object builder=builderConstructor.newInstance(FlutterCustomActivity.class,cachedEngineId);
+            Object builder=builderConstructor.newInstance(FlutterCommonActivity.class,cachedEngineId);
             return (CachedEngineIntentBuilder) builder;
         } catch (Exception e) {
             e.printStackTrace();

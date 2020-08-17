@@ -7,14 +7,9 @@ import android.util.Log;
 import com.billy.cc.core.component.CC;
 import com.billy.cc.core.component.CCResult;
 import com.billy.cc.core.component.IComponent;
-import com.song.tasty.common.app.FlutterRouterConstants;
-import com.song.tasty.common.app.activitys.flutter.FlutterCustomActivity;
-import com.song.tasty.common.app.activitys.flutter.FlutterPageUtils;
-import com.song.tasty.common.core.utils.AppUtils;
-
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.FlutterEngineCache;
-import io.flutter.embedding.engine.dart.DartExecutor;
+import com.song.tasty.common.app.flutter.FRouterConstants;
+import com.song.tasty.common.app.flutter.ui.FlutterCommonActivity;
+import com.song.tasty.common.app.flutter.utils.FlutterPageUtils;
 
 import static com.song.tasty.common.app.AppRouters.APP_COMP_FLUTTER;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
@@ -82,17 +77,19 @@ public class FlutterCompent implements IComponent {
 //
 //        }
 
-//        Intent intent=FlutterCustomActivity
-//                .withCachedEngine(FlutterRouterConstants.ROUTER_SETTING)
-////                .withNewEngine()
-////                .initialRoute("/router_mine_main")
+//        Intent intent= FlutterCommonActivity
+////                .withCachedEngine(FRouterConstants.ROUTER_MINE_SETTING)
+//                .withNewEngine()
+//                .initialRoute(FRouterConstants.ROUTER_MINE_SETTING)
 ////                .backgroundMode(FlutterActivityLaunchConfigs.BackgroundMode.transparent)
 //                .build(context);
 
 
+//        context.startActivity(intent);
 
 
-        context.startActivity(FlutterPageUtils.getInstance().createIntent(context,FlutterRouterConstants.ROUTER_SETTING));
+        context.startActivity(FlutterPageUtils.getInstance().createIntent(context, FRouterConstants.ROUTER_MINE_SETTING));
+        context=null;
         CC.sendCCResult(cc.getCallId(), CCResult.success());
     }
 }
