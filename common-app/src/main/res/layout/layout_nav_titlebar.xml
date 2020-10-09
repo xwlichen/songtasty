@@ -16,21 +16,19 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/layoutSearch"
+            app:layout_constraintRight_toLeftOf="@id/vSpace"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="首页" />
 
-        <include
-            android:id="@+id/layoutSearch"
-            layout="@layout/layout_nav_search"
-            android:layout_width="0dp"
+        <View
+            android:id="@+id/vSpace"
+            android:layout_width="@dimen/dp_00"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_010"
-            android:layout_marginRight="@dimen/dp_010"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tvTitle"
             app:layout_constraintRight_toLeftOf="@id/ivSongPrint"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivSongPrint"/>
+
 
         <ImageView
             android:id="@+id/ivSongPrint"
@@ -38,7 +36,7 @@
             android:layout_height="@dimen/dp_030"
             android:src="@mipmap/ic_song_print"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/layoutSearch"
+            app:layout_constraintLeft_toRightOf="@id/vSpace"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
