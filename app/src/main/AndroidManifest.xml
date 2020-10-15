@@ -21,7 +21,7 @@
             android:name=".mvvm.ui.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 
@@ -29,15 +29,26 @@
             <!--</intent-filter>-->
         </activity>
 
+
         <activity
             android:name=".mvvm.ui.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/App_SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name="com.song.tasty.demo.adjustableheader.AdjustableHeaderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name="com.song.tasty.demo.adjustableheader.AdjustableHeader2Activity">
         </activity>
 
 

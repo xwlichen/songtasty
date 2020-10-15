@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.view.ViewCompat;
 
 import com.song.tasty.common.ui.R;
 
@@ -34,10 +35,11 @@ public class ContentBehavior extends HeaderScrollingViewBehavior {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
-        float contentScrollY = dependency.getTranslationY() / getHeaderOffset() * (dependency.getHeight() - getFinalHeight());
-        float y = dependency.getHeight() - contentScrollY;
-        child.setY(y);
-        return true;
+//        float contentScrollY = dependency.getTranslationY() / getHeaderOffset() * (dependency.getHeight() - getFinalHeight());
+//        float y = dependency.getHeight() - contentScrollY;
+//        child.setY(y);
+        ViewCompat.offsetTopAndBottom(child,dependency.getBottom()-child.getTop());
+        return false;
     }
 
     private void offsetChildAsNeeded(CoordinatorLayout parent, View child, View dependency) {

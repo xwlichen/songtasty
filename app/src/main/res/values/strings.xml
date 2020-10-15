@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">song-tasty</string>
+<!--    <string name="title_activity_adjustable_header1">AdjustableHeader-scrollTo</string>-->
+
+    <string name="HeaderBackgroundBehavior">com.song.tasty.demo.coordinate.HeaderBackgroundBehavior</string>
+    <string name="HeaderBehavior">com.song.tasty.demo.coordinate.HeaderBehavior</string>
+
+    <string name="BelowHeaderBehavior">com.song.tasty.demo.coordinate.BelowHeaderBehavior</string>
+
 </resources>

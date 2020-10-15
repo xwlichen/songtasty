@@ -1,6 +1,7 @@
 package com.song.tasty.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,9 +14,18 @@ import com.billy.cc.core.component.CC;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.hjq.toast.ToastUtils;
+import com.song.tasty.app.matrix.config.DynamicConfigImpl;
 import com.song.tasty.common.core.AppManager;
 import com.song.tasty.common.core.imageloader.webp.decoder.WebpBytebufferDecoder;
 import com.song.tasty.common.core.imageloader.webp.decoder.WebpResourceDecoder;
+import com.tencent.matrix.Matrix;
+import com.tencent.matrix.iocanary.IOCanaryPlugin;
+import com.tencent.matrix.iocanary.config.IOConfig;
+import com.tencent.matrix.resource.ResourcePlugin;
+import com.tencent.matrix.resource.config.ResourceConfig;
+import com.tencent.matrix.trace.TracePlugin;
+import com.tencent.matrix.trace.config.TraceConfig;
+import com.tencent.matrix.util.MatrixLog;
 import com.tencent.mmkv.MMKV;
 
 import java.io.InputStream;
@@ -57,6 +67,8 @@ public class AppApplication extends MultiDexApplication {
                 .prepend(InputStream.class, Drawable.class, decoder)
                 .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
 
+        initMatrix();
+
 //
 //        Log.e("xwlc","FlutterEngine start");
 //
@@ -80,5 +92,74 @@ public class AppApplication extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+
+
+    private void initMatrix(){
+        super.onCreate();
+        DynamicConfigImpl dynamicConfig = new DynamicConfigImpl();
+        boolean matrixEnable = dynamicConfig.isMatrixEnable();
+        boolean fpsEnable = dynamicConfig.isFPSEnable();
+        boolean traceEnable = dynamicConfig.isTraceEnable();
+
+        MatrixLog.i("xw", "MatrixApplication.onCreate");
+
+        Matrix.Builder builder = new Matrix.Builder(this);
+//        builder.patchListener(new TestPluginListener(this));
+
+        //trace
+        TraceConfig traceConfig = new TraceConfig.Builder()
+                .dynamicConfig(dynamicConfig)
+                .enableFPS(fpsEnable)
+                .enableEvilMethodTrace(traceEnable)
+                .enableAnrTrace(traceEnable)
+                .enableStartup(traceEnable)
+                .splashActivities("com.song.tasty.app.mvvm.ui.SplashActivity;")
+                .isDebug(true)
+                .isDevEnv(false)
+                .build();
+
+        TracePlugin tracePlugin = (new TracePlugin(traceConfig));
+        builder.plugin(tracePlugin);
+
+        if (matrixEnable) {
+
+            //resource
+            Intent intent = new Intent();
+            ResourceConfig.DumpMode mode = ResourceConfig.DumpMode.AUTO_DUMP;
+            MatrixLog.i("xw", "Dump Activity Leak Mode=%s", mode);
+            intent.setClassName(this.getPackageName(), "com.tencent.mm.ui.matrix.ManualDumpActivity");
+            ResourceConfig resourceConfig = new ResourceConfig.Builder()
+                    .dynamicConfig(dynamicConfig)
+                    .setAutoDumpHprofMode(mode)
+//                .setDetectDebuger(true) //matrix test code
+                    .setNotificationContentIntent(intent)
+                    .build();
+            builder.plugin(new ResourcePlugin(resourceConfig));
+            ResourcePlugin.activityLeakFixer(this);
+
+            //io
+            IOCanaryPlugin ioCanaryPlugin = new IOCanaryPlugin(new IOConfig.Builder()
+                    .dynamicConfig(dynamicConfig)
+                    .build());
+            builder.plugin(ioCanaryPlugin);
+
+
+            // prevent api 19 UnsatisfiedLinkError
+            //sqlite
+//            SQLiteLintConfig sqlLiteConfig;
+//            try {
+//                sqlLiteConfig = new SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode.CUSTOM_NOTIFY);
+//            } catch (Throwable t) {
+//                sqlLiteConfig = new SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode.CUSTOM_NOTIFY);
+//            }
+//            builder.plugin(new SQLiteLintPlugin(sqlLiteConfig));
+
+        }
+
+        Matrix.init(builder.build());
+
+        //start only startup tracer, close other tracer.
+        tracePlugin.start();
     }
 }

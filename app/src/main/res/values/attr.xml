@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AdjustableHeaderLinearLayout">
+        <attr name="needDragOver" format="boolean"/>
+        <attr name="stickSectionHeight" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="HeaderBehavior">
+        <attr name="stickHeight" format="dimension"/>
+        <attr name="maxOverDragHeight" format="dimension"/>
+    </declare-styleable>
+</resources>

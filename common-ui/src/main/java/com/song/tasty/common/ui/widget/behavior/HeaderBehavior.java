@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.smart.ui.LogUtils;
 import com.song.tasty.common.ui.R;
 import com.song.tasty.common.ui.widget.NestedLinearLayout;
@@ -74,6 +75,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
      */
 //    private HeaderFlingRunnable fling;
 
+    private AppBarLayout appBarLayout;
 
     /**
      * 滑动速度追踪
@@ -175,8 +177,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 //
 //        }
         LogUtils.e("xw", "onNestedPreFling velocityY:" + velocityY);
-//        return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY);
-        return true;
+        return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY);
+//        return true;
     }
 
     @Override
@@ -199,10 +201,10 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                 upReach = false;
                 mOverScroller.abortAnimation();
                 break;
-//            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_UP:
 ////                mParent = new WeakReference<CoordinatorLayout>(parent);
 ////                handleActionUp(child);
-//                LogUtils.e("xw", "onInterceptTouchEvent ACTION_UP");
+                LogUtils.e("xw", "onInterceptTouchEvent ACTION_UP");
 //                // 计算当前速度， 1000表示每秒像素数等
 //                velocityTracker.computeCurrentVelocity(1000, maximumVelocity);
 //
@@ -225,7 +227,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 //                    velocityTracker.recycle();
 //                    velocityTracker = null;
 //                }
-//                break;
+                break;
         }
         return super.onInterceptTouchEvent(parent, child, ev);
 //        return true;
@@ -244,6 +246,36 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 //    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
 //        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
 
+//    private int totalScrollRange=-1;
+//
+//    public final int getTotalScrollRange() {
+//        if (this.totalScrollRange != -1) {
+//            return this.totalScrollRange;
+//        } else {
+//            int range = 0;
+//            int i = 0;
+//
+//            for(int z = this.getChildCount(); i < z; ++i) {
+//                View child = this.getChildAt(i);
+//                AppBarLayout.LayoutParams lp = (AppBarLayout.LayoutParams)child.getLayoutParams();
+//                int childHeight = child.getMeasuredHeight();
+//                int flags = lp.scrollFlags;
+//                if ((flags & 1) == 0) {
+//                    break;
+//                }
+//
+//                range += childHeight + lp.topMargin + lp.bottomMargin;
+//                if ((flags & 2) != 0) {
+//                    range -= ViewCompat.getMinimumHeight(child);
+//                    break;
+//                }
+//            }
+//
+//            return this.totalScrollRange = Math.max(0, range - this.getTopInset());
+//        }
+//    }
+
+
     /**
      * 嵌套滚动发生之前被调用
      * 在nested scroll child 消费掉自己的滚动距离之前，嵌套滚动每次被nested scroll child
@@ -261,59 +293,99 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
-        LogUtils.e("xw","onNestedPreScroll");
+
+//        if (dy != 0) {
+//            if (dy > 0) { // 向上滚动
+//                consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), getOverScrollOffset(child));
+//            } else { // 向下滚动
+//                boolean canScrollDown = target.canScrollVertically(-1);
+//                if (!canScrollDown) {
+//                    consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), type == ViewCompat.TYPE_NON_TOUCH ? 0 : getOverScrollOffsetchild));
+//                    if (consumed[1] == 0 && type == ViewCompat.TYPE_NON_TOUCH) {
+//                        ((NestedScrollingChild2) target).stopNestedScroll(type);
+//                    }
+//                }
+//            }
+//        }
+
+
+
+
+//        if (dy != 0) {
+//            int min;
+//            int max;
+//            if (dy < 0) {
+//                min = -child.getTotalScrollRange();
+//                max = min + child.getDownNestedPreScrollRange();
+//            } else {
+//                min = -child.getUpNestedPreScrollRange();
+//                max = 0;
+//            }
+//
+//            if (min != max) {
+//                consumed[1] = this.scroll(coordinatorLayout, child, dy, min, max);
+////                this.stopNestedScrollIfNeeded(dy, child, target, type);
+//            }
+//        }
+
+
+
+
 //        LogUtils.e("xw","type:"+type);
 
-        //制造滑动视察，使header的移动比手指滑动慢
-        float scrollY = dy / 4.0f;
-
-        if (target instanceof NestedLinearLayout) {//处理header滑动
-            float finalY = child.getTranslationY() - scrollY;
-            if (finalY < getHeaderOffset()) {
-                finalY = getHeaderOffset();
-            } else if (finalY > 0) {
-                finalY = 0;
-            }
-            child.setTranslationY(finalY);
-            consumed[1] = dy;
-        } else if (target instanceof ScrollView) {//处理header滑动
-            float finalY = child.getTranslationY() - scrollY;
-            if (finalY < getHeaderOffset()) {
-                finalY = getHeaderOffset();
-            } else if (finalY > 0) {
-                finalY = 0;
-            }
-            child.setTranslationY(finalY);
-            consumed[1] = dy;
-        } else if (target instanceof RecyclerView) {//处理列表滑动
-            RecyclerView list = (RecyclerView) target;
-            int pos = ((LinearLayoutManager) list.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-
-            //header closed状态下，列表上滑再下滑到第一个item全部显示，此时不让CoordinatorLayout整体下滑，
-            //手指重新抬起再下滑才可以整体滑动
-            if (pos == 0 && pos < lastPosition) {
-                downReach = true;
-            }
-
-
-            if (pos == 0 && canScroll(child, scrollY)) {
-                //如果列表第一个item全部可见、或者header已展开，则让CoordinatorLayout消费掉事件
-                float finalY = child.getTranslationY() - scrollY;
-                //header已经closed，整体不能继续上滑，手指抬起重新上滑列表开始滚动
-                if (finalY < getHeaderOffset()) {
-                    finalY = getHeaderOffset();
-                    upReach = true;
-                } else if (finalY > 0) {//header已经opened，整体不能继续下滑
-                    finalY = 0;
-                }
-                child.setTranslationY(finalY);
-                consumed[1] = dy;//让CoordinatorLayout消费掉事件，实现整体滑动
-            }
-//            if (pos==0){
-//                consumed[0] = dy;
+        //制造滑动视察，child.getTranslationY()Xscdsvvdvsdfvds
+//        float scrollY = dy /1.0f;
+//
+//        if (target instanceof NestedLinearLayout) {//处理header滑动
+//            float finalY = child.getTranslationY() - scrollY;
+//            LogUtils.e("xw","onNestedPreScroll dy:"+dy+",getTranslationY:"+child.getTranslationY()+"finalY:"+finalY);
+////            if (finalY < getHeaderOffset()) {
+////                finalY = getHeaderOffset();
+////            } else if (finalY > 0) {
+////                finalY = 0;
+////            }
+////            ViewCompat.offsetTopAndBottom(this.child, this.offsetTop - (this.view.getTop() - this.layoutTop));
+//            child.setTranslationY(finalY);
+//            consumed[1] = dy;
+//        }
+//        else if (target instanceof ScrollView) {//处理header滑动
+//            float finalY = child.getTranslationY() - scrollY;
+//            if (finalY < getHeaderOffset()) {
+//                finalY = getHeaderOffset();
+//            } else if (finalY > 0) {
+//                finalY = 0;
 //            }
-            lastPosition = pos;
-        }
+//            child.setTranslationY(finalY);
+//            consumed[1] = dy;
+//        } else if (target instanceof RecyclerView) {//处理列表滑动
+//            RecyclerView list = (RecyclerView) target;
+//            int pos = ((LinearLayoutManager) list.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
+//
+//            //header closed状态下，列表上滑再下滑到第一个item全部显示，此时不让CoordinatorLayout整体下滑，
+//            //手指重新抬起再下滑才可以整体滑动
+//            if (pos == 0 && pos < lastPosition) {
+//                downReach = true;
+//            }
+//
+//
+//            if (pos == 0 && canScroll(child, scrollY)) {
+//                //如果列表第一个item全部可见、或者header已展开，则让CoordinatorLayout消费掉事件
+//                float finalY = child.getTranslationY() - scrollY;
+//                //header已经closed，整体不能继续上滑，手指抬起重新上滑列表开始滚动
+//                if (finalY < getHeaderOffset()) {
+//                    finalY = getHeaderOffset();
+//                    upReach = true;
+//                } else if (finalY > 0) {//header已经opened，整体不能继续下滑
+//                    finalY = 0;
+//                }
+//                child.setTranslationY(finalY);
+//                consumed[1] = dy;//让CoordinatorLayout消费掉事件，实现整体滑动
+//            }
+////            if (pos==0){
+////                consumed[0] = dy;
+////            }
+//            lastPosition = pos;
+//        }
     }
 
     /**
