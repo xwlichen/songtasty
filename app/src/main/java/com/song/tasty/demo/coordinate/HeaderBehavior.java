@@ -15,6 +15,7 @@ import androidx.core.math.MathUtils;
 import androidx.core.view.NestedScrollingChild2;
 import androidx.core.view.ViewCompat;
 
+import com.smart.utils.LogUtils;
 import com.song.tasty.app.R;
 
 
@@ -56,6 +57,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onInterceptTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
+        LogUtils.e("xw","onInterceptTouchEvent");
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
         }
@@ -116,6 +118,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
+        LogUtils.e("xw","onTouchEvent");
+
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
         }
@@ -214,6 +218,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View directTargetChild, @NonNull View target, int axes, int type) {
+        LogUtils.e("xw","onStartNestedScroll");
+
         boolean result = (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
         if (result && mRevertAnimator != null) {
             mRevertAnimator.cancel();
@@ -223,6 +229,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
+        LogUtils.e("xw","onNestedPreScroll");
+
         if (dy != 0) {
             if (dy > 0) {
                 consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), getOverScrollOffset(child));
@@ -240,6 +248,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public void onStopNestedScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int type) {
+        LogUtils.e("xw","onStopNestedScroll");
+
         super.onStopNestedScroll(coordinatorLayout, child, target, type);
         if (type == ViewCompat.TYPE_TOUCH) {
             startRevertAnimator(child);

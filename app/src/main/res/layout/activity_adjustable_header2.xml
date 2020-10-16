@@ -20,7 +20,7 @@
 
     <com.song.tasty.demo.adjustableheader.MyRelativeLayout
         android:id="@+id/header"
-        app:layout_behavior="com.song.tasty.common.ui.widget.behavior.HeaderBehavior"
+        app:layout_behavior="com.song.tasty.demo.coordinate.HeaderBehavior"
         app:stickHeight="50dp"
         app:maxOverDragHeight="150dp"
         android:layout_width="match_parent"

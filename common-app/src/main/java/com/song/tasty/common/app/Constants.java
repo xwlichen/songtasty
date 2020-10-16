@@ -9,4 +9,7 @@ package com.song.tasty.common.app;
 public interface Constants {
 
     String HOST_ONLINE_URL = "http://newappx.songtasty.com/";
+
+//    String LOG_PATCH="log";
+//    String LOG_CACHE_PATH="log";
 }

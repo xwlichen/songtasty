@@ -3,6 +3,7 @@ package com.song.tasty.app;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import com.billy.cc.core.component.CC;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.hjq.toast.ToastUtils;
+import com.smart.utils.LogUtils;
 import com.song.tasty.app.matrix.config.DynamicConfigImpl;
 import com.song.tasty.common.core.AppManager;
 import com.song.tasty.common.core.imageloader.webp.decoder.WebpBytebufferDecoder;
@@ -68,6 +70,13 @@ public class AppApplication extends MultiDexApplication {
                 .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
 
         initMatrix();
+        String path=getExternalFilesDir(null).getAbsolutePath()+"/log";
+        String cachePath=getExternalCacheDir().getAbsolutePath()+"/log";
+
+        Log.e("xw","path:"+path);
+        Log.e("xw","cachePath:"+cachePath);
+
+        LogUtils.initXLog("st", path,cachePath,"",0,true);
 
 //
 //        Log.e("xwlc","FlutterEngine start");
