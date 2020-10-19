@@ -45,15 +45,15 @@ public class HeaderBackgroundBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
-        LogUtils.e("xw","offset:"+(dependency.getBottom() - child.getBottom()));
+//        LogUtils.e("xw","offset:"+(dependency.getBottom() - child.getBottom()));
         ViewCompat.offsetTopAndBottom(child, dependency.getBottom() - child.getBottom());
         for (int i = 0, c = ((ViewGroup) child).getChildCount(); i < c; i++) {
             final View view = ((ViewGroup) child).getChildAt(i);
             final int height = view.getMeasuredHeight();
             final float scale = MathUtils.clamp((dependency.getTop() + height * 1f) / height, 1, Integer.MAX_VALUE);
 
-            LogUtils.e("xw","dependency top:"+dependency.getTop()+ ",dependency bottom :"+dependency.getBottom()
-                    +",child top:"+child.getTop()+",child bottom:"+child.getBottom());
+//            LogUtils.e("xw","dependency top:"+dependency.getTop()+ ",dependency bottom :"+dependency.getBottom()
+//                    +",child top:"+child.getTop()+",child bottom:"+child.getBottom());
 
             view.setTranslationY(-dependency.getTop() / 2f + mOriginTransY);
             view.setScaleX(scale);
@@ -88,7 +88,7 @@ public class HeaderBackgroundBehavior extends ViewOffsetBehavior<View> {
             //给绑定这个behavior的控件设置大小=依赖的控件+最大的pull量
 
             child.getLayoutParams().height = header.getMeasuredHeight() + overScrollOffset;
-            LogUtils.e("xw","height:"+child.getLayoutParams().height);
+//            LogUtils.e("xw","height:"+child.getLayoutParams().height);
             if (child instanceof ViewGroup) {
                 if (mOriginTransY == -1) {
                     mOriginTransY = overScrollOffset;
@@ -123,7 +123,7 @@ public class HeaderBackgroundBehavior extends ViewOffsetBehavior<View> {
             int top=header.getBottom()- lp.bottomMargin - child.getMeasuredHeight() + lp.topMargin;
             int right=parent.getWidth() - parent.getPaddingRight() - lp.rightMargin;
             int bottom=header.getBottom()- lp.bottomMargin;
-            LogUtils.e("xw","left:"+left+",top:"+top+",right:"+right+",bottom:"+bottom);
+//            LogUtils.e("xw","left:"+left+",top:"+top+",right:"+right+",bottom:"+bottom);
             child.layout(left, top, right, bottom);
         } else {
             super.layoutChild(parent, child, layoutDirection);

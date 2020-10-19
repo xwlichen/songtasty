@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 
 public class MyRecycleView extends RecyclerView {
-    private static final String TAG = "RecyclerView";
+    private static final String TAG = "xw";
 
     public MyRecycleView(Context context) {
         super(context);

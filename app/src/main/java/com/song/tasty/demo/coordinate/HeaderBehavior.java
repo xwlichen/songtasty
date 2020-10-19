@@ -55,6 +55,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         return mMaxOverDragHeight;
     }
 
+
     @Override
     public boolean onInterceptTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
         LogUtils.e("xw","onInterceptTouchEvent");
@@ -170,13 +171,19 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                 final CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) sibling.getLayoutParams()).getBehavior();
                 if (behavior != null && behavior instanceof BelowHeaderBehavior) {
                     final int offset = child.getHeight() - child.getBottom();
+                    LogUtils.e("xw","onTouchEvent offset:"+offset+",child.getHeight:"+child.getHeight()+",child.getBottom:"+child.getBottom());
                     if (mNeedDispatchDown) {
+                        //第一次需要自己下发Down事件，绑定BelowHeaderBehavior的控件才能接受和处理所有的touch事件
+//                        LogUtils.e("xw","mNeedDispatchDown :true");
                         mNeedDispatchDown = false;
                         mCurrentDownEvent.offsetLocation(0, offset);
                         sibling.dispatchTouchEvent(mCurrentDownEvent);
+                    }else{
+                        LogUtils.e("xw","mNeedDispatchDown :false");
+                        ev.offsetLocation(0, offset);
+                        sibling.dispatchTouchEvent(ev);
                     }
-                    ev.offsetLocation(0, offset);
-                    sibling.dispatchTouchEvent(ev);
+
                 }
             }
         }
@@ -232,7 +239,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         LogUtils.e("xw","onNestedPreScroll");
 
         if (dy != 0) {
-            if (dy > 0) {
+            if (dy > 0) {//向上滚动
                 consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), getOverScrollOffset(child));
             } else {
                 boolean canScrollDown = target.canScrollVertically(-1);
