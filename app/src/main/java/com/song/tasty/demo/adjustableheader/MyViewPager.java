@@ -27,7 +27,7 @@ public class MyViewPager extends ViewPager {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.i("xw", "dispatchTouchEvent: " + ev.getX() + ": " + ev.getY() + ": " + ev.getRawX() + " : " + ev.getRawY());
+        Log.e("xw", "MyViewPager dispatchTouchEvent: " + ev.getX() + ": " + ev.getY() + ": " + ev.getRawX() + " : " + ev.getRawY());
         return super.dispatchTouchEvent(ev);
     }
 }

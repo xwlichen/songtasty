@@ -26,24 +26,36 @@ public class MyRecycleView extends RecyclerView {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
-        Log.i(TAG, "onLayout: ");
+        Log.i(TAG, "RecycleView onLayout: ");
     }
 
     @Override
     protected void onMeasure(int widthSpec, int heightSpec) {
         super.onMeasure(widthSpec, heightSpec);
-        Log.i(TAG, "onMeasure: ");
+        Log.i(TAG, "RecycleView onMeasure: ");
     }
 
     @Override
     public void invalidate() {
         super.invalidate();
-        Log.i(TAG, "invalidate: ");
+        Log.e(TAG, "RecycleView invalidate: ");
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.e(TAG, "RecycleView dispatchTouchEvent");
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent e) {
+        Log.e(TAG, "RecycleView onInterceptTouchEvent");
+        return super.onInterceptTouchEvent(e);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        Log.i(TAG, "onTouchEvent: " + e.getY() + ": " + e.getActionMasked());
+        Log.e(TAG, "RecycleView onTouchEvent: " + e.getY() + ": " + e.getActionMasked());
         return super.onTouchEvent(e);
     }
 

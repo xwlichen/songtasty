@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -17,6 +18,8 @@ import androidx.core.view.ViewCompat;
 
 import com.smart.utils.LogUtils;
 import com.song.tasty.app.R;
+import com.song.tasty.demo.adjustableheader.MyRecycleView;
+import com.song.tasty.demo.adjustableheader.MyRelativeLayout;
 
 
 /**
@@ -58,7 +61,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onInterceptTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
-        LogUtils.e("xw","onInterceptTouchEvent");
+//        LogUtils.e("xw","onInterceptTouchEvent");
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
         }
@@ -70,6 +73,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
             return true;
         }
 
+
+
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN: {
                 mIsBeingDragged = false;
@@ -77,17 +82,23 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                 final int x = (int) ev.getX();
                 final int y = (int) ev.getY();
                 if (parent.isPointInChildBounds(child, x, y)) {
+                    LogUtils.e("xw","onInterceptTouchEvent  ACTION_DOWN isPointInChildBounds is ture");
                     mLastMotionY = y;
                     mActivePointerId = ev.getPointerId(0);
                     if (mCurrentDownEvent != null) {
                         mCurrentDownEvent.recycle();
                     }
                     mCurrentDownEvent = MotionEvent.obtain(ev);
+                }else{
+                    LogUtils.e("xw","onInterceptTouchEvent  ACTION_DOWN isPointInChildBounds is false");
+
                 }
                 break;
             }
 
             case MotionEvent.ACTION_MOVE: {
+                LogUtils.e("xw","onInterceptTouchEvent  ACTION_MOVE");
+
                 final int activePointerId = mActivePointerId;
                 if (activePointerId == INVALID_POINTER) {
                     // If we don't have a valid id, the touch down wasn't on content.
@@ -108,6 +119,8 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP: {
+                LogUtils.e("xw","onInterceptTouchEvent  ACTION_UP");
+
                 mIsBeingDragged = false;
                 mNeedDispatchDown = true;
                 mActivePointerId = INVALID_POINTER;
@@ -116,17 +129,20 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         }
         return mIsBeingDragged;
     }
-
+    boolean isUpOrCancel = false;
+    boolean isDown=false;
     @Override
     public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
-        LogUtils.e("xw","onTouchEvent");
+
 
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
         }
-        boolean isUpOrCancel = false;
+        isUpOrCancel = false;
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN: {
+                isDown=true;
+                LogUtils.e("xw","onTouchEvent  ACTION_DOWN");
                 final int x = (int) ev.getX();
                 final int y = (int) ev.getY();
 
@@ -144,6 +160,9 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
             }
 
             case MotionEvent.ACTION_MOVE: {
+                isDown=false;
+                LogUtils.e("xw","onTouchEvent  ACTION_MOVE");
+
                 final int activePointerIndex = ev.findPointerIndex(mActivePointerId);
                 if (activePointerIndex == -1) {
                     return false;
@@ -158,12 +177,25 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
             }
 
             case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL: {
+                LogUtils.e("xw","onTouchEvent  ACTION_UP");
+                isDown=false;
+
                 isUpOrCancel = true;
                 mActivePointerId = INVALID_POINTER;
                 startRevertAnimator(child);
                 break;
+            case MotionEvent.ACTION_CANCEL: {
+                LogUtils.e("xw","onTouchEvent  ACTION_CANCEL");
+                isDown=false;
+
+                isUpOrCancel = true;
+                mActivePointerId = INVALID_POINTER;
+//                startRevertAnimator(child);
+                break;
             }
+            default:
+                isDown=false;
+                break;
         }
         if (mIsBeingDragged) {
             for (int i = 0, c = parent.getChildCount(); i < c; i++) {
@@ -180,9 +212,10 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                         sibling.dispatchTouchEvent(mCurrentDownEvent);
                     }else{
                         LogUtils.e("xw","mNeedDispatchDown :false");
-                        ev.offsetLocation(0, offset);
-                        sibling.dispatchTouchEvent(ev);
+
                     }
+                    ev.offsetLocation(0, offset);
+                    sibling.dispatchTouchEvent(ev);
 
                 }
             }
@@ -236,14 +269,24 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
-        LogUtils.e("xw","onNestedPreScroll");
+
+//        if (target instanceof MyRecycleView){
+//
+//        }
+        if (isDown){
+            ((MyRecycleView)target).stopScroll();
+            ((MyRecycleView)target).stopNestedScroll(type);
+//            ((MyRelativeLayout)child).stopNestedScroll();
+            coordinatorLayout.hasNestedScrollingParent();
+            return;
+        }
 
         if (dy != 0) {
             if (dy > 0) {//向上滚动
                 consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), getOverScrollOffset(child));
             } else {
                 boolean canScrollDown = target.canScrollVertically(-1);
-                if (!canScrollDown) {
+                if (((MyRecycleView)target).computeVerticalScrollOffset()<=0||!isUpOrCancel) {
                     consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), type == ViewCompat.TYPE_NON_TOUCH ? 0 : getOverScrollOffset(child));
                     if (consumed[1] == 0 && type == ViewCompat.TYPE_NON_TOUCH) {
                         ((NestedScrollingChild2) target).stopNestedScroll(type);
@@ -251,6 +294,13 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
                 }
             }
         }
+
+//        if (getTopAndBottomOffset()==0||getTopAndBottomOffset()==-750) {
+//            ((NestedScrollingChild2) target).stopNestedScroll(type);
+//        }
+
+
+        LogUtils.e("xw","onNestedPreScroll consumed[1]:"+consumed[1]+",dy:"+dy+",getTopAndBottomOffset:"+getTopAndBottomOffset());
     }
 
     @Override
@@ -258,7 +308,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         LogUtils.e("xw","onStopNestedScroll");
 
         super.onStopNestedScroll(coordinatorLayout, child, target, type);
-        if (type == ViewCompat.TYPE_TOUCH) {
+        if (type == ViewCompat.TYPE_NON_TOUCH) {
             startRevertAnimator(child);
         }
     }
