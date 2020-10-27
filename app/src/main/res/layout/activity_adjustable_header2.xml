@@ -21,10 +21,16 @@
     <com.song.tasty.demo.adjustableheader.MyRelativeLayout
         android:id="@+id/header"
         app:layout_behavior="com.song.tasty.demo.coordinate.HeaderBehavior"
-        app:stickHeight="50dp"
+        app:stickHeight="100dp"
         app:maxOverDragHeight="150dp"
         android:layout_width="match_parent"
         android:layout_height="300dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@id/tabLayout"
+            android:text="标题"/>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
