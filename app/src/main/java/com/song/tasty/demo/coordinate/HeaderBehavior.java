@@ -61,6 +61,7 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public boolean onInterceptTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
+        flag=false;
 //        LogUtils.e("xw","onInterceptTouchEvent");
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
@@ -129,8 +130,30 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         }
         return mIsBeingDragged;
     }
+
+    //(x,y)是否在view的区域内
+    private boolean isTouchPointInView(View view, int x, int y) {
+        if (view == null) {
+            return false;
+        }
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int left = location[0];
+        int top = location[1];
+        int right = left + view.getMeasuredWidth();
+        int bottom = top + view.getMeasuredHeight();
+        //view.isClickable() &&
+        if (y >= top && y <= bottom && x >= left
+                && x <= right) {
+            return true;
+        }
+        return false;
+    }
+
+
     boolean isUpOrCancel = false;
     boolean isDown=false;
+    boolean flag=false;
     @Override
     public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
 
@@ -138,6 +161,13 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
         if (mTouchSlop < 0) {
             mTouchSlop = ViewConfiguration.get(parent.getContext()).getScaledTouchSlop();
         }
+
+        flag=false;
+        int x1 = (int) ev.getRawX();
+        int y1 = (int) ev.getRawY();
+        flag=isTouchPointInView(child,x1,y1);
+
+
         isUpOrCancel = false;
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN: {
@@ -269,38 +299,46 @@ public class HeaderBehavior extends ViewOffsetBehavior<View> {
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout, @NonNull View child, @NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
+        LogUtils.e("header","child:"+child.getClass());
 
 //        if (target instanceof MyRecycleView){
 //
 //        }
-        if (isDown){
-            ((MyRecycleView)target).stopScroll();
-            ((MyRecycleView)target).stopNestedScroll(type);
-//            ((MyRelativeLayout)child).stopNestedScroll();
-            coordinatorLayout.hasNestedScrollingParent();
-            return;
-        }
+//        if (isDown){
+//            ((MyRecycleView)target).stopScroll();
+//            ((MyRecycleView)target).stopNestedScroll(type);
+////            ((MyRelativeLayout)child).stopNestedScroll();
+//            coordinatorLayout.hasNestedScrollingParent();
+//            return;
+//        }
+
 
         if (dy != 0) {
             if (dy > 0) {//向上滚动
                 consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), getOverScrollOffset(child));
             } else {
                 boolean canScrollDown = target.canScrollVertically(-1);
-                if (((MyRecycleView)target).computeVerticalScrollOffset()<=0||!isUpOrCancel) {
+//                if (((MyRecycleView)target).computeVerticalScrollOffset()<=0||!isUpOrCancel) {
                     consumed[1] = scroll(coordinatorLayout, child, dy, getMaxDragOffset(child), type == ViewCompat.TYPE_NON_TOUCH ? 0 : getOverScrollOffset(child));
                     if (consumed[1] == 0 && type == ViewCompat.TYPE_NON_TOUCH) {
-                        ((NestedScrollingChild2) target).stopNestedScroll(type);
+                        ((MyRecycleView) target).stopNestedScroll(type);
                     }
-                }
+//                }
             }
         }
+        MyRecycleView recycleView=((MyRecycleView) target);
 
+//        if (flag){
+//            if (getTopAndBottomOffset()==-600||getTopAndBottomOffset()==0) {
+//                recycleView.stopScroll();
+//            }
+//        }
 //        if (getTopAndBottomOffset()==0||getTopAndBottomOffset()==-750) {
 //            ((NestedScrollingChild2) target).stopNestedScroll(type);
 //        }
 
 
-        LogUtils.e("xw","onNestedPreScroll consumed[1]:"+consumed[1]+",dy:"+dy+",getTopAndBottomOffset:"+getTopAndBottomOffset());
+        LogUtils.e("xw","onNestedPreScroll consumed[1]:"+consumed[1]+",dy:"+dy+",getTopAndBottomOffset:"+getTopAndBottomOffset()+"computeVerticalScrollOffset():"+recycleView.computeVerticalScrollOffset());
     }
 
     @Override

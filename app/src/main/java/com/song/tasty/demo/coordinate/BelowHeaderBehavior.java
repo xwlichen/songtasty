@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
+import com.smart.utils.LogUtils;
+
 import java.util.List;
 
 /**
@@ -30,6 +32,8 @@ public class BelowHeaderBehavior extends HeaderScrollingViewBehavior {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
+        LogUtils.e("below","child:"+child.getClass());
+
         ViewCompat.offsetTopAndBottom(child, dependency.getBottom() - child.getTop());
         return super.onDependentViewChanged(parent, child, dependency);
     }

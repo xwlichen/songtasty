@@ -17,7 +17,7 @@ import com.smart.utils.LogUtils;
  */
 
 public class MyRecycleView extends RecyclerView {
-    private static final String TAG = "xw";
+    private static final String TAG = "MyRecycleView";
 
     public MyRecycleView(Context context) {
         super(context);
@@ -51,26 +51,43 @@ public class MyRecycleView extends RecyclerView {
         int y = (int) ev.getRawY();
         if (isTouchPointInView(this, x, y)) {
 
-
+            Log.e(TAG, "RecycleView dispatchTouchEvent");
+            return super.dispatchTouchEvent(ev);
         } else{
             stopScroll();
+            Log.e(TAG, "RecycleView dispatchTouchEvent");
+            return super.dispatchTouchEvent(ev);
 //            stopNestedScroll(ViewCompat.TYPE_NON_TOUCH);
         }
-        Log.e(TAG, "RecycleView dispatchTouchEvent");
-        return super.dispatchTouchEvent(ev);
+
 
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
+
         Log.e(TAG, "RecycleView onInterceptTouchEvent");
         return super.onInterceptTouchEvent(e);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        Log.e(TAG, "RecycleView onTouchEvent: " + e.getY() + ": " + e.getActionMasked());
-        return super.onTouchEvent(e);
+
+//        int x = (int) e.getRawX();
+//        int y = (int) e.getRawY();
+//        if (isTouchPointInView(this, x, y)) {
+//            Log.e(TAG, "RecycleView onTouchEvent: " + e.getY() + ": " + e.getActionMasked());
+//            return super.onTouchEvent(e);
+//        }else{
+//            if (computeVerticalScrollOffset()>0){
+//                return false;
+//            }else{
+//                Log.e(TAG, "RecycleView onTouchEvent: " + e.getY() + ": " + e.getActionMasked());
+                return super.onTouchEvent(e);
+//            }
+//
+//        }
+
     }
 
 
