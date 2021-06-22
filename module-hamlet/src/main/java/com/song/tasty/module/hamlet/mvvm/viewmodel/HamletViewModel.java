@@ -10,8 +10,8 @@ import androidx.databinding.ObservableInt;
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingCommand;
 import com.song.tasty.common.core.livedata.SingleLiveData;
-import com.song.tasty.module.home.datasource.DataRepository;
-import com.song.tasty.module.home.datasource.Injection;
+import com.song.tasty.module.hamlet.datasource.DataRepository;
+import com.song.tasty.module.hamlet.datasource.Injection;
 
 /**
  * @date : 2019-07-23 09:53

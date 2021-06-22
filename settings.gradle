@@ -4,7 +4,7 @@ include ':common-player'
 
 setBinding(new Binding([gradle: this]))
 evaluate(new File(settingsDir.parentFile, 'songtasty-flutter/.android/include_flutter.groovy'))
-//include ':module-flutter'
+include ':module-flutter'
 
 
 //include ':app'

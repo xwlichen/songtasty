@@ -4,9 +4,9 @@ apply from: '../common-setting.gradle'
 
 android {
 
-    defaultConfig {
-        multiDexEnabled true
-    }
+//    defaultConfig {
+//        multiDexEnabled true
+//    }
 
     resourcePrefix "app_" //给 Module 内的资源名增加前缀, 避免资源名冲突
     dataBinding {
@@ -34,36 +34,36 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.2.0'
 
-    implementation group: "com.tencent.matrix", name: "matrix-commons", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-android-lib", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-android-commons", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-trace-canary", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-resource-canary-android", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-resource-canary-common", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-io-canary", version: MATRIX_VERSION, changing: true
-    implementation group: "com.tencent.matrix", name: "matrix-sqlite-lint-android-sdk", version: MATRIX_VERSION, changing: true
-    releaseImplementation group: "com.tencent.matrix", name: "matrix-sqlite-lint-android-sdk-no-op", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-commons", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-android-lib", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-android-commons", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-trace-canary", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-resource-canary-android", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-resource-canary-common", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-io-canary", version: MATRIX_VERSION, changing: true
+//    implementation group: "com.tencent.matrix", name: "matrix-sqlite-lint-android-sdk", version: MATRIX_VERSION, changing: true
+//    releaseImplementation group: "com.tencent.matrix", name: "matrix-sqlite-lint-android-sdk-no-op", version: MATRIX_VERSION, changing: true
 //    apkCheckerDependency group: "com.tencent.matrix", name: "matrix-apk-canary", version:MATRIX_VERSION, changing: true
 
 }
 
-apply plugin: 'com.tencent.matrix-plugin'
-matrix {
-    trace {
-        enable = true
-        baseMethodMapFile = "${project.projectDir}/matrixTrace/methodMapping.txt"
-        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
-    }
-//    removeUnusedResources {
-//        enable true
-//        variant = "debug"
-//        needSign true
-//        shrinkArsc true
-//        //Notice: You need to modify the  value of $apksignerPath on different platform. the value below only suitable for Mac Platform,
-//        //if on Windows, you may have to  replace apksigner with apksigner.bat.
-//        apksignerPath = "${android.getSdkDirectory().getAbsolutePath()}/build-tools/${android.getBuildToolsVersion()}/apksigner"
-//        unusedResources = project.ext.unusedResourcesSet
-//        ignoreResources = ["R.id.*", "R.bool.*"]
+//apply plugin: 'com.tencent.matrix-plugin'
+//matrix {
+//    trace {
+//        enable = true
+//        baseMethodMapFile = "${project.projectDir}/matrixTrace/methodMapping.txt"
+//        blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
 //    }
-}
+////    removeUnusedResources {
+////        enable true
+////        variant = "debug"
+////        needSign true
+////        shrinkArsc true
+////        //Notice: You need to modify the  value of $apksignerPath on different platform. the value below only suitable for Mac Platform,
+////        //if on Windows, you may have to  replace apksigner with apksigner.bat.
+////        apksignerPath = "${android.getSdkDirectory().getAbsolutePath()}/build-tools/${android.getBuildToolsVersion()}/apksigner"
+////        unusedResources = project.ext.unusedResourcesSet
+////        ignoreResources = ["R.id.*", "R.bool.*"]
+////    }
+//}
 

@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-import com.song.tasty.common.player.bean.MusicBean;
+import com.song.tasty.common.app.bean.MusicBean;
 
 import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_CLOSE;
 import static com.song.tasty.common.player.MusicNotification.MUSIC_NOTIFICATION_ACTION_NEXT;

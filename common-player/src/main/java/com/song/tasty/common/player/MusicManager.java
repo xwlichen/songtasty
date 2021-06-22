@@ -5,7 +5,7 @@ import com.smart.media.player.SmartMusicPlayer;
 import com.smart.media.player.bean.InfoBean;
 import com.smart.media.player.enums.InfoCode;
 import com.smart.media.player.interf.IPlayer;
-import com.song.tasty.common.player.bean.MusicBean;
+import com.song.tasty.common.app.bean.MusicBean;
 import com.song.tasty.common.player.emums.PlayModel;
 
 import java.util.ArrayList;

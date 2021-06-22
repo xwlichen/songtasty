@@ -20,15 +20,12 @@ import com.song.tasty.app.databinding.AppActivityMainBinding;
 import com.song.tasty.app.mvvm.viewmodel.MainViewModel;
 import com.song.tasty.common.app.base.BaseAppActivity;
 import com.song.tasty.common.app.flutter.ui.FlutterCommonFragment;
-import com.song.tasty.common.core.AppManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import io.flutter.embedding.android.FlutterActivity;
 
 import static com.song.tasty.common.app.AppRouters.GET_FRAGMENT;
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MAIN;
