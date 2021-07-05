@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 
 import com.song.tasty.common.app.flutter.ui.FlutterCommonActivity;
+import com.song.tasty.common.app.flutter.ui.FlutterCommonFragment;
 
 import io.flutter.embedding.android.FlutterFragment;
 import io.flutter.embedding.android.FlutterView;
@@ -60,7 +61,7 @@ public class FlutterPageUtils {
 //
 //
 //        FlutterFragment fragment=FlutterFragment.withCachedEngine(routeName).build();
-        FlutterFragment fragment=FlutterFragment
+        FlutterFragment fragment= FlutterCommonFragment
                 .withNewEngine()
                 .initialRoute(routeName)
                 .renderMode(RenderMode.texture)
