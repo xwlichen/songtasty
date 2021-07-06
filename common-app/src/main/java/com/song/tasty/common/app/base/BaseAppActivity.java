@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.ViewDataBinding;
 
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
@@ -20,7 +19,7 @@ import com.song.tasty.common.core.utils.SmartUtils;
  * @email : 196003945@qq.com
  * @description :
  */
-public abstract class BaseAppActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseMvvmActivity<V, VM> {
+public abstract class BaseAppActivity<VM extends BaseViewModel> extends BaseMvvmActivity<VM> {
 
     protected SMUITipDialog smuiTipDialog;
 

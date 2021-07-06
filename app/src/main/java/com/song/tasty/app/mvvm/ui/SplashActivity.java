@@ -10,6 +10,7 @@ import com.song.tasty.common.core.base.BaseActivity;
 import com.song.tasty.common.core.utils.SmartUtils;
 
 import static com.song.tasty.common.app.AppRouters.HOME_COMP_MUSICPLAY;
+import static com.song.tasty.common.app.AppRouters.LOGIN_COMP_MAIN;
 import static com.song.tasty.common.app.AppRouters.START_ACTIVITY;
 
 /**
@@ -69,11 +70,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toMain() {
-        SmartUtils.startActivity(MainActivity.class);
-//        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
-//                .setActionName(START_ACTIVITY)
-//                .build();
-//        cc.call();
+        //SmartUtils.startActivity(MainActivity.class);
+        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
+                .setActionName(START_ACTIVITY)
+                .build();
+        cc.call();
         finish();
     }
 }

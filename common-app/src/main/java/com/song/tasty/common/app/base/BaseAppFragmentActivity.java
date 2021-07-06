@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
  * @email : 196003945@qq.com
  * @description :
  */
-public abstract class BaseAppFragmentActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseAppActivity<V, VM> {
+public abstract class BaseAppFragmentActivity<VM extends BaseViewModel> extends BaseAppActivity<VM> {
 
     public static final String TAG = BaseAppFragmentActivity.class.getSimpleName();
 

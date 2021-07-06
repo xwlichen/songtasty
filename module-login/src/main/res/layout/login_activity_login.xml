@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:binding="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.song.tasty.module.login.mvvm.viewmodel.LoginViewModel" />
-    </data>
-
-    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/smui_config_color_black"
@@ -43,8 +33,7 @@
                 android:clickable="true"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                binding:onClickCommand="@{viewModel.finishOnClickCommond}" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/tvRegister"
@@ -79,13 +68,11 @@
                 android:layout_marginTop="@dimen/dp_060"
                 android:background="@color/smui_config_color_transparent"
                 android:hint="@string/login_account_hint"
-                android:text="@={viewModel.account}"
                 android:textColor="@color/smui_config_color_white"
                 android:textColorHint="@color/smui_config_color_white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle"
-                binding:textChanged="@{viewModel.accountTextChangedCommond}" />
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
 
             <EditText
@@ -97,7 +84,6 @@
                 android:background="@color/smui_config_color_transparent"
                 android:hint="@string/login_pwd_hint"
                 android:inputType="textPassword"
-                android:text="@={viewModel.password}"
                 android:textColor="@color/smui_config_color_white"
                 android:textColorHint="@color/smui_config_color_white"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -109,11 +95,9 @@
                 android:layout_width="@dimen/dp_020"
                 android:layout_height="@dimen/dp_020"
                 android:src="@mipmap/ic_cancel1"
-                android:visibility="@{viewModel.ivClearVisibility}"
                 app:layout_constraintBottom_toBottomOf="@id/etAccount"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etAccount"
-                binding:onClickCommand="@{viewModel.clearAccountOnClickCommond}" />
+                app:layout_constraintTop_toTopOf="@id/etAccount"/>
 
             <ImageView
                 android:id="@+id/ivPwdSwitch"
@@ -122,8 +106,7 @@
                 android:background="@mipmap/ic_pwd_gone"
                 app:layout_constraintBottom_toBottomOf="@id/etPwd"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="@id/etPwd"
-                binding:onClickCommand="@{viewModel.switchPwdOnClickCommond}" />
+                app:layout_constraintTop_toTopOf="@id/etPwd"/>
 
 
             <TextView
@@ -141,8 +124,7 @@
                 android:textColor="@color/smui_config_color_white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPwd"
-                binding:onClickCommand="@{viewModel.loginOnClickCommond}" />
+                app:layout_constraintTop_toBottomOf="@id/etPwd" />
 
             <TextView
                 android:id="@+id/tvForgetPwd"
@@ -157,7 +139,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
 
 
-</layout>
+
+</RelativeLayout>

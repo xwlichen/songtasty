@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -14,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.common.core.observer.ToastObserver;
 import com.song.tasty.common.core.observer.ViewStatusObserver;
+import com.song.tasty.common.core.utils.LogUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -25,8 +24,7 @@ import java.util.Map;
  * @email : 1960003945@qq.com
  * @description :
  */
-public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseActivity implements BaseView {
-    protected V binding;
+public abstract class BaseMvvmActivity<VM extends BaseViewModel> extends BaseActivity implements BaseView {
     protected VM viewModel;
 
     private int viewModelId;
@@ -52,20 +50,18 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
             viewModel.unregisterRxBus();
         }
 
-        if (binding != null) {
-            binding.unbind();
-        }
+
     }
 
     private void initViewDataBinding(@Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.setContentView(this, getLayoutResId());
-        viewModelId = initVariableId();
+        //viewModelId = initVariableId();
         viewModel = initViewModel();
         if (viewModel == null) {
             Class modelClass;
             Type type = getClass().getGenericSuperclass();
             if (type instanceof ParameterizedType) {
-                modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[1];
+                LogUtils.i("xw",((ParameterizedType) type).getActualTypeArguments().toString());
+                modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[0];
             } else {
                 //如果没有指定泛型参数，则默认使用BaseViewModel
                 modelClass = BaseViewModel.class;
@@ -74,7 +70,7 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
         }
 
         //关联ViewModel
-        binding.setVariable(viewModelId, viewModel);
+        //binding.setVariable(viewModelId, viewModel);
         //让ViewModel拥有View的生命周期感应
         getLifecycle().addObserver(viewModel);
     }
@@ -119,7 +115,7 @@ public abstract class BaseMvvmActivity<V extends ViewDataBinding, VM extends Bas
      *
      * @return BR的id
      */
-    public abstract int initVariableId();
+    //public abstract int initVariableId();
 
 
     /**

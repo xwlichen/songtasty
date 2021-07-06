@@ -1,9 +1,7 @@
 package com.song.tasty.module.home.mvvm.ui
 
 import com.song.tasty.common.app.base.BaseAppActivity
-import com.song.tasty.module.home.BR
 import com.song.tasty.module.home.R
-import com.song.tasty.module.home.databinding.HomeActivityMusicPlayBinding
 import com.song.tasty.module.home.mvvm.viewmodel.MusicPlayViewModel
 
 /**
@@ -12,15 +10,12 @@ import com.song.tasty.module.home.mvvm.viewmodel.MusicPlayViewModel
  * @email : 1960003945@qq.com
  * @description :
  */
-class MusicPlayActivity : BaseAppActivity<HomeActivityMusicPlayBinding, MusicPlayViewModel>() {
+class MusicPlayActivity : BaseAppActivity<MusicPlayViewModel>() {
 
     override fun getLayoutResId(): Int {
         return R.layout.home_activity_music_play;
     }
 
-    override fun initVariableId(): Int {
-        return BR.viewModel;
-    }
 
     override fun initView() {
 //        if (!AppUtils.isServiceRunning(this, "MusicService")) {

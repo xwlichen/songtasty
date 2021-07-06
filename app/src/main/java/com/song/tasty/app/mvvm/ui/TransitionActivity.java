@@ -10,10 +10,6 @@ import com.song.tasty.common.app.base.BaseAppActivity;
  * @description :
  */
 public class TransitionActivity extends BaseAppActivity {
-    @Override
-    public int initVariableId() {
-        return 0;
-    }
 
     @Override
     protected int getLayoutResId() {
