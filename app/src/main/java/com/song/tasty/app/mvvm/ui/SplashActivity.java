@@ -70,11 +70,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void toMain() {
-        //SmartUtils.startActivity(MainActivity.class);
-        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
-                .setActionName(START_ACTIVITY)
-                .build();
-        cc.call();
+        SmartUtils.startActivity(MainActivity.class);
+//        CC cc = CC.obtainBuilder(LOGIN_COMP_MAIN)
+//                .setActionName(START_ACTIVITY)
+//                .build();
+//        cc.call();
         finish();
     }
 }

@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.login_activity_login.*
  * @email : 196003945@qq.com
  * @description :
  */
-class LoginActivity : BaseAppActivity<LoginViewModel?>() {
+class LoginActivity : BaseAppActivity<LoginViewModel>() {
     private var bottomHeight = 0
 
 

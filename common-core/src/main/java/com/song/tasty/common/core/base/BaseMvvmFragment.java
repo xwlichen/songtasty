@@ -27,18 +27,18 @@ import java.util.Map;
  * @email : 196003945@qq.com
  * @description :
  */
-public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseFragment implements BaseView {
+public abstract class BaseMvvmFragment< VM extends BaseViewModel> extends BaseFragment implements BaseView {
 
-    public V binding;
+
     public VM viewModel;
-    private int viewModelId;
+    protected View rootView;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false);
-        return binding.getRoot();
+        rootView =inflater.inflate( getLayoutResId(), container, false);
+        return rootView;
     }
 
     @Override
@@ -48,9 +48,6 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
             viewModel.unregisterRxBus();
         }
 
-        if (binding != null) {
-            binding.unbind();
-        }
     }
 
     @Override
@@ -61,7 +58,6 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
         viewModel.registerRxBus();
     }
 
-    public abstract int initVariableId();
 
     public VM initViewModel() {
         return null;
@@ -73,13 +69,12 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
 
 
     private void initViewDataBinding() {
-        viewModelId = initVariableId();
         viewModel = initViewModel();
         if (viewModel == null) {
             Class modelClass;
             Type type = getClass().getGenericSuperclass();
             if (type instanceof ParameterizedType) {
-                modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[1];
+                modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[0];
             } else {
                 //如果没有指定泛型参数，则默认使用BaseViewModel
                 modelClass = BaseViewModel.class;
@@ -87,7 +82,7 @@ public abstract class BaseMvvmFragment<V extends ViewDataBinding, VM extends Bas
             viewModel = (VM) createViewModel(this, modelClass);
         }
 
-        binding.setVariable(viewModelId, viewModel);
+
         //让ViewModel拥有View的生命周期感应
         getLifecycle().addObserver(viewModel);
     }

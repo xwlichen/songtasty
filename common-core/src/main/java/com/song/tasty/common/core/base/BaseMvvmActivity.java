@@ -27,7 +27,6 @@ import java.util.Map;
 public abstract class BaseMvvmActivity<VM extends BaseViewModel> extends BaseActivity implements BaseView {
     protected VM viewModel;
 
-    private int viewModelId;
 
 
     @Override

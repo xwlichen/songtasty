@@ -108,6 +108,8 @@ ext {
             //https://github.com/drakeet/MultiType
             "multitype"                  : "me.drakeet.multitype:multitype:3.5.0",
 
+            "bugly-java"                 : "com.tencent.bugly:crashreport:latest.release",
+            "bugly-native"               : "com.tencent.bugly:nativecrashreport:latest.release",
 
             //test
             "androidJUnitRunner"         : "android.support.test.runner.AndroidJUnitRunner",

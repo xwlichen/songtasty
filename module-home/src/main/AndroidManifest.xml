@@ -9,5 +9,9 @@
         <activity
             android:name=".mvvm.ui.MusicPlayActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mvvm.ui.PersonRadioActivity"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

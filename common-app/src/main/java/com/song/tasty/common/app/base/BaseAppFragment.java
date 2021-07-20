@@ -25,7 +25,7 @@ import com.song.tasty.common.core.utils.SmartUtils;
  * @email : 1960003945@qq.com
  * @description :
  */
-public abstract class BaseAppFragment<V extends ViewDataBinding, VM extends BaseViewModel> extends BaseMvvmFragment<V, VM> {
+public abstract class BaseAppFragment<VM extends BaseViewModel> extends BaseMvvmFragment<VM> {
     public static final String TAG = BaseAppFragment.class.getSimpleName();
 
 
