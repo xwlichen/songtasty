@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.KeyEvent;
 
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;

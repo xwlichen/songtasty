@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
@@ -17,6 +14,7 @@ import com.song.tasty.module.home.adapter.*
 import com.song.tasty.module.home.entity.*
 import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.layout_nav_titlebar.view.*
 import me.drakeet.multitype.Items
 import me.drakeet.multitype.MultiTypeAdapter
 import java.util.*
@@ -39,10 +37,11 @@ class HomeFragment : BaseAppFragment<HomeViewModel>() {
     }
 
     override fun initView() {
-        val titleBar: ConstraintLayout = rootView.findViewById(R.id.titleBar)
-        val tvTitle: TextView =titleBar.findViewById(R.id.tvTitle)
-        //        TextView tvTitle = rootTitleBar.findViewById(R.id.tvTitle);
-        tvTitle.text=resources.getString(R.string.home_home);
+//        val titleBar: ConstraintLayout = rootView.findViewById(R.id.titleBar)
+//        val tvTitle: TextView =titleBar.findViewById(R.id.tvTitle)
+//        //        TextView tvTitle = rootTitleBar.findViewById(R.id.tvTitle);
+//        tvTitle.text=resources.getString(R.string.home_home);
+        titleBar.tvTitle.text=resources.getString(R.string.home_home);
         adapter = MultiTypeAdapter();
         adapter!!.register(BannerListBean::class.java, HomeBannerViewBinder())
         adapter!!.register(HomeNavListBean::class.java, HomeNavRVViewBinder())
@@ -54,7 +53,7 @@ class HomeFragment : BaseAppFragment<HomeViewModel>() {
         rvContainer.setLayoutManager(LinearLayoutManager(activity))
         rvContainer.setAdapter(adapter)
         refresh.setEnableLoadMore(false)
-        tvTitle.setOnClickListener {
+        titleBar.tvTitle.setOnClickListener {
             SmartUtils.startActivity(PersonRadioActivity::class.java)
             //                CC cc = CC.obtainBuilder(APP_COMP_FLUTTER)
 //                        .setActionName(START_ACTIVITY)

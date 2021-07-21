@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel" />
-    </data>
-
-    <!--<com.smart.ui.widget.SMUIWindowInsetLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -60,6 +47,5 @@
             </com.song.tasty.common.ui.widget.refresh.CommonRefreshLayout>
         </LinearLayout>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
     <!--</com.smart.ui.widget.SMUIWindowInsetLayout>-->
-</layout>

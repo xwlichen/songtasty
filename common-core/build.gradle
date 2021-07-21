@@ -1,12 +1,9 @@
-apply from: '../config.gradle'
 apply plugin: 'com.android.library'
 apply from: '../common-setting.gradle'
 
 
 android {
-    dataBinding {
-        enabled true
-    }
+
 
 }
 

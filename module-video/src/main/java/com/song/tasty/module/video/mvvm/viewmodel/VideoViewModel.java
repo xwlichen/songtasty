@@ -4,8 +4,6 @@ import android.app.Application;
 import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.ObservableField;
-import androidx.databinding.ObservableInt;
 
 import com.song.tasty.common.core.base.BaseViewModel;
 import com.song.tasty.common.core.binding.command.BindingCommand;
@@ -21,14 +19,6 @@ import com.song.tasty.module.video.datasource.Injection;
  */
 public class VideoViewModel extends BaseViewModel<DataRepository> {
 
-    public ObservableField<String> account = new ObservableField<>("");
-    public ObservableField<String> password = new ObservableField<>("");
-
-
-    /**
-     * 账号的清除按钮是否显示
-     */
-    public ObservableInt ivClearVisibility = new ObservableInt(View.GONE);
 
 
     /**
@@ -39,12 +29,9 @@ public class VideoViewModel extends BaseViewModel<DataRepository> {
 
     public VideoViewModel(@NonNull Application application) {
         super(application, Injection.provideDataRepository());
-        account.set(model.getLocalDataSource().getAccount());
-        password.set(model.getLocalDataSource().getPwd());
+        model.getLocalDataSource().getAccount();
+        model.getLocalDataSource().getPwd();
     }
-
-
-    public BindingCommand finishOnClickCommond = new BindingCommand(() -> uiChange.getFinishEvent().call());
 
 
 }

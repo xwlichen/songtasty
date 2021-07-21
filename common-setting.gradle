@@ -32,7 +32,13 @@ android {
         }
 
         multiDexEnabled true
+
+        androidExtensions {
+            experimental = true
+        }
     }
+
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -73,7 +79,7 @@ android {
 
     dependencies {
         //解决Kotlin和DataBinding冲突
-        kapt "com.android.databinding:compiler:$android_version"
+       // kapt "com.android.databinding:compiler:$android_version"
     }
 
 

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
