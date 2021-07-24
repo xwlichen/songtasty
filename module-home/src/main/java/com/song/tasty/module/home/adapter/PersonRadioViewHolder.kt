@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.song.tasty.common.app.base.BaseRecyclerAdapter
+import com.song.tasty.module.home.R
 import com.song.tasty.module.home.entity.SongBean
 import me.drakeet.multitype.ItemViewBinder
 
