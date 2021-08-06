@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/common-core" />
             <option value="$PROJECT_DIR$/common-player" />
             <option value="$PROJECT_DIR$/common-ui" />
+            <option value="$PROJECT_DIR$/module-flutter" />
             <option value="$PROJECT_DIR$/module-hamlet" />
             <option value="$PROJECT_DIR$/module-home" />
             <option value="$PROJECT_DIR$/module-login" />

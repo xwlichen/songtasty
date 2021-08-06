@@ -5,17 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/app_img_mask_color">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
-    <com.smart.ui.widget.SMUITopBar
+    <com.smart.ui.widget.SMUITopBarLayout
+        android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/color_transparent"/>
+        android:fitsSystemWindows="true"
+        android:background="@color/color_primary_normal"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

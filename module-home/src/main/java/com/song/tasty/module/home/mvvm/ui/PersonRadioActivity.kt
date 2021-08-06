@@ -1,8 +1,12 @@
 package com.song.tasty.module.home.mvvm.ui
 
 
+import android.content.ContextWrapper
 import android.graphics.drawable.GradientDrawable
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.OrientationHelper
+import com.smart.ui.utils.SMUIDisplayHelper
+import com.smart.ui.utils.SMUINotchHelper
 import com.smart.ui.widget.SMUITopBar
 import com.song.tasty.common.app.base.BaseAppActivity
 import com.song.tasty.common.ui.widget.recycler.PagerLayoutManager
@@ -33,11 +37,15 @@ class PersonRadioActivity : BaseAppActivity<PersonRadioViewModel>() {
     }
 
     override fun initView() {
-        super.initView()
-        rvContainer.apply {
-            layoutManager = mPagerLayoutManager
-            adapter = mAdapter
-        }
+        mTitleBar = titleBar
 
+        titleBar.setTitle("test")
+        titleBar.setBackgroundColor(ContextCompat.getColor(this,R.color.color_primary_normal))
+        super.initView()
+//        rvContainer.apply {
+//            layoutManager = mPagerLayoutManager
+//            adapter = mAdapter
+//        }
+//
     }
 }

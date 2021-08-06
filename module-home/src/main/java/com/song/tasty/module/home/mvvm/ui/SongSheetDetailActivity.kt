@@ -29,7 +29,7 @@ class SongSheetDetailActivity : BaseAppActivity<SongSheetDetailViewModel?>() {
     }
 
     override fun initView() {
-        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.image3)
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_logo)
         val palette = Palette.from(bitmap).generate()
         val colorMain = palette.getDominantColor(ContextCompat.getColor(this, R.color.color_transparent))
         scaleBehaviorView.setColorList(intArrayOf(colorMain, Color.BLACK))

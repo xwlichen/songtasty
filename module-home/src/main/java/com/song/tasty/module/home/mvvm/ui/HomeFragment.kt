@@ -16,8 +16,6 @@ import com.song.tasty.module.home.adapter.*
 import com.song.tasty.module.home.entity.*
 import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.home_layout_loading.view.*
-import kotlinx.android.synthetic.main.layout_nav_titlebar.view.*
 import me.drakeet.multitype.Items
 import me.drakeet.multitype.MultiTypeAdapter
 import java.util.*
@@ -35,9 +33,6 @@ class HomeFragment : BaseAppFragment<HomeViewModel>() {
         return R.layout.home_fragment
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
 
     override fun initView() {
         val titleBar: ConstraintLayout = rootView.findViewById(R.id.titleBar)

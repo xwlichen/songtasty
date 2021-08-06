@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 29,
             buildToolsVersion: "29.0.0",
 //            minSdkVersion    : 16,
-            minSdkVersion    : 19,
+            minSdkVersion    : 21,
             targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0",
@@ -56,7 +56,7 @@ ext {
 
             //smart
             //ui组件
-            "smart-ui"                   : "com.samrt.component:smart-ui:1.0.4",
+            "smart-ui"                   : "com.github.xwlichen:smartui-android:v1.0.2",
             //播放器组件
             "smart-media-player"         : "com.samrt.media.player:smart-media-player:1.0.3",
 
