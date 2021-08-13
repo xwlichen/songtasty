@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.drakeet.multitype.MultiTypeAdapter;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.app.adapter.MusicBottomNavItemViewBinder;
 import com.song.tasty.common.app.music.bean.MusicBean1;
@@ -20,8 +21,6 @@ import com.song.tasty.common.app.music.bean.MusicBean1;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.drakeet.multitype.Items;
-import me.drakeet.multitype.MultiTypeAdapter;
 
 /**
  * @date : 2019-08-20 09:57
@@ -36,7 +35,7 @@ public class MusicBottomNavView extends FrameLayout {
 
 
     private MultiTypeAdapter adapter;
-    private Items items;
+    private ArrayList items;
 
 
     public MusicBottomNavView(@NonNull Context context) {
@@ -63,7 +62,7 @@ public class MusicBottomNavView extends FrameLayout {
 
         adapter = new MultiTypeAdapter();
         adapter.register(MusicBean1.class, new MusicBottomNavItemViewBinder());
-        items = new Items();
+        items = new ArrayList<>();
 
         rvMusic.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
         rvMusic.setAdapter(adapter);

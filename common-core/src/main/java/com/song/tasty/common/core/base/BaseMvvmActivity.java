@@ -9,14 +9,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.smart.utils.LogUtils;
 import com.song.tasty.common.core.livedata.SingleLiveData;
 import com.song.tasty.common.core.observer.ToastObserver;
 import com.song.tasty.common.core.observer.ViewStatusObserver;
-import com.song.tasty.common.core.utils.LogUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Map;
+
+
 
 /**
  * @date : 2019-07-22 12:01
@@ -59,7 +61,7 @@ public abstract class BaseMvvmActivity<VM extends BaseViewModel> extends BaseAct
             Class modelClass;
             Type type = getClass().getGenericSuperclass();
             if (type instanceof ParameterizedType) {
-                LogUtils.i("xw",((ParameterizedType) type).getActualTypeArguments().toString());
+                LogUtils.d("xw",((ParameterizedType) type).getActualTypeArguments().toString());
                 modelClass = (Class) ((ParameterizedType) type).getActualTypeArguments()[0];
             } else {
                 //如果没有指定泛型参数，则默认使用BaseViewModel

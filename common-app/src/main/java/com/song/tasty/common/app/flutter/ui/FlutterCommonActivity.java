@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import com.hjq.toast.ToastUtils;
 import com.smart.ui.utils.SMUIStatusBarHelper;
 import com.smart.ui.widget.dialog.SMUITipDialog;
+import com.smart.utils.LogUtils;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.app.flutter.splash.FlutterCustomSplashScreen;
-import com.song.tasty.common.core.utils.LogUtils;
 import com.song.tasty.common.core.utils.SmartUtils;
 
 import java.lang.reflect.Constructor;
@@ -210,8 +210,8 @@ public class FlutterCommonActivity extends FlutterActivity {
 //        lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
 
         LogUtils.e("xwlc","onDestory");
-        Log.e("xwlc","onDestroy");
-        Log.e("xwlc","cost time :"+(System.currentTimeMillis()-time));
+        LogUtils.e("xwlc","onDestroy");
+        LogUtils.e("xwlc","cost time :"+(System.currentTimeMillis()-time));
     }
 
     long time;

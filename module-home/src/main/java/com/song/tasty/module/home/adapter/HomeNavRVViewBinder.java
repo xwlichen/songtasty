@@ -8,13 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.drakeet.multitype.ItemViewBinder;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.HomeNavBean;
 import com.song.tasty.module.home.entity.HomeNavListBean;
 
 import java.util.List;
 
-import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author lichen
@@ -27,13 +27,13 @@ public class HomeNavRVViewBinder extends ItemViewBinder<HomeNavListBean, HomeNav
 
     @NonNull
     @Override
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.home_item_rv_line, parent, false);
         return new ViewHolder(root);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeNavListBean item) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeNavListBean item) {
         holder.setData(item.getList());
 
 

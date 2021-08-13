@@ -1,6 +1,5 @@
 package com.song.tasty.common.core.livedata;
 
-import com.song.tasty.common.core.utils.LogUtils;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -10,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+
+import com.smart.utils.LogUtils;
+
 
 /**
  * @date : 2019-07-22 17:29

@@ -45,6 +45,9 @@ dependencies {
     //屏幕适配
     api rootProject.ext.dependencies["autosize"]
 
+    api rootProject.ext.dependencies["smart-utils"]
+    //implementation 'com.github.xwlichen:smart-utils:v1.0.1'
+
 
 
 

@@ -6,7 +6,8 @@ import android.content.Intent;
 
 import androidx.annotation.Nullable;
 
-import com.song.tasty.common.core.utils.LogUtils;
+
+import com.smart.utils.LogUtils;
 
 import java.util.Arrays;
 import java.util.Iterator;

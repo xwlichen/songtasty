@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.drakeet.multitype.ItemViewBinder;
 import com.smart.ui.utils.SMUIDisplayHelper;
 import com.song.tasty.common.app.widget.decoration.RecyclerLinearDecoration;
 import com.song.tasty.module.home.R;
@@ -16,7 +17,6 @@ import com.song.tasty.module.home.entity.SongSheetListBean;
 
 import java.util.List;
 
-import me.drakeet.multitype.ItemViewBinder;
 
 import static com.song.tasty.common.app.widget.decoration.RecyclerLinearDecoration.SPACE_RIGHT_OR_BOTTOM;
 
@@ -31,13 +31,13 @@ public class HomeSongSheetRVViewBinder extends ItemViewBinder<SongSheetListBean,
 
     @NonNull
     @Override
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.home_item_rv, parent, false);
         return new ViewHolder(root);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SongSheetListBean item) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SongSheetListBean item) {
 
         holder.setData(item.getList());
 

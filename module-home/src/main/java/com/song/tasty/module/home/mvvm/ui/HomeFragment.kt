@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.drakeet.multitype.MultiTypeAdapter
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.song.tasty.common.app.base.BaseAppFragment
 import com.song.tasty.common.core.utils.SmartUtils
@@ -16,9 +17,8 @@ import com.song.tasty.module.home.adapter.*
 import com.song.tasty.module.home.entity.*
 import com.song.tasty.module.home.mvvm.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
-import me.drakeet.multitype.Items
-import me.drakeet.multitype.MultiTypeAdapter
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * @author lichen
@@ -28,7 +28,7 @@ import java.util.*
  */
 class HomeFragment : BaseAppFragment<HomeViewModel>() {
     private var adapter: MultiTypeAdapter? = null
-    private var items: Items? = null
+    private var items = ArrayList<Any>()
     override fun getLayoutResId(): Int {
         return R.layout.home_fragment
     }
@@ -46,8 +46,6 @@ class HomeFragment : BaseAppFragment<HomeViewModel>() {
         adapter!!.register(HomeTitleBean::class.java, HomeTitleViewBinder());
         adapter!!.register(SongSheetListBean::class.java, HomeSongSheetRVViewBinder())
         adapter!!.register(SongBean::class.java, HomeSongViewBinder())
-        items = Items()
-        adapter!!.items = items!!
         rvContainer.setLayoutManager(LinearLayoutManager(activity))
         rvContainer.setAdapter(adapter)
         refresh.setEnableLoadMore(false)

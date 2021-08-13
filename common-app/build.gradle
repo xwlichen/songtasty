@@ -46,7 +46,9 @@ dependencies {
 
 
 
-    api rootProject.ext.dependencies["smart-media-player"]
+    api (rootProject.ext.dependencies["smart-media-player"]){
+        exclude module: 'smart-utils'
+    }
 
 
     api project(':common-core')

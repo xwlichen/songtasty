@@ -16,7 +16,6 @@ import com.smart.ui.widget.dialog.SMUITipDialog;
 import com.song.tasty.common.app.R;
 import com.song.tasty.common.core.base.BaseMvvmActivity;
 import com.song.tasty.common.core.base.BaseViewModel;
-import com.song.tasty.common.core.utils.LogUtils;
 import com.song.tasty.common.core.utils.SmartUtils;
 
 /**
@@ -28,7 +27,6 @@ import com.song.tasty.common.core.utils.SmartUtils;
 public abstract class BaseAppActivity<VM extends BaseViewModel> extends BaseMvvmActivity<VM> {
 
     protected SMUITipDialog smuiTipDialog;
-    protected ViewGroup mTitleBar;
 
     @Override
     public void createView(int layoutResId, @Nullable Bundle savedInstanceState) {

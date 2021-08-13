@@ -9,12 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.drakeet.multitype.ItemViewBinder;
 import com.smart.ui.widget.image.SMUIImageView;
 import com.song.tasty.common.core.utils.imglaoder.GlideUtils;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.SongBean;
 
-import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author lichen
@@ -27,13 +27,13 @@ public class HomeSongViewBinder extends ItemViewBinder<SongBean, HomeSongViewBin
 
     @NonNull
     @Override
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.home_item_song, parent, false);
         return new ViewHolder(root);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SongBean item) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SongBean item) {
         holder.tvName.setText(item.getName());
         holder.tvSinger.setText(item.getUp_user());
         GlideUtils.loadImage(holder.itemView.getContext(),

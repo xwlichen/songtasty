@@ -10,11 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.drakeet.multitype.ItemViewBinder;
 import com.hjq.toast.ToastUtils;
 import com.song.tasty.module.home.R;
 import com.song.tasty.module.home.entity.HomeTitleBean;
 
-import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author lichen
@@ -27,13 +27,13 @@ public class HomeTitleViewBinder extends ItemViewBinder<HomeTitleBean, HomeTitle
 
     @NonNull
     @Override
-    protected ViewHodler onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    public ViewHodler onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.home_item_home_title, parent, false);
         return new ViewHodler(root);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHodler holder, @NonNull HomeTitleBean item) {
+    public void onBindViewHolder(@NonNull ViewHodler holder, @NonNull HomeTitleBean item) {
         holder.tvTitle.setText(item.getTitle());
         holder.title = item.getTitle();
 

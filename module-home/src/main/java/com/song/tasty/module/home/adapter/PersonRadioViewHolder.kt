@@ -1,12 +1,17 @@
 package com.song.tasty.module.home.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.drakeet.multitype.ItemViewBinder
+import com.drakeet.multitype.ItemViewDelegate
+import com.smart.ui.widget.image.SMUIImageView
+import com.song.tasty.common.core.utils.imglaoder.GlideUtils
 import com.song.tasty.module.home.R
 import com.song.tasty.module.home.entity.SongBean
-import me.drakeet.multitype.ItemViewBinder
+import kotlinx.android.synthetic.main.home_item_person_radio.view.*
 
 class PersonRadioViewHolder: ItemViewBinder<SongBean, PersonRadioViewHolder.ViewHolder>() {
 
@@ -14,6 +19,7 @@ class PersonRadioViewHolder: ItemViewBinder<SongBean, PersonRadioViewHolder.View
 
 
     class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+        val ivCover : SMUIImageView = itemView.ivCover
 
     }
 
@@ -23,6 +29,8 @@ class PersonRadioViewHolder: ItemViewBinder<SongBean, PersonRadioViewHolder.View
     }
 
     override fun onBindViewHolder(holder: ViewHolder, item: SongBean) {
-        TODO("Not yet implemented")
+        GlideUtils.loadImage(holder.itemView.context,item.playurl,holder.ivCover)
     }
+
+
 }

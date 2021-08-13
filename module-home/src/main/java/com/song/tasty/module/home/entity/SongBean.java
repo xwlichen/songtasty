@@ -34,6 +34,7 @@ public class SongBean {
     private String name;
     private String playurl;
     private String downurl;
+    private String videourl;
     private String uid;
     private String up_user;
     private String up_user_logo;
@@ -46,6 +47,15 @@ public class SongBean {
     private String mpicx;
     private String addtime;
     private String singer;
+
+    public SongBean() {
+    }
+
+    public SongBean(String name, String playurl, String videourl) {
+        this.name = name;
+        this.playurl = playurl;
+        this.videourl = videourl;
+    }
 
     public String getSongid() {
         return songid;

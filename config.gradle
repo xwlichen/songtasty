@@ -57,6 +57,9 @@ ext {
             //smart
             //ui组件
             "smart-ui"                   : "com.github.xwlichen:smartui-android:v1.0.2",
+            //utils组件
+            "smart-utils"                : "com.github.xwlichen:smart-utils:v1.0.9",
+
             //播放器组件
             "smart-media-player"         : "com.samrt.media.player:smart-media-player:1.0.3",
 
@@ -106,7 +109,7 @@ ext {
             "toast"                      : "com.hjq:toast:8.0",
             "mmkv"                       : "com.tencent:mmkv:1.0.22",
             //https://github.com/drakeet/MultiType
-            "multitype"                  : "me.drakeet.multitype:multitype:3.5.0",
+            "multitype"                  : "com.drakeet.multitype:multitype:4.3.0",
 
             "bugly-java"                 : "com.tencent.bugly:crashreport:latest.release",
             "bugly-native"               : "com.tencent.bugly:nativecrashreport:latest.release",
