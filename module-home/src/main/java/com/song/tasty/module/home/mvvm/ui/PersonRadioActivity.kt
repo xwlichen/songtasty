@@ -44,8 +44,8 @@ class PersonRadioActivity : BaseAppActivity<PersonRadioViewModel>() {
 
     override fun initView() {
         super.initView()
-        titleBar.setTitle("test")
-        titleBar.setBackgroundColor(ContextCompat.getColor(this,R.color.color_primary_normal))
+        titleBar.setTitle("test").setTextColor(ContextCompat.getColor(this,R.color.color_white))
+        titleBar.setBackgroundColor(ContextCompat.getColor(this,R.color.color_transparent))
         mAdapter.register(PersonRadioViewHolder());
         rvContainer.apply {
             layoutManager = mPagerLayoutManager
@@ -72,6 +72,7 @@ class PersonRadioActivity : BaseAppActivity<PersonRadioViewModel>() {
 
     override fun initData() {
         super.initData()
+        LogUtils.e("initData---")
         mItems.addAll(Constants.getVideoList())
         mAdapter.items = mItems
         mAdapter.notifyDataSetChanged()

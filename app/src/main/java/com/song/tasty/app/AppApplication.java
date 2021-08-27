@@ -3,6 +3,7 @@ package com.song.tasty.app;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.Toast;
@@ -55,13 +56,7 @@ public class AppApplication extends Application {
                 .prepend(ByteBuffer.class, Drawable.class, byteDecoder);
 
 //        initMatrix();
-        String path=getExternalFilesDir(null).getAbsolutePath()+"/log";
-        String cachePath=getExternalCacheDir().getAbsolutePath()+"/log";
-
-        Log.e("xw","path:"+path);
-        Log.e("xw","cachePath:"+cachePath);
-
-        LogUtils.initXLog("st", path,cachePath,"",0,true);
+        initLog();
 
 //
 //        Log.e("xwlc","FlutterEngine start");
@@ -156,4 +151,16 @@ public class AppApplication extends Application {
 //        //start only startup tracer, close other tracer.
 //        tracePlugin.start();
 //    }
+
+
+    public void initLog(){
+        final String SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath();
+        final String logPath = SDCARD + "/" + this.getPackageName() + "/songtasty/log";
+
+        // this is necessary, or may crash for SIGBUS
+        final String cachePath = SDCARD + "/Android/data/" + this.getPackageName() + "/xlog";
+        String pubKey = "d5caa755197ea401323cbaf253269ecc193dc09bb00d2054f1bfaf9758a6f840e35ea83f2d0f5be49c65547dc7ba79e03f67ccdc8e40cda368ad041a3952a576";
+
+        LogUtils.initXLog("songtasty", logPath, cachePath, pubKey, 0, true);
+    }
 }
